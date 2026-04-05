@@ -1,5 +1,32 @@
 [
   {
+    "id": "academic-paper",
+    "name": "academic-paper",
+    "description": "Academic paper writing skill with 12-agent pipeline. v2.4: LaTeX output formatting hardening — mandatory apa7 class, text justification fix, table column width formula, bilingual abstract centering, standardized font stack, PDF must compile from LaTeX. Supports IMRaD, literature review, theoretical, case study, policy brief, and conference paper structures. APA 7.0 (default), Chicago, MLA, IEEE, Vancouver citation formats. Bilingual abstracts (zh-TW + EN). Multi-format output (LaTeX, DOCX, PDF, Markdown). Triggers on: write paper, academic paper, paper outline, write abstract, revise paper, check citations, convert to LaTeX, guide my paper, parse reviews, revision roadmap, 寫論文, 學術論文, 論文大綱, 寫摘要, 修改論文, 檢查引用, 引導我寫論文, 帶我規劃論文, 逐章規劃, 論文架構, 審查意見, 修訂路線圖.",
+    "path": "academic-paper/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "academic-paper-reviewer",
+    "name": "academic-paper-reviewer",
+    "description": "Multi-perspective academic paper review with dynamic reviewer personas. Simulates 5 independent reviewers (EIC + 3 peer reviewers + Devil's Advocate) with field-specific expertise. Supports full review, re-review (verification), quick assessment, methodology focus, and Socratic guided modes. Triggers on: review paper, peer review, manuscript review, referee report, review my paper, critique paper, simulate review, editorial review.",
+    "path": "academic-paper-reviewer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "academic-pipeline",
+    "name": "academic-pipeline",
+    "description": "Orchestrator for the full academic research pipeline: research -> write -> integrity check -> review -> revise -> re-review -> re-revise -> final integrity check -> finalize. Coordinates deep-research, academic-paper, and academic-paper-reviewer into a seamless 9-stage workflow with mandatory integrity verification, two-stage peer review, and reproducible quality gates. Triggers on: academic pipeline, research to paper, full paper workflow, paper pipeline, end-to-end paper, research-to-publication, complete paper workflow.",
+    "path": "academic-pipeline/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "accessibility-compliance-accessibility-audit",
     "name": "accessibility-compliance-accessibility-audit",
     "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
@@ -85,6 +112,15 @@
     "name": "api-design-principles",
     "description": "Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers. Use when designing new APIs, reviewing API specifications, or establishing API design standards.",
     "path": "api-design-principles/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "api-designer",
+    "name": "api-designer",
+    "description": "Use this agent when designing new APIs, creating API specifications, or refactoring existing API architecture for scalability and developer experience. Invoke when you need REST/GraphQL endpoint design, OpenAPI documentation, authentication patterns, or API versioning strategies.",
+    "path": "api-designer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -184,6 +220,15 @@
     "name": "backend-architect",
     "description": "Expert backend architect specializing in scalable API design,",
     "path": "backend-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "backend-developer",
+    "name": "backend-developer",
+    "description": "Use this agent when building server-side APIs, microservices, and backend systems that require robust architecture, scalability planning, and production-ready implementation.",
+    "path": "backend-developer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -454,6 +499,15 @@
     "source": "custom"
   },
   {
+    "id": "citation-management",
+    "name": "citation-management",
+    "description": "Comprehensive citation management for academic research. Search Google Scholar and PubMed for papers, extract accurate metadata, validate citations, and generate properly formatted BibTeX entries. This skill should be used when you need to find papers, verify citation information, convert DOIs to BibTeX, or ensure reference accuracy in scientific writing.",
+    "path": "citation-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "claude-api",
     "name": "claude-api",
     "description": "Build apps with the Claude API or Anthropic SDK. TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK. DO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.",
@@ -497,6 +551,15 @@
       "PubMedBERT",
       "disease-neglect]"
     ],
+    "source": "custom"
+  },
+  {
+    "id": "clinical-reports",
+    "name": "clinical-reports",
+    "description": "Write comprehensive clinical reports including case reports (CARE guidelines), diagnostic reports (radiology/pathology/lab), clinical trial reports (ICH-E3, SAE, CSR), and patient documentation (SOAP, H&P, discharge summaries). Full support with templates, regulatory compliance (HIPAA, FDA, ICH-GCP), and validation tools.",
+    "path": "clinical-reports/SKILL.md",
+    "category": "",
+    "tags": [],
     "source": "custom"
   },
   {
@@ -1056,6 +1119,15 @@
     "source": "custom"
   },
   {
+    "id": "deep-research",
+    "name": "deep-research",
+    "description": "Universal deep research agent team. 13-agent pipeline for rigorous academic research on any topic. 7 modes: full research, quick brief, paper review, lit-review, fact-check, Socratic guided research dialogue, and systematic review with optional meta-analysis. Covers research question formulation, Socratic mentoring, methodology design, systematic literature search, source verification, cross-source synthesis, risk of bias assessment, meta-analysis, APA 7.0 report compilation, editorial review, devil's advocate challenges, ethics review, and post-research literature monitoring. Triggers on: research, deep research, literature review, systematic review, meta-analysis, PRISMA, evidence synthesis, fact-check, guide my research, help me think through, 研究, 深度研究, 文獻回顧, 文獻探討, 系統性回顧, 後設分析, 事實查核, 引導我的研究, 幫我釐清, 幫我想想, 我不確定要研究什麼, 研究方向, 研究主題.",
+    "path": "deep-research/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "defi-protocol-templates",
     "name": "defi-protocol-templates",
     "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.",
@@ -1119,6 +1191,15 @@
     "source": "custom"
   },
   {
+    "id": "devops-engineer",
+    "name": "devops-engineer",
+    "description": "Use this agent when building or optimizing infrastructure automation, CI/CD pipelines, containerization strategies, and deployment workflows to accelerate software delivery while maintaining reliability and security.",
+    "path": "devops-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "devops-troubleshooter",
     "name": "devops-troubleshooter",
     "description": "Expert DevOps troubleshooter specializing in rapid incident",
@@ -1171,6 +1252,15 @@
     "source": "custom"
   },
   {
+    "id": "django-developer",
+    "name": "django-developer",
+    "description": "Use when building Django 4+ web applications, REST APIs, or modernizing existing Django projects with async views and enterprise patterns.",
+    "path": "django-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "django-pro",
     "name": "django-pro",
     "description": "Master Django 5.x with async views, DRF, Celery, and Django",
@@ -1189,10 +1279,28 @@
     "source": "custom"
   },
   {
+    "id": "docker-expert",
+    "name": "docker-expert",
+    "description": "Use this agent when you need to build, optimize, or secure Docker container images and orchestration for production environments.",
+    "path": "docker-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "docs-architect",
     "name": "docs-architect",
     "description": "Creates comprehensive technical documentation from existing",
     "path": "docs-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "documentation-engineer",
+    "name": "documentation-engineer",
+    "description": "Use this agent when you need to create, architect, or overhaul comprehensive documentation systems including API docs, tutorials, guides, and developer-friendly content that keeps pace with code changes.",
+    "path": "documentation-engineer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -1426,6 +1534,15 @@
     "source": "custom"
   },
   {
+    "id": "fastapi-developer",
+    "name": "fastapi-developer",
+    "description": "Use when building modern async Python APIs with FastAPI, implementing Pydantic v2 validation, dependency injection patterns, or deploying high-performance ASGI applications.",
+    "path": "fastapi-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "fastapi-pro",
     "name": "fastapi-pro",
     "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and",
@@ -1573,6 +1690,15 @@
     "name": "full-stack-orchestration-full-stack-feature",
     "description": "Use when working with full stack orchestration full stack feature",
     "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "fullstack-developer",
+    "name": "fullstack-developer",
+    "description": "Use this agent when you need to build complete features spanning database, API, and frontend layers together as a cohesive unit.",
+    "path": "fullstack-developer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -1844,6 +1970,15 @@
     "source": "custom"
   },
   {
+    "id": "hypothesis-generation",
+    "name": "hypothesis-generation",
+    "description": "Generate testable hypotheses. Formulate from observations, design experiments, explore competing explanations, develop predictions, propose mechanisms, for scientific inquiry across domains.",
+    "path": "hypothesis-generation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "illumina-bridge",
     "name": "illumina-bridge",
     "description": "Import DRAGEN-exported Illumina result bundles into ClawBio for local tertiary analysis and downstream routing.",
@@ -2032,6 +2167,15 @@
     "source": "custom"
   },
   {
+    "id": "kubernetes-specialist",
+    "name": "kubernetes-specialist",
+    "description": "Use this agent when you need to design, deploy, configure, or troubleshoot Kubernetes clusters and workloads in production environments.",
+    "path": "kubernetes-specialist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "labstep",
     "name": "labstep",
     "description": ">-",
@@ -2075,6 +2219,15 @@
       "tables",
       "academic"
     ],
+    "source": "custom"
+  },
+  {
+    "id": "latex-posters",
+    "name": "latex-posters",
+    "description": "Create professional research posters in LaTeX using beamerposter, tikzposter, or baposter. Support for conference presentations, academic posters, and scientific communication. Includes layout design, color schemes, multi-column formats, figure integration, and poster-specific best practices for visual communication.",
+    "path": "latex-posters/SKILL.md",
+    "category": "",
+    "tags": [],
     "source": "custom"
   },
   {
@@ -2161,6 +2314,15 @@
     "source": "custom"
   },
   {
+    "id": "llm-architect",
+    "name": "llm-architect",
+    "description": "Use when designing LLM systems for production, implementing fine-tuning or RAG architectures, optimizing inference serving infrastructure, or managing multi-model deployments.",
+    "path": "llm-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "llm-evaluation",
     "name": "llm-evaluation",
     "description": "Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.",
@@ -2188,6 +2350,15 @@
     "source": "custom"
   },
   {
+    "id": "market-research-reports",
+    "name": "market-research-reports",
+    "description": "Generate comprehensive market research reports (50+ pages) in the style of top consulting firms (McKinsey, BCG, Gartner). Features professional LaTeX formatting, extensive visual generation with scientific-schematics and generate-image, deep integration with research-lookup for data gathering, and multi-framework strategic analysis including Porter's Five Forces, PESTLE, SWOT, TAM/SAM/SOM, and BCG Matrix.",
+    "path": "market-research-reports/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "market-sizing-analysis",
     "name": "market-sizing-analysis",
     "description": "This skill should be used when the user asks to \"calculate TAM\",",
@@ -2201,6 +2372,15 @@
     "name": "mcp-builder",
     "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
     "path": "mcp-builder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mcp-developer",
+    "name": "mcp-developer",
+    "description": "Use this agent when you need to build, debug, or optimize Model Context Protocol (MCP) servers and clients that connect AI systems to external tools and data sources.",
+    "path": "mcp-developer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -2421,6 +2601,15 @@
     "source": "custom"
   },
   {
+    "id": "nextjs-developer",
+    "name": "nextjs-developer",
+    "description": "Use this agent when building production Next.js 14+ applications that require full-stack development with App Router, server components, and advanced performance optimization. Invoke when you need to architect or implement complete Next.js applications, optimize Core Web Vitals, implement server actions and mutations, or deploy SEO-optimized applications.",
+    "path": "nextjs-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "nft-standards",
     "name": "nft-standards",
     "description": "Implement NFT standards (ERC-721, ERC-1155) with proper metadata handling, minting strategies, and marketplace integration. Use when creating NFT contracts, building NFT marketplaces, or implementing digital asset systems.",
@@ -2588,6 +2777,15 @@
     "name": "pdf",
     "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
     "path": "pdf/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "peer-review",
+    "name": "peer-review",
+    "description": "Systematic peer review toolkit. Evaluate methodology, statistics, design, reproducibility, ethics, figure integrity, reporting standards, for manuscript and grant review across disciplines.",
+    "path": "peer-review/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -2870,6 +3068,15 @@
     "source": "custom"
   },
   {
+    "id": "qa-expert",
+    "name": "qa-expert",
+    "description": "Use this agent when you need comprehensive quality assurance strategy, test planning across the entire development cycle, or quality metrics analysis to improve overall software quality.",
+    "path": "qa-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "quant-analyst",
     "name": "quant-analyst",
     "description": "Build financial models, backtest trading strategies, and analyze",
@@ -2924,6 +3131,15 @@
     "source": "custom"
   },
   {
+    "id": "react-specialist",
+    "name": "react-specialist",
+    "description": "Use when optimizing existing React applications for performance, implementing advanced React 18+ features, or solving complex state management and architectural challenges within React codebases.",
+    "path": "react-specialist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "react-state-management",
     "name": "react-state-management",
     "description": "Master modern React state management with Redux Toolkit, Zustand, Jotai, and React Query. Use when setting up global state, managing server state, or choosing between state management solutions.",
@@ -2955,6 +3171,15 @@
       "offspring",
       "clinical-genetics]"
     ],
+    "source": "custom"
+  },
+  {
+    "id": "refactoring-specialist",
+    "name": "refactoring-specialist",
+    "description": "Use when you need to transform poorly structured, complex, or duplicated code into clean, maintainable systems while preserving all existing behavior.",
+    "path": "refactoring-specialist/SKILL.md",
+    "category": "",
+    "tags": [],
     "source": "custom"
   },
   {
@@ -2995,6 +3220,24 @@
     "name": "requesting-code-review",
     "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
     "path": "requesting-code-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "research-grants",
+    "name": "research-grants",
+    "description": "Write competitive research proposals for NSF, NIH, DOE, and DARPA. Agency-specific formatting, review criteria, budget preparation, broader impacts, significance statements, innovation narratives, and compliance with submission requirements.",
+    "path": "research-grants/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "research-lookup",
+    "name": "research-lookup",
+    "description": "Look up current research information using the Parallel Chat API (primary) or Perplexity sonar-pro-search (academic paper searches). Automatically routes queries to the best backend. Use for finding papers, gathering research data, and verifying scientific information.",
+    "path": "research-lookup/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -3064,6 +3307,15 @@
     "source": "custom"
   },
   {
+    "id": "rust-engineer",
+    "name": "rust-engineer",
+    "description": "Use when building Rust systems where memory safety, ownership patterns, zero-cost abstractions, and performance optimization are critical for systems programming, embedded development, async applications, or high-performance services.",
+    "path": "rust-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "rust-pro",
     "name": "rust-pro",
     "description": "Master Rust 1.75+ with modern async patterns, advanced type system",
@@ -3128,6 +3380,24 @@
       "academic",
       "publication"
     ],
+    "source": "custom"
+  },
+  {
+    "id": "scientific-schematics",
+    "name": "scientific-schematics",
+    "description": "Create publication-quality scientific diagrams using Nano Banana Pro AI with smart iterative refinement. Uses Gemini 3 Pro for quality review. Only regenerates if quality is below threshold for your document type. Specialized in neural network architectures, system diagrams, flowcharts, biological pathways, and complex scientific visualizations.",
+    "path": "scientific-schematics/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "scientific-slides",
+    "name": "scientific-slides",
+    "description": "Build slide decks and presentations for research talks using Nano Banana Pro AI. Generates stunning PDF presentations with AI-generated slides. Use for conference presentations, seminar talks, thesis defense slides, or any scientific talk. Provides slide structure, design guidance, timing recommendations, and visual validation.",
+    "path": "scientific-slides/SKILL.md",
+    "category": "",
+    "tags": [],
     "source": "custom"
   },
   {
@@ -3208,6 +3478,15 @@
     "name": "security-compliance-compliance-check",
     "description": "You are a compliance expert specializing in regulatory requirements for software systems including GDPR, HIPAA, SOC2, PCI-DSS, and other industry standards. Perform compliance audits and provide implementation guidance.",
     "path": "security-compliance-compliance-check/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-engineer",
+    "name": "security-engineer",
+    "description": "Use this agent when implementing comprehensive security solutions across infrastructure, building automated security controls into CI/CD pipelines, or establishing compliance and vulnerability management programs. Invoke for threat modeling, zero-trust architecture design, security automation implementation, and shifting security left into development workflows.",
+    "path": "security-engineer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
@@ -3461,6 +3740,15 @@
     "source": "custom"
   },
   {
+    "id": "sre-engineer",
+    "name": "sre-engineer",
+    "description": "Use this agent when you need to establish or improve system reliability through SLO definition, error budget management, and automation. Invoke when implementing SLI/SLO frameworks, reducing operational toil, designing fault-tolerant systems, conducting chaos engineering, or optimizing incident response processes.",
+    "path": "sre-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "startup-analyst",
     "name": "startup-analyst",
     "description": "Expert startup business analyst specializing in market sizing,",
@@ -3692,6 +3980,15 @@
     "source": "custom"
   },
   {
+    "id": "terraform-engineer",
+    "name": "terraform-engineer",
+    "description": "Use when building, refactoring, or scaling infrastructure as code using Terraform with focus on multi-cloud deployments, module architecture, and enterprise-grade state management.",
+    "path": "terraform-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "terraform-module-library",
     "name": "terraform-module-library",
     "description": "Build reusable Terraform modules for AWS, Azure, and GCP infrastructure following infrastructure-as-code best practices. Use when creating infrastructure modules, standardizing cloud provisioning, or implementing reusable IaC components.",
@@ -3822,6 +4119,15 @@
     "name": "typescript-pro",
     "description": "Master TypeScript with advanced types, generics, and strict type",
     "path": "typescript-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ui-designer",
+    "name": "ui-designer",
+    "description": "Use this agent when designing visual interfaces, creating design systems, building component libraries, or refining user-facing aesthetics requiring expert visual design, interaction patterns, and accessibility considerations.",
+    "path": "ui-designer/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
