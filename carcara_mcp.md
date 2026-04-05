@@ -76,7 +76,7 @@ Com o `llama.cpp` o comando base seria:
 ### 2. O MCP Skills Server
 Você deve garantir que este repositório possui seu ambiente isolado:
 ```bash
-cd /caminho/para/skills
+cd /caminho/para/mcp
 python3 -m venv .venv
 source .venv/bin/activate
 pip install fastmcp pyyaml
@@ -102,10 +102,10 @@ Edite a configuração do cliente para abraçar as duas extremidades:
 ```json
 "mcpServers": {
   "skills-server": {
-    "command": "/caminho/para/skills/.venv/bin/python3",
-    "args": ["/caminho/para/skills/server/mcp_skills_server.py"],
+    "command": "/caminho/para/mcp/.venv/bin/python3",
+    "args": ["/caminho/para/mcp/server/mcp_skills_server.py"],
     "env": {
-      "PYTHONPATH": "/caminho/para/skills/server"
+      "PYTHONPATH": "/caminho/para/mcp/server"
     }
   }
 }

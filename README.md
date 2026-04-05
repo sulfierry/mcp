@@ -46,8 +46,8 @@ MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
 ### 1. Clone e instale dependências
 
 ```bash
-git clone https://github.com/sulfierry/skills.git
-cd skills
+git clone https://github.com/sulfierry/mcp.git
+cd mcp
 
 # Criar ambiente virtual
 python3 -m venv .venv
@@ -95,7 +95,7 @@ O Antigravity descobre skills automaticamente a partir do diretório `~/.gemini/
 
 ```bash
 # Criar link simbólico para o diretório de skills
-ln -sf /Users/$USER/skills/skills ~/.gemini/antigravity/skills
+ln -sf /Users/$USER/mcp/skills ~/.gemini/antigravity/skills
 ```
 
 Pronto! O Antigravity vai encontrar todas as 450+ skills automaticamente ao iniciar a próxima conversa.
@@ -108,10 +108,10 @@ Adicione ao arquivo `~/.gemini/settings.json`:
 {
   "mcpServers": {
     "skills-server": {
-      "command": "/Users/$USER/skills/.venv/bin/python3",
-      "args": ["/Users/$USER/skills/server/mcp_skills_server.py"],
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
       "env": {
-        "PYTHONPATH": "/Users/$USER/skills/server"
+        "PYTHONPATH": "/Users/$USER/mcp/server"
       }
     }
   }
@@ -139,10 +139,10 @@ Adicione ao arquivo `.vscode/mcp.json` na raiz do seu projeto:
 {
   "servers": {
     "skills-server": {
-      "command": "/Users/$USER/skills/.venv/bin/python3",
-      "args": ["/Users/$USER/skills/server/mcp_skills_server.py"],
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
       "env": {
-        "PYTHONPATH": "/Users/$USER/skills/server"
+        "PYTHONPATH": "/Users/$USER/mcp/server"
       }
     }
   }
@@ -155,10 +155,10 @@ Ou para configuração **global** (disponível em todos os projetos), adicione a
 {
   "mcp.servers": {
     "skills-server": {
-      "command": "/Users/$USER/skills/.venv/bin/python3",
-      "args": ["/Users/$USER/skills/server/mcp_skills_server.py"],
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
       "env": {
-        "PYTHONPATH": "/Users/$USER/skills/server"
+        "PYTHONPATH": "/Users/$USER/mcp/server"
       }
     }
   }
@@ -185,10 +185,10 @@ Adicione ao arquivo `~/Library/Application Support/Claude/claude_desktop_config.
 {
   "mcpServers": {
     "skills-server": {
-      "command": "/Users/$USER/skills/.venv/bin/python3",
-      "args": ["/Users/$USER/skills/server/mcp_skills_server.py"],
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
       "env": {
-        "PYTHONPATH": "/Users/$USER/skills/server"
+        "PYTHONPATH": "/Users/$USER/mcp/server"
       }
     }
   }
@@ -207,10 +207,10 @@ Adicione ao arquivo `~/.cursor/mcp.json`:
 {
   "mcpServers": {
     "skills-server": {
-      "command": "/Users/$USER/skills/.venv/bin/python3",
-      "args": ["/Users/$USER/skills/server/mcp_skills_server.py"],
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
       "env": {
-        "PYTHONPATH": "/Users/$USER/skills/server"
+        "PYTHONPATH": "/Users/$USER/mcp/server"
       }
     }
   }
