@@ -1,0 +1,3935 @@
+[
+  {
+    "id": "accessibility-compliance-accessibility-audit",
+    "name": "accessibility-compliance-accessibility-audit",
+    "description": "You are an accessibility expert specializing in WCAG compliance, inclusive design, and assistive technology compatibility. Conduct audits, identify barriers, and provide remediation guidance.",
+    "path": "accessibility-compliance-accessibility-audit/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "advanced-evaluation",
+    "name": "advanced-evaluation",
+    "description": "This skill should be used when the user asks to \"implement LLM-as-judge\", \"compare model outputs\", \"create evaluation rubrics\", \"mitigate evaluation bias\", or mentions direct scoring, pairwise comparison, position bias, evaluation pipelines, or automated quality assessment.",
+    "path": "advanced-evaluation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "agent-orchestration-improve-agent",
+    "name": "agent-orchestration-improve-agent",
+    "description": "Systematic improvement of existing agents through performance analysis, prompt engineering, and continuous iteration.",
+    "path": "agent-orchestration-improve-agent/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "agent-orchestration-multi-agent-optimize",
+    "name": "agent-orchestration-multi-agent-optimize",
+    "description": "Optimize multi-agent systems with coordinated profiling, workload distribution, and cost-aware orchestration. Use when improving agent performance, throughput, or reliability.",
+    "path": "agent-orchestration-multi-agent-optimize/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ai-engineer",
+    "name": "ai-engineer",
+    "description": "Build production-ready LLM applications, advanced RAG systems, and",
+    "path": "ai-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "airflow-dag-patterns",
+    "name": "airflow-dag-patterns",
+    "description": "Build production Apache Airflow DAGs with best practices for operators, sensors, testing, and deployment. Use when creating data pipelines, orchestrating workflows, or scheduling batch jobs.",
+    "path": "airflow-dag-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "algorithmic-art",
+    "name": "algorithmic-art",
+    "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+    "path": "algorithmic-art/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "angular-migration",
+    "name": "angular-migration",
+    "description": "Migrate from AngularJS to Angular using hybrid mode, incremental component rewriting, and dependency injection updates. Use when upgrading AngularJS applications, planning framework migrations, or modernizing legacy Angular code.",
+    "path": "angular-migration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "anti-reversing-techniques",
+    "name": "anti-reversing-techniques",
+    "description": "Understand anti-reversing, obfuscation, and protection techniques encountered during software analysis. Use when analyzing protected binaries, bypassing anti-debugging for authorized analysis, or understanding software protection mechanisms.",
+    "path": "anti-reversing-techniques/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "api-design-principles",
+    "name": "api-design-principles",
+    "description": "Master REST and GraphQL API design principles to build intuitive, scalable, and maintainable APIs that delight developers. Use when designing new APIs, reviewing API specifications, or establishing API design standards.",
+    "path": "api-design-principles/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "api-documenter",
+    "name": "api-documenter",
+    "description": "Master API documentation with OpenAPI 3.1, AI-powered tools, and",
+    "path": "api-documenter/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "api-testing-observability-api-mock",
+    "name": "api-testing-observability-api-mock",
+    "description": "You are an API mocking expert specializing in realistic mock services for development, testing, and demos. Design mocks that simulate real API behavior and enable parallel development.",
+    "path": "api-testing-observability-api-mock/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "application-performance-performance-optimization",
+    "name": "application-performance-performance-optimization",
+    "description": "Optimize end-to-end application performance with profiling, observability, and backend/frontend tuning. Use when coordinating performance optimization across the stack.",
+    "path": "application-performance-performance-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "architect-review",
+    "name": "architect-review",
+    "description": "Master software architect specializing in modern architecture",
+    "path": "architect-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "architecture-decision-records",
+    "name": "architecture-decision-records",
+    "description": "Write and maintain Architecture Decision Records (ADRs) following best practices for technical decision documentation. Use when documenting significant technical decisions, reviewing past architectural choices, or establishing decision processes.",
+    "path": "architecture-decision-records/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "architecture-patterns",
+    "name": "architecture-patterns",
+    "description": "Implement proven backend architecture patterns including Clean Architecture, Hexagonal Architecture, and Domain-Driven Design. Use when architecting complex backend systems or refactoring existing applications for better maintainability.",
+    "path": "architecture-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "arm-cortex-expert",
+    "name": "arm-cortex-expert",
+    "description": ">",
+    "path": "arm-cortex-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "async-python-patterns",
+    "name": "async-python-patterns",
+    "description": "Master Python asyncio, concurrent programming, and async/await patterns for high-performance applications. Use when building async APIs, concurrent systems, or I/O-bound applications requiring non-blocking operations.",
+    "path": "async-python-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "attack-tree-construction",
+    "name": "attack-tree-construction",
+    "description": "Build comprehensive attack trees to visualize threat paths. Use when mapping attack scenarios, identifying defense gaps, or communicating security risks to stakeholders.",
+    "path": "attack-tree-construction/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "auth-implementation-patterns",
+    "name": "auth-implementation-patterns",
+    "description": "Master authentication and authorization patterns including JWT, OAuth2, session management, and RBAC to build secure, scalable access control systems. Use when implementing auth systems, securing APIs, or debugging security issues.",
+    "path": "auth-implementation-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "backend-architect",
+    "name": "backend-architect",
+    "description": "Expert backend architect specializing in scalable API design,",
+    "path": "backend-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "backend-development-feature-development",
+    "name": "backend-development-feature-development",
+    "description": "Orchestrate end-to-end backend feature development from requirements to deployment. Use when coordinating multi-phase feature delivery across teams and services.",
+    "path": "backend-development-feature-development/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "backend-security-coder",
+    "name": "backend-security-coder",
+    "description": "Expert in secure backend coding practices specializing in input",
+    "path": "backend-security-coder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "backtesting-frameworks",
+    "name": "backtesting-frameworks",
+    "description": "Build robust backtesting systems for trading strategies with proper handling of look-ahead bias, survivorship bias, and transaction costs. Use when developing trading algorithms, validating strategies, or building backtesting infrastructure.",
+    "path": "backtesting-frameworks/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bash-defensive-patterns",
+    "name": "bash-defensive-patterns",
+    "description": "Master defensive Bash programming techniques for production-grade scripts. Use when writing robust shell scripts, CI/CD pipelines, or system utilities requiring fault tolerance and safety.",
+    "path": "bash-defensive-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bash-pro",
+    "name": "bash-pro",
+    "description": "Master of defensive Bash scripting for production automation, CI/CD",
+    "path": "bash-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bats-testing-patterns",
+    "name": "bats-testing-patterns",
+    "description": "Master Bash Automated Testing System (Bats) for comprehensive shell script testing. Use when writing tests for shell scripts, CI/CD pipelines, or requiring test-driven development of shell utilities.",
+    "path": "bats-testing-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bazel-build-optimization",
+    "name": "bazel-build-optimization",
+    "description": "Optimize Bazel builds for large-scale monorepos. Use when configuring Bazel, implementing remote execution, or optimizing build performance for enterprise codebases.",
+    "path": "bazel-build-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bdi-mental-states",
+    "name": "bdi-mental-states",
+    "description": "This skill should be used when the user asks to \"model agent mental states\", \"implement BDI architecture\", \"create belief-desire-intention models\", \"transform RDF to beliefs\", \"build cognitive agent\", or mentions BDI ontology, mental state modeling, rational agency, or neuro-symbolic AI integration.",
+    "path": "bdi-mental-states/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bigquery-public",
+    "name": "bigquery-public",
+    "description": ">-",
+    "path": "bigquery-public/SKILL.md",
+    "category": "",
+    "tags": [
+      "[bigquery",
+      "public-datasets",
+      "sql",
+      "cloud",
+      "genomics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "billing-automation",
+    "name": "billing-automation",
+    "description": "Build automated billing systems for recurring payments, invoicing, subscription lifecycle, and dunning management. Use when implementing subscription billing, automating invoicing, or managing recurring payment systems.",
+    "path": "billing-automation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "binary-analysis-patterns",
+    "name": "binary-analysis-patterns",
+    "description": "Master binary analysis patterns including disassembly, decompilation, control flow analysis, and code pattern recognition. Use when analyzing executables, understanding compiled code, or performing static analysis on binaries.",
+    "path": "binary-analysis-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bio-orchestrator",
+    "name": "bio-orchestrator",
+    "description": "Meta-agent that routes bioinformatics requests to specialised sub-skills. Handles file type detection, analysis planning, report generation, and reproducibility export.",
+    "path": "bio-orchestrator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "bioconductor-bridge",
+    "name": "bioconductor-bridge",
+    "description": "Bioconductor package discovery, workflow recommendation, setup inspection, and starter code generation grounded in official Bioconductor containers and BiocManager.",
+    "path": "bioconductor-bridge/SKILL.md",
+    "category": "",
+    "tags": [
+      "[bioconductor",
+      "r",
+      "package-discovery",
+      "workflows",
+      "transcriptomics",
+      "genomics",
+      "single-cell",
+      "annotation]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "blockchain-developer",
+    "name": "blockchain-developer",
+    "description": "Build production-ready Web3 applications, smart contracts, and",
+    "path": "blockchain-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "brainstorming",
+    "name": "brainstorming",
+    "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+    "path": "brainstorming/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "brand-guidelines",
+    "name": "brand-guidelines",
+    "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+    "path": "brand-guidelines/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "business-analyst",
+    "name": "business-analyst",
+    "description": "Master modern business analysis with AI-powered analytics,",
+    "path": "business-analyst/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c-pro",
+    "name": "c-pro",
+    "description": "Write efficient C code with proper memory management, pointer",
+    "path": "c-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c4-architecture-c4-architecture",
+    "name": "c4-architecture-c4-architecture",
+    "description": "Generate comprehensive C4 architecture documentation for an existing repository/codebase using a bottom-up analysis approach.",
+    "path": "c4-architecture-c4-architecture/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c4-code",
+    "name": "c4-code",
+    "description": "Expert C4 Code-level documentation specialist. Analyzes code",
+    "path": "c4-code/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c4-component",
+    "name": "c4-component",
+    "description": "Expert C4 Component-level documentation specialist. Synthesizes C4",
+    "path": "c4-component/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c4-container",
+    "name": "c4-container",
+    "description": "Expert C4 Container-level documentation specialist. Synthesizes",
+    "path": "c4-container/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "c4-context",
+    "name": "c4-context",
+    "description": "Expert C4 Context-level documentation specialist. Creates",
+    "path": "c4-context/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "canvas-design",
+    "name": "canvas-design",
+    "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+    "path": "canvas-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cell-detection",
+    "name": "cell-detection",
+    "description": ">-",
+    "path": "cell-detection/SKILL.md",
+    "category": "",
+    "tags": [
+      "[microscopy",
+      "segmentation",
+      "cellpose",
+      "fluorescence",
+      "imaging",
+      "cell-biology]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "changelog-automation",
+    "name": "changelog-automation",
+    "description": "Automate changelog generation from commits, PRs, and releases following Keep a Changelog format. Use when setting up release workflows, generating release notes, or standardizing commit conventions.",
+    "path": "changelog-automation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cicd-automation-workflow-automate",
+    "name": "cicd-automation-workflow-automate",
+    "description": "You are a workflow automation expert specializing in creating efficient CI/CD pipelines, GitHub Actions workflows, and automated development processes. Design automation that reduces manual work, improves consistency, and accelerates delivery while maintaining quality and security.",
+    "path": "cicd-automation-workflow-automate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "claude-api",
+    "name": "claude-api",
+    "description": "Build apps with the Claude API or Anthropic SDK. TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`/`claude_agent_sdk`, or user asks to use Claude API, Anthropic SDKs, or Agent SDK. DO NOT TRIGGER when: code imports `openai`/other AI SDK, general programming, or ML/data-science tasks.",
+    "path": "claude-api/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "claw-ancestry-pca",
+    "name": "claw-ancestry-pca",
+    "description": "Ancestry analysis report with population assignments and statistics",
+    "path": "claw-ancestry-pca/SKILL.md",
+    "category": "bioinformatics",
+    "tags": [
+      ""
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "claw-metagenomics",
+    "name": "claw-metagenomics",
+    "description": "commands.sh, environment.yml, checksums.sha256",
+    "path": "claw-metagenomics/SKILL.md",
+    "category": "bioinformatics",
+    "tags": [
+      ""
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "claw-semantic-sim",
+    "name": "claw-semantic-sim",
+    "description": "Semantic Similarity Index for disease research literature using PubMedBERT embeddings",
+    "path": "claw-semantic-sim/SKILL.md",
+    "category": "",
+    "tags": [
+      "[health-equity",
+      "semantic-analysis",
+      "NLP",
+      "PubMedBERT",
+      "disease-neglect]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "clinical-trial-finder",
+    "name": "clinical-trial-finder",
+    "description": "Synthetic query for BRCA1 breast cancer trials — exercises recruiting and completed status paths",
+    "path": "clinical-trial-finder/SKILL.md",
+    "category": "",
+    "tags": [
+      "[clinical-trials",
+      "genomics",
+      "drug-discovery",
+      "clinical",
+      "precision-medicine]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "clinical-variant-reporter",
+    "name": "clinical-variant-reporter",
+    "description": ">-",
+    "path": "clinical-variant-reporter/SKILL.md",
+    "category": "",
+    "tags": [
+      ""
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "clinpgx",
+    "name": "clinpgx",
+    "description": "Query the ClinPGx API for pharmacogenomic gene-drug data, clinical annotations, CPIC guidelines, and FDA drug labels",
+    "path": "clinpgx/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cloud-architect",
+    "name": "cloud-architect",
+    "description": "Expert cloud architect specializing in AWS/Azure/GCP multi-cloud",
+    "path": "cloud-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-documentation-code-explain",
+    "name": "code-documentation-code-explain",
+    "description": "You are a code education expert specializing in explaining complex code through clear narratives, visual diagrams, and step-by-step breakdowns. Transform difficult concepts into understandable explanations.",
+    "path": "code-documentation-code-explain/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-documentation-doc-generate",
+    "name": "code-documentation-doc-generate",
+    "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+    "path": "code-documentation-doc-generate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-refactoring-context-restore",
+    "name": "code-refactoring-context-restore",
+    "description": "Use when working with code refactoring context restore",
+    "path": "code-refactoring-context-restore/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-refactoring-refactor-clean",
+    "name": "code-refactoring-refactor-clean",
+    "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
+    "path": "code-refactoring-refactor-clean/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-refactoring-tech-debt",
+    "name": "code-refactoring-tech-debt",
+    "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
+    "path": "code-refactoring-tech-debt/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-review-ai-ai-review",
+    "name": "code-review-ai-ai-review",
+    "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
+    "path": "code-review-ai-ai-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-review-excellence",
+    "name": "code-review-excellence",
+    "description": "Master effective code review practices to provide constructive feedback, catch bugs early, and foster knowledge sharing while maintaining team morale. Use when reviewing pull requests, establishing review standards, or mentoring developers.",
+    "path": "code-review-excellence/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "code-reviewer",
+    "name": "code-reviewer",
+    "description": "Elite code review expert specializing in modern AI-powered code",
+    "path": "code-reviewer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "codebase-cleanup-deps-audit",
+    "name": "codebase-cleanup-deps-audit",
+    "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.",
+    "path": "codebase-cleanup-deps-audit/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "codebase-cleanup-refactor-clean",
+    "name": "codebase-cleanup-refactor-clean",
+    "description": "You are a code refactoring expert specializing in clean code principles, SOLID design patterns, and modern software engineering best practices. Analyze and refactor the provided code to improve its quality, maintainability, and performance.",
+    "path": "codebase-cleanup-refactor-clean/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "codebase-cleanup-tech-debt",
+    "name": "codebase-cleanup-tech-debt",
+    "description": "You are a technical debt expert specializing in identifying, quantifying, and prioritizing technical debt in software projects. Analyze the codebase to uncover debt, assess its impact, and create acti",
+    "path": "codebase-cleanup-tech-debt/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "competitive-landscape",
+    "name": "competitive-landscape",
+    "description": "This skill should be used when the user asks to \"analyze",
+    "path": "competitive-landscape/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "composition-patterns",
+    "name": "vercel-composition-patterns",
+    "description": "",
+    "path": "composition-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "comprehensive-review-full-review",
+    "name": "comprehensive-review-full-review",
+    "description": "Use when working with comprehensive review full review",
+    "path": "comprehensive-review-full-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "comprehensive-review-pr-enhance",
+    "name": "comprehensive-review-pr-enhance",
+    "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensure PRs follow best practices for clarity, size, and reviewability.",
+    "path": "comprehensive-review-pr-enhance/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-implement",
+    "name": "conductor-implement",
+    "description": "Execute tasks from a track's implementation plan following TDD workflow",
+    "path": "conductor-implement/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-manage",
+    "name": "conductor-manage",
+    "description": "Manage track lifecycle: archive, restore, delete, rename, and cleanup",
+    "path": "conductor-manage/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-new-track",
+    "name": "conductor-new-track",
+    "description": "Create a new track with specification and phased implementation plan",
+    "path": "conductor-new-track/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-revert",
+    "name": "conductor-revert",
+    "description": "Git-aware undo by logical work unit (track, phase, or task)",
+    "path": "conductor-revert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-setup",
+    "name": "conductor-setup",
+    "description": "Initialize project with Conductor artifacts (product definition,",
+    "path": "conductor-setup/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-status",
+    "name": "conductor-status",
+    "description": "Display project status, active tracks, and next actions",
+    "path": "conductor-status/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "conductor-validator",
+    "name": "conductor-validator",
+    "description": "Validates Conductor project artifacts for completeness,",
+    "path": "conductor-validator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "content-marketer",
+    "name": "content-marketer",
+    "description": "Elite content marketing strategist specializing in AI-powered",
+    "path": "content-marketer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-compression",
+    "name": "context-compression",
+    "description": "This skill should be used when the user asks to \"compress context\", \"summarize conversation history\", \"implement compaction\", \"reduce token usage\", or mentions context compression, structured summarization, tokens-per-task optimization, or long-running agent sessions exceeding context limits.",
+    "path": "context-compression/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-degradation",
+    "name": "context-degradation",
+    "description": "This skill should be used when the user asks to \"diagnose context problems\", \"fix lost-in-middle issues\", \"debug agent failures\", \"understand context poisoning\", or mentions context degradation, attention patterns, context clash, context confusion, or agent performance degradation. Provides patterns for recognizing and mitigating context failures.",
+    "path": "context-degradation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-driven-development",
+    "name": "context-driven-development",
+    "description": "Use this skill when working with Conductor's context-driven",
+    "path": "context-driven-development/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-fundamentals",
+    "name": "context-fundamentals",
+    "description": "This skill should be used when the user asks to \"understand context\", \"explain context windows\", \"design agent architecture\", \"debug context issues\", \"optimize context usage\", or discusses context components, attention mechanics, progressive disclosure, or context budgeting. Provides foundational understanding of context engineering for AI agent systems.",
+    "path": "context-fundamentals/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-management-context-restore",
+    "name": "context-management-context-restore",
+    "description": "Use when working with context management context restore",
+    "path": "context-management-context-restore/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-management-context-save",
+    "name": "context-management-context-save",
+    "description": "Use when working with context management context save",
+    "path": "context-management-context-save/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-manager",
+    "name": "context-manager",
+    "description": "Elite AI context engineering specialist mastering dynamic context",
+    "path": "context-manager/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "context-optimization",
+    "name": "context-optimization",
+    "description": "This skill should be used when the user asks to \"optimize context\", \"reduce token costs\", \"improve context efficiency\", \"implement KV-cache optimization\", \"partition context\", or mentions context limits, observation masking, context budgeting, or extending effective context capacity.",
+    "path": "context-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cost-optimization",
+    "name": "cost-optimization",
+    "description": "Optimize cloud costs through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing infrastructure costs, or implementing cost governance policies.",
+    "path": "cost-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cpp-pro",
+    "name": "cpp-pro",
+    "description": "Write idiomatic C++ code with modern features, RAII, smart",
+    "path": "cpp-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "cqrs-implementation",
+    "name": "cqrs-implementation",
+    "description": "Implement Command Query Responsibility Segregation for scalable architectures. Use when separating read and write models, optimizing query performance, or building event-sourced systems.",
+    "path": "cqrs-implementation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "csharp-pro",
+    "name": "csharp-pro",
+    "description": "Write modern C# code with advanced features like records, pattern",
+    "path": "csharp-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "customer-support",
+    "name": "customer-support",
+    "description": "Elite AI-powered customer support specialist mastering",
+    "path": "customer-support/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-engineer",
+    "name": "data-engineer",
+    "description": "Build scalable data pipelines, modern data warehouses, and",
+    "path": "data-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-engineering-data-driven-feature",
+    "name": "data-engineering-data-driven-feature",
+    "description": "Build features guided by data insights, A/B testing, and continuous measurement using specialized agents for analysis, implementation, and experimentation.",
+    "path": "data-engineering-data-driven-feature/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-engineering-data-pipeline",
+    "name": "data-engineering-data-pipeline",
+    "description": "You are a data pipeline architecture expert specializing in scalable, reliable, and cost-effective data pipelines for batch and streaming data processing.",
+    "path": "data-engineering-data-pipeline/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-extractor",
+    "name": "data-extractor",
+    "description": "Extract numerical data from scientific figure images using Claude vision + OpenCV calibration. Supports 26+ plot types including bar charts, scatter plots, forest plots, Kaplan-Meier curves, box plots, and more.",
+    "path": "data-extractor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-quality-frameworks",
+    "name": "data-quality-frameworks",
+    "description": "Implement data quality validation with Great Expectations, dbt tests, and data contracts. Use when building data quality pipelines, implementing validation rules, or establishing data contracts.",
+    "path": "data-quality-frameworks/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-scientist",
+    "name": "data-scientist",
+    "description": "Expert data scientist for advanced analytics, machine learning, and",
+    "path": "data-scientist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "data-storytelling",
+    "name": "data-storytelling",
+    "description": "Transform data into compelling narratives using visualization, context, and persuasive structure. Use when presenting analytics to stakeholders, creating data reports, or building executive presentations.",
+    "path": "data-storytelling/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "database-admin",
+    "name": "database-admin",
+    "description": "Expert database administrator specializing in modern cloud",
+    "path": "database-admin/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "database-architect",
+    "name": "database-architect",
+    "description": "Expert database architect specializing in data layer design from",
+    "path": "database-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "database-cloud-optimization-cost-optimize",
+    "name": "database-cloud-optimization-cost-optimize",
+    "description": "You are a cloud cost optimization expert specializing in reducing infrastructure expenses while maintaining performance and reliability. Analyze cloud spending, identify savings opportunities, and implement cost-effective architectures across AWS, Azure, and GCP.",
+    "path": "database-cloud-optimization-cost-optimize/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "database-migration",
+    "name": "database-migration",
+    "description": "Execute database migrations across ORMs and platforms with zero-downtime strategies, data transformation, and rollback procedures. Use when migrating databases, changing schemas, performing data transformations, or implementing zero-downtime deployment strategies.",
+    "path": "database-migration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "database-migrations-migration-observability",
+    "name": "database-migrations-migration-observability",
+    "description": "Migration monitoring, CDC, and observability infrastructure",
+    "path": "database-migrations-migration-observability/SKILL.md",
+    "category": "",
+    "tags": [
+      "database",
+      "cdc",
+      "debezium",
+      "kafka",
+      "prometheus",
+      "grafana",
+      "monitoring"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "database-migrations-sql-migrations",
+    "name": "database-migrations-sql-migrations",
+    "description": "SQL database migrations with zero-downtime strategies for",
+    "path": "database-migrations-sql-migrations/SKILL.md",
+    "category": "",
+    "tags": [
+      "database",
+      "sql",
+      "migrations",
+      "postgresql",
+      "mysql",
+      "flyway",
+      "liquibase",
+      "alembic",
+      ""
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "database-optimizer",
+    "name": "database-optimizer",
+    "description": "Expert database optimizer specializing in modern performance",
+    "path": "database-optimizer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "dbt-transformation-patterns",
+    "name": "dbt-transformation-patterns",
+    "description": "Master dbt (data build tool) for analytics engineering with model organization, testing, documentation, and incremental strategies. Use when building data transformations, creating data models, or implementing analytics engineering best practices.",
+    "path": "dbt-transformation-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "debugger",
+    "name": "debugger",
+    "description": "Debugging specialist for errors, test failures, and unexpected",
+    "path": "debugger/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "debugging-strategies",
+    "name": "debugging-strategies",
+    "description": "Master systematic debugging techniques, profiling tools, and root cause analysis to efficiently track down bugs across any codebase or technology stack. Use when investigating bugs, performance issues, or unexpected behavior.",
+    "path": "debugging-strategies/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "debugging-toolkit-smart-debug",
+    "name": "debugging-toolkit-smart-debug",
+    "description": "Use when working with debugging toolkit smart debug",
+    "path": "debugging-toolkit-smart-debug/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "defi-protocol-templates",
+    "name": "defi-protocol-templates",
+    "description": "Implement DeFi protocols with production-ready templates for staking, AMMs, governance, and lending systems. Use when building decentralized finance applications or smart contract protocols.",
+    "path": "defi-protocol-templates/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "defuddle",
+    "name": "defuddle",
+    "description": "Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page. Do NOT use for URLs ending in .md — those are already markdown, use WebFetch directly.",
+    "path": "defuddle/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "dependency-management-deps-audit",
+    "name": "dependency-management-deps-audit",
+    "description": "You are a dependency security expert specializing in vulnerability scanning, license compliance, and supply chain security. Analyze project dependencies for known vulnerabilities, licensing issues, outdated packages, and provide actionable remediation strategies.",
+    "path": "dependency-management-deps-audit/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "dependency-upgrade",
+    "name": "dependency-upgrade",
+    "description": "Manage major dependency version upgrades with compatibility analysis, staged rollout, and comprehensive testing. Use when upgrading framework versions, updating major dependencies, or managing breaking changes in libraries.",
+    "path": "dependency-upgrade/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "deployment-engineer",
+    "name": "deployment-engineer",
+    "description": "Expert deployment engineer specializing in modern CI/CD pipelines,",
+    "path": "deployment-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "deployment-pipeline-design",
+    "name": "deployment-pipeline-design",
+    "description": "Design multi-stage CI/CD pipelines with approval gates, security checks, and deployment orchestration. Use when architecting deployment workflows, setting up continuous delivery, or implementing GitOps practices.",
+    "path": "deployment-pipeline-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "deployment-validation-config-validate",
+    "name": "deployment-validation-config-validate",
+    "description": "You are a configuration management expert specializing in validating, testing, and ensuring the correctness of application configurations. Create comprehensive validation schemas, implement configurat",
+    "path": "deployment-validation-config-validate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "devops-troubleshooter",
+    "name": "devops-troubleshooter",
+    "description": "Expert DevOps troubleshooter specializing in rapid incident",
+    "path": "devops-troubleshooter/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "diff-visualizer",
+    "name": "diff-visualizer",
+    "description": "Rich downstream visualisation and reporting for bulk RNA-seq differential expression and scRNA marker/contrast outputs.",
+    "path": "diff-visualizer/SKILL.md",
+    "category": "",
+    "tags": [
+      "[differential-expression",
+      "visualisation",
+      "rnaseq",
+      "scrna",
+      "volcano",
+      "heatmap]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "dispatching-parallel-agents",
+    "name": "dispatching-parallel-agents",
+    "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+    "path": "dispatching-parallel-agents/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "distributed-debugging-debug-trace",
+    "name": "distributed-debugging-debug-trace",
+    "description": "You are a debugging expert specializing in setting up comprehensive debugging environments, distributed tracing, and diagnostic tools. Configure debugging workflows, implement tracing solutions, and establish troubleshooting practices for development and production environments.",
+    "path": "distributed-debugging-debug-trace/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "distributed-tracing",
+    "name": "distributed-tracing",
+    "description": "Implement distributed tracing with Jaeger and Tempo to track requests across microservices and identify performance bottlenecks. Use when debugging microservices, analyzing request flows, or implementing observability for distributed systems.",
+    "path": "distributed-tracing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "django-pro",
+    "name": "django-pro",
+    "description": "Master Django 5.x with async views, DRF, Celery, and Django",
+    "path": "django-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "doc-coauthoring",
+    "name": "doc-coauthoring",
+    "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+    "path": "doc-coauthoring/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "docs-architect",
+    "name": "docs-architect",
+    "description": "Creates comprehensive technical documentation from existing",
+    "path": "docs-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "documentation-generation-doc-generate",
+    "name": "documentation-generation-doc-generate",
+    "description": "You are a documentation expert specializing in creating comprehensive, maintainable documentation from code. Generate API docs, architecture diagrams, user guides, and technical references using AI-powered analysis and industry best practices.",
+    "path": "documentation-generation-doc-generate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "docx",
+    "name": "docx",
+    "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce professional documents with formatting like tables of contents, headings, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx files, inserting or replacing images in documents, performing find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file, use this skill. Do NOT use for PDFs, spreadsheets, Google Docs, or general coding tasks unrelated to document generation.",
+    "path": "docx/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "dotnet-architect",
+    "name": "dotnet-architect",
+    "description": "Expert .NET backend architect specializing in C#, ASP.NET Core,",
+    "path": "dotnet-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "dotnet-backend-patterns",
+    "name": "dotnet-backend-patterns",
+    "description": "Master C#/.NET backend development patterns for building robust APIs, MCP servers, and enterprise applications. Covers async/await, dependency injection, Entity Framework Core, Dapper, configuration, caching, and testing with xUnit. Use when developing .NET backends, reviewing C# code, or designing API architectures.",
+    "path": "dotnet-backend-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "drug-photo",
+    "name": "drug-photo",
+    "description": "Medication photo to personalised PGx dosage card via Claude vision — snap a pill, get genotype-informed guidance",
+    "path": "drug-photo/SKILL.md",
+    "category": "",
+    "tags": [
+      "[pharmacogenomics",
+      "computer-vision",
+      "drug-identification",
+      "dosage-guidance]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "drug-target-interaction",
+    "name": "Drug-Target Interaction Analysis",
+    "description": "Expert skill for drug-target interaction (DTI) data processing, feature engineering, and interaction analysis. Covers ChEMBL data retrieval, molecular fingerprints, protein descriptors, and interaction network analysis.",
+    "path": "drug-target-interaction/SKILL.md",
+    "category": "drug-discovery",
+    "tags": [
+      "dti",
+      "chembl",
+      "fingerprints",
+      "drug-target",
+      "interaction-network",
+      "cheminformatics"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "dx-optimizer",
+    "name": "dx-optimizer",
+    "description": "Developer Experience specialist. Improves tooling, setup, and",
+    "path": "dx-optimizer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "e2e-testing-patterns",
+    "name": "e2e-testing-patterns",
+    "description": "Master end-to-end testing with Playwright and Cypress to build reliable test suites that catch bugs, improve confidence, and enable fast deployment. Use when implementing E2E tests, debugging flaky tests, or establishing testing standards.",
+    "path": "e2e-testing-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "elixir-pro",
+    "name": "elixir-pro",
+    "description": "Write idiomatic Elixir code with OTP patterns, supervision trees,",
+    "path": "elixir-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "embedding-strategies",
+    "name": "embedding-strategies",
+    "description": "Select and optimize embedding models for semantic search and RAG applications. Use when choosing embedding models, implementing chunking strategies, or optimizing embedding quality for specific domains.",
+    "path": "embedding-strategies/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "employment-contract-templates",
+    "name": "employment-contract-templates",
+    "description": "Create employment contracts, offer letters, and HR policy documents following legal best practices. Use when drafting employment agreements, creating HR policies, or standardizing employment documentation.",
+    "path": "employment-contract-templates/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "equity-scorer",
+    "name": "equity-scorer",
+    "description": "Compute HEIM diversity and equity metrics from VCF or ancestry data. Generates heterozygosity, FST, PCA plots, and a composite HEIM Equity Score with markdown reports.",
+    "path": "equity-scorer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-debugging-error-analysis",
+    "name": "error-debugging-error-analysis",
+    "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions.",
+    "path": "error-debugging-error-analysis/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-debugging-error-trace",
+    "name": "error-debugging-error-trace",
+    "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging, and ensure teams can quickly identify and resolve production issues.",
+    "path": "error-debugging-error-trace/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-debugging-multi-agent-review",
+    "name": "error-debugging-multi-agent-review",
+    "description": "Use when working with error debugging multi agent review",
+    "path": "error-debugging-multi-agent-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-detective",
+    "name": "error-detective",
+    "description": "Search logs and codebases for error patterns, stack traces, and",
+    "path": "error-detective/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-diagnostics-error-analysis",
+    "name": "error-diagnostics-error-analysis",
+    "description": "You are an expert error analysis specialist with deep expertise in debugging distributed systems, analyzing production incidents, and implementing comprehensive observability solutions.",
+    "path": "error-diagnostics-error-analysis/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-diagnostics-error-trace",
+    "name": "error-diagnostics-error-trace",
+    "description": "You are an error tracking and observability expert specializing in implementing comprehensive error monitoring solutions. Set up error tracking systems, configure alerts, implement structured logging,",
+    "path": "error-diagnostics-error-trace/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-diagnostics-smart-debug",
+    "name": "error-diagnostics-smart-debug",
+    "description": "Use when working with error diagnostics smart debug",
+    "path": "error-diagnostics-smart-debug/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "error-handling-patterns",
+    "name": "error-handling-patterns",
+    "description": "Master error handling patterns across languages including exceptions, Result types, error propagation, and graceful degradation to build resilient applications. Use when implementing error handling, designing APIs, or improving application reliability.",
+    "path": "error-handling-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "evaluation",
+    "name": "evaluation",
+    "description": "This skill should be used when the user asks to \"evaluate agent performance\", \"build test framework\", \"measure agent quality\", \"create evaluation rubrics\", or mentions LLM-as-judge, multi-dimensional evaluation, agent testing, or quality gates for agent pipelines.",
+    "path": "evaluation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "event-sourcing-architect",
+    "name": "event-sourcing-architect",
+    "description": "Expert in event sourcing, CQRS, and event-driven architecture patterns. Masters event store design, projection building, saga orchestration, and eventual consistency patterns. Use PROACTIVELY for event-sourced systems, audit trails, or temporal queries.",
+    "path": "event-sourcing-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "event-store-design",
+    "name": "event-store-design",
+    "description": "Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.",
+    "path": "event-store-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "executing-plans",
+    "name": "executing-plans",
+    "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+    "path": "executing-plans/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "fastapi-pro",
+    "name": "fastapi-pro",
+    "description": "Build high-performance async APIs with FastAPI, SQLAlchemy 2.0, and",
+    "path": "fastapi-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "fastapi-templates",
+    "name": "fastapi-templates",
+    "description": "Create production-ready FastAPI projects with async patterns, dependency injection, and comprehensive error handling. Use when building new FastAPI applications or setting up backend API projects.",
+    "path": "fastapi-templates/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "filesystem-context",
+    "name": "filesystem-context",
+    "description": "This skill should be used when the user asks to \"offload context to files\", \"implement dynamic context discovery\", \"use filesystem for agent memory\", \"reduce context window bloat\", or mentions file-based context management, tool output persistence, agent scratch pads, or just-in-time context loading.",
+    "path": "filesystem-context/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "fine-mapping",
+    "name": "fine-mapping",
+    "description": ">-",
+    "path": "fine-mapping/SKILL.md",
+    "category": "",
+    "tags": [
+      "[gwas",
+      "fine-mapping",
+      "susie",
+      "credible-sets",
+      "pip",
+      "causal-variants",
+      "statistics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "finishing-a-development-branch",
+    "name": "finishing-a-development-branch",
+    "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+    "path": "finishing-a-development-branch/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "firmware-analyst",
+    "name": "firmware-analyst",
+    "description": "Expert firmware analyst specializing in embedded systems, IoT",
+    "path": "firmware-analyst/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "flutter-expert",
+    "name": "flutter-expert",
+    "description": "Master Flutter development with Dart 3, advanced widgets, and",
+    "path": "flutter-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "framework-migration-code-migrate",
+    "name": "framework-migration-code-migrate",
+    "description": "You are a code migration expert specializing in transitioning codebases between frameworks, languages, versions, and platforms. Generate comprehensive migration plans, automated migration scripts, and",
+    "path": "framework-migration-code-migrate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "framework-migration-deps-upgrade",
+    "name": "framework-migration-deps-upgrade",
+    "description": "You are a dependency management expert specializing in safe, incremental upgrades of project dependencies. Plan and execute dependency updates with minimal risk, proper testing, and clear migration pa",
+    "path": "framework-migration-deps-upgrade/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "framework-migration-legacy-modernize",
+    "name": "framework-migration-legacy-modernize",
+    "description": "Orchestrate a comprehensive legacy system modernization using the strangler fig pattern, enabling gradual replacement of outdated components while maintaining continuous business operations through ex",
+    "path": "framework-migration-legacy-modernize/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "frontend-design",
+    "name": "frontend-design",
+    "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+    "path": "frontend-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "frontend-developer",
+    "name": "frontend-developer",
+    "description": "Build React components, implement responsive layouts, and handle",
+    "path": "frontend-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "frontend-mobile-development-component-scaffold",
+    "name": "frontend-mobile-development-component-scaffold",
+    "description": "You are a React component architecture expert specializing in scaffolding production-ready, accessible, and performant components. Generate complete component implementations with TypeScript, tests, s",
+    "path": "frontend-mobile-development-component-scaffold/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "frontend-mobile-security-xss-scan",
+    "name": "frontend-mobile-security-xss-scan",
+    "description": "You are a frontend security specialist focusing on Cross-Site Scripting (XSS) vulnerability detection and prevention. Analyze React, Vue, Angular, and vanilla JavaScript code to identify injection poi",
+    "path": "frontend-mobile-security-xss-scan/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "frontend-security-coder",
+    "name": "frontend-security-coder",
+    "description": "Expert in secure frontend coding practices specializing in XSS",
+    "path": "frontend-security-coder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "full-stack-orchestration-full-stack-feature",
+    "name": "full-stack-orchestration-full-stack-feature",
+    "description": "Use when working with full stack orchestration full stack feature",
+    "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "galaxy-bridge",
+    "name": "galaxy-bridge",
+    "description": "Galaxy tool discovery, intelligent recommendation, and execution — 8,000+ bioinformatics tools from usegalaxy.org with multi-signal scoring and workflow suggestions",
+    "path": "galaxy-bridge/SKILL.md",
+    "category": "",
+    "tags": [
+      "[galaxy",
+      "bioinformatics",
+      "tool-discovery",
+      "workflows",
+      "NGS",
+      "genomics",
+      "proteomics",
+      "metagenomics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "gdpr-data-handling",
+    "name": "gdpr-data-handling",
+    "description": "Implement GDPR-compliant data handling with consent management, data subject rights, and privacy by design. Use when building systems that process EU personal data, implementing privacy controls, or conducting GDPR compliance reviews.",
+    "path": "gdpr-data-handling/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "genome-compare",
+    "name": "genome-compare",
+    "description": "Compare your genome to George Church (PGP-1) and estimate ancestry composition via IBS and EM admixture",
+    "path": "genome-compare/SKILL.md",
+    "category": "",
+    "tags": [
+      "[genome-comparison",
+      "IBS",
+      "ancestry",
+      "PGP",
+      "admixture]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "genome-match",
+    "name": "genome-match",
+    "description": "Score genetic compatibility across all male-female pairings in a Genomebook generation",
+    "path": "genome-match/SKILL.md",
+    "category": "",
+    "tags": [
+      "[genomebook",
+      "compatibility",
+      "heterozygosity",
+      "disease-risk",
+      "mating-selection]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "git-advanced-workflows",
+    "name": "git-advanced-workflows",
+    "description": "Master advanced Git workflows including rebasing, cherry-picking, bisect, worktrees, and reflog to maintain clean history and recover from any situation. Use when managing complex Git histories, collaborating on feature branches, or troubleshooting repository issues.",
+    "path": "git-advanced-workflows/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "git-pr-workflows-git-workflow",
+    "name": "git-pr-workflows-git-workflow",
+    "description": "Orchestrate a comprehensive git workflow from code review through PR creation, leveraging specialized agents for quality assurance, testing, and deployment readiness. This workflow implements modern g",
+    "path": "git-pr-workflows-git-workflow/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "git-pr-workflows-onboard",
+    "name": "git-pr-workflows-onboard",
+    "description": "You are an **expert onboarding specialist and knowledge transfer architect** with deep experience in remote-first organizations, technical team integration, and accelerated learning methodologies. You",
+    "path": "git-pr-workflows-onboard/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "git-pr-workflows-pr-enhance",
+    "name": "git-pr-workflows-pr-enhance",
+    "description": "You are a PR optimization expert specializing in creating high-quality pull requests that facilitate efficient code reviews. Generate comprehensive PR descriptions, automate review processes, and ensu",
+    "path": "git-pr-workflows-pr-enhance/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "github-actions-templates",
+    "name": "github-actions-templates",
+    "description": "Create production-ready GitHub Actions workflows for automated testing, building, and deploying applications. Use when setting up CI/CD with GitHub Actions, automating development workflows, or creating reusable workflow templates.",
+    "path": "github-actions-templates/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "gitlab-ci-patterns",
+    "name": "gitlab-ci-patterns",
+    "description": "Build GitLab CI/CD pipelines with multi-stage workflows, caching, and distributed runners for scalable automation. Use when implementing GitLab CI/CD, optimizing pipeline performance, or setting up automated testing and deployment.",
+    "path": "gitlab-ci-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "gitops-workflow",
+    "name": "gitops-workflow",
+    "description": "Implement GitOps workflows with ArgoCD and Flux for automated, declarative Kubernetes deployments with continuous reconciliation. Use when implementing GitOps practices, automating Kubernetes deployments, or setting up declarative infrastructure management.",
+    "path": "gitops-workflow/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "go-concurrency-patterns",
+    "name": "go-concurrency-patterns",
+    "description": "Master Go concurrency with goroutines, channels, sync primitives, and context. Use when building concurrent Go applications, implementing worker pools, or debugging race conditions.",
+    "path": "go-concurrency-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "godot-gdscript-patterns",
+    "name": "godot-gdscript-patterns",
+    "description": "Master Godot 4 GDScript patterns including signals, scenes, state machines, and optimization. Use when building Godot games, implementing game systems, or learning GDScript best practices.",
+    "path": "godot-gdscript-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "golang-pro",
+    "name": "golang-pro",
+    "description": "Master Go 1.21+ with modern patterns, advanced concurrency,",
+    "path": "golang-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "grafana-dashboards",
+    "name": "grafana-dashboards",
+    "description": "Create and manage production Grafana dashboards for real-time visualization of system and application metrics. Use when building monitoring dashboards, visualizing metrics, or creating operational observability interfaces.",
+    "path": "grafana-dashboards/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "graphql-architect",
+    "name": "graphql-architect",
+    "description": "Master modern GraphQL with federation, performance optimization,",
+    "path": "graphql-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "gwas-lookup",
+    "name": "gwas-lookup",
+    "description": "Federated variant lookup across 9 genomic databases — GWAS Catalog, Open Targets, PheWeb (UKB, FinnGen, BBJ), GTEx, eQTL Catalogue, and more.",
+    "path": "gwas-lookup/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "gwas-prs",
+    "name": "gwas-prs",
+    "description": "Calculate polygenic risk scores from DTC genetic data using the PGS Catalog",
+    "path": "gwas-prs/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "haskell-pro",
+    "name": "haskell-pro",
+    "description": "Expert Haskell engineer specializing in advanced type systems, pure",
+    "path": "haskell-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "helm-chart-scaffolding",
+    "name": "helm-chart-scaffolding",
+    "description": "Design, organize, and manage Helm charts for templating and packaging Kubernetes applications with reusable configurations. Use when creating Helm charts, packaging Kubernetes applications, or implementing templated deployments.",
+    "path": "helm-chart-scaffolding/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "hosted-agents",
+    "name": "hosted-agents",
+    "description": "This skill should be used when the user asks to \"build background agent\", \"create hosted coding agent\", \"set up sandboxed execution\", \"implement multiplayer agent\", or mentions background agents, sandboxed VMs, agent infrastructure, Modal sandboxes, self-spawning agents, or remote coding environments.",
+    "path": "hosted-agents/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "hr-pro",
+    "name": "hr-pro",
+    "description": "Professional, ethical HR partner for hiring,",
+    "path": "hr-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "hybrid-cloud-architect",
+    "name": "hybrid-cloud-architect",
+    "description": "Expert hybrid cloud architect specializing in complex multi-cloud",
+    "path": "hybrid-cloud-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "hybrid-cloud-networking",
+    "name": "hybrid-cloud-networking",
+    "description": "Configure secure, high-performance connectivity between on-premises infrastructure and cloud platforms using VPN and dedicated connections. Use when building hybrid cloud architectures, connecting data centers to cloud, or implementing secure cross-premises networking.",
+    "path": "hybrid-cloud-networking/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "hybrid-search-implementation",
+    "name": "hybrid-search-implementation",
+    "description": "Combine vector and keyword search for improved retrieval. Use when implementing RAG systems, building search engines, or when neither approach alone provides sufficient recall.",
+    "path": "hybrid-search-implementation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "illumina-bridge",
+    "name": "illumina-bridge",
+    "description": "Import DRAGEN-exported Illumina result bundles into ClawBio for local tertiary analysis and downstream routing.",
+    "path": "illumina-bridge/SKILL.md",
+    "category": "",
+    "tags": [
+      "[illumina",
+      "dragen",
+      "ica",
+      "tertiary-analysis",
+      "vcf",
+      "genomics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "incident-responder",
+    "name": "incident-responder",
+    "description": "Expert SRE incident responder specializing in rapid problem",
+    "path": "incident-responder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "incident-response-incident-response",
+    "name": "incident-response-incident-response",
+    "description": "Use when working with incident response incident response",
+    "path": "incident-response-incident-response/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "incident-response-smart-fix",
+    "name": "incident-response-smart-fix",
+    "description": "[Extended thinking: This workflow implements a sophisticated debugging and resolution pipeline that leverages AI-assisted debugging tools and observability platforms to systematically diagnose and res",
+    "path": "incident-response-smart-fix/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "incident-runbook-templates",
+    "name": "incident-runbook-templates",
+    "description": "Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use when building runbooks, responding to incidents, or establishing incident response procedures.",
+    "path": "incident-runbook-templates/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "internal-comms",
+    "name": "internal-comms",
+    "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+    "path": "internal-comms/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ios-developer",
+    "name": "ios-developer",
+    "description": "Develop native iOS applications with Swift/SwiftUI. Masters iOS 18,",
+    "path": "ios-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "istio-traffic-management",
+    "name": "istio-traffic-management",
+    "description": "Configure Istio traffic management including routing, load balancing, circuit breakers, and canary deployments. Use when implementing service mesh traffic policies, progressive delivery, or resilience patterns.",
+    "path": "istio-traffic-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "java-pro",
+    "name": "java-pro",
+    "description": "Master Java 21+ with modern features like virtual threads, pattern",
+    "path": "java-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "javascript-pro",
+    "name": "javascript-pro",
+    "description": "Master modern JavaScript with ES6+, async patterns, and Node.js",
+    "path": "javascript-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "javascript-testing-patterns",
+    "name": "javascript-testing-patterns",
+    "description": "Implement comprehensive testing strategies using Jest, Vitest, and Testing Library for unit tests, integration tests, and end-to-end testing with mocking, fixtures, and test-driven development. Use when writing JavaScript/TypeScript tests, setting up test infrastructure, or implementing TDD/BDD workflows.",
+    "path": "javascript-testing-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "javascript-typescript-typescript-scaffold",
+    "name": "javascript-typescript-typescript-scaffold",
+    "description": "You are a TypeScript project architecture expert specializing in scaffolding production-ready Node.js and frontend applications. Generate complete project structures with modern tooling (pnpm, Vite, N",
+    "path": "javascript-typescript-typescript-scaffold/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "json-canvas",
+    "name": "json-canvas",
+    "description": "Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or when the user mentions Canvas files in Obsidian.",
+    "path": "json-canvas/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "julia-pro",
+    "name": "julia-pro",
+    "description": "Master Julia 1.10+ with modern features, performance optimization,",
+    "path": "julia-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "k8s-manifest-generator",
+    "name": "k8s-manifest-generator",
+    "description": "Create production-ready Kubernetes manifests for Deployments, Services, ConfigMaps, and Secrets following best practices and security standards. Use when generating Kubernetes YAML manifests, creating K8s resources, or implementing production-grade Kubernetes configurations.",
+    "path": "k8s-manifest-generator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "k8s-security-policies",
+    "name": "k8s-security-policies",
+    "description": "Implement Kubernetes security policies including NetworkPolicy, PodSecurityPolicy, and RBAC for production-grade security. Use when securing Kubernetes clusters, implementing network isolation, or enforcing pod security standards.",
+    "path": "k8s-security-policies/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "kinase-interaction-modeling",
+    "name": "Kinase Interaction Modeling",
+    "description": "Expert skill for kinase-drug interaction modeling using deep learning. Covers DT-Kinase Level 4 CNN architecture, embedding adapters, drug-target interaction prediction, and benchmarking against DrugBAN/GraphBAN.",
+    "path": "kinase-interaction-modeling/SKILL.md",
+    "category": "drug-discovery",
+    "tags": [
+      "kinase",
+      "drug-target",
+      "dti",
+      "cnn",
+      "embedding",
+      "drugban",
+      "graphban",
+      "deep-learning",
+      "interaction"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "kpi-dashboard-design",
+    "name": "kpi-dashboard-design",
+    "description": "Design effective KPI dashboards with metrics selection, visualization best practices, and real-time monitoring patterns. Use when building business dashboards, selecting metrics, or designing data visualization layouts.",
+    "path": "kpi-dashboard-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "kubernetes-architect",
+    "name": "kubernetes-architect",
+    "description": "Expert Kubernetes architect specializing in cloud-native",
+    "path": "kubernetes-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "labstep",
+    "name": "labstep",
+    "description": ">-",
+    "path": "labstep/SKILL.md",
+    "category": "",
+    "tags": [
+      "[labstep",
+      "ELN",
+      "lab-notebook",
+      "experiments",
+      "protocols",
+      "inventory",
+      "LIMS]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "langchain-architecture",
+    "name": "langchain-architecture",
+    "description": "Design LLM applications using the LangChain framework with agents, memory, and tool integration patterns. Use when building LangChain applications, implementing AI agents, or creating complex LLM workflows.",
+    "path": "langchain-architecture/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "legacy-modernizer",
+    "name": "legacy-modernizer",
+    "description": "Refactor legacy codebases, migrate outdated frameworks, and",
+    "path": "legacy-modernizer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "legal-advisor",
+    "name": "legal-advisor",
+    "description": "Draft privacy policies, terms of service, disclaimers, and legal",
+    "path": "legal-advisor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "linkerd-patterns",
+    "name": "linkerd-patterns",
+    "description": "Implement Linkerd service mesh patterns for lightweight, security-focused service mesh deployments. Use when setting up Linkerd, configuring traffic policies, or implementing zero-trust networking with minimal overhead.",
+    "path": "linkerd-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "lit-synthesizer",
+    "name": "lit-synthesizer",
+    "description": "Search PubMed and bioRxiv, summarise papers with LLM, build citation graphs, and generate literature review sections.",
+    "path": "lit-synthesizer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "llm-application-dev-ai-assistant",
+    "name": "llm-application-dev-ai-assistant",
+    "description": "You are an AI assistant development expert specializing in creating intelligent conversational interfaces, chatbots, and AI-powered applications. Design comprehensive AI assistant solutions with natur",
+    "path": "llm-application-dev-ai-assistant/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "llm-application-dev-langchain-agent",
+    "name": "llm-application-dev-langchain-agent",
+    "description": "You are an expert LangChain agent developer specializing in production-grade AI systems using LangChain 0.1+ and LangGraph.",
+    "path": "llm-application-dev-langchain-agent/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "llm-application-dev-prompt-optimize",
+    "name": "llm-application-dev-prompt-optimize",
+    "description": "You are an expert prompt engineer specializing in crafting effective prompts for LLMs through advanced techniques including constitutional AI, chain-of-thought reasoning, and model-specific optimizati",
+    "path": "llm-application-dev-prompt-optimize/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "llm-evaluation",
+    "name": "llm-evaluation",
+    "description": "Implement comprehensive evaluation strategies for LLM applications using automated metrics, human feedback, and benchmarking. Use when testing LLM performance, measuring AI application quality, or establishing evaluation frameworks.",
+    "path": "llm-evaluation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "machine-learning-ops-ml-pipeline",
+    "name": "machine-learning-ops-ml-pipeline",
+    "description": "Design and implement a complete ML pipeline for: $ARGUMENTS",
+    "path": "machine-learning-ops-ml-pipeline/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "malware-analyst",
+    "name": "malware-analyst",
+    "description": "Expert malware analyst specializing in defensive malware research,",
+    "path": "malware-analyst/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "market-sizing-analysis",
+    "name": "market-sizing-analysis",
+    "description": "This skill should be used when the user asks to \"calculate TAM\",",
+    "path": "market-sizing-analysis/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mcp-builder",
+    "name": "mcp-builder",
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+    "path": "mcp-builder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "memory-forensics",
+    "name": "memory-forensics",
+    "description": "Master memory forensics techniques including memory acquisition, process analysis, and artifact extraction using Volatility and related tools. Use when analyzing memory dumps, investigating incidents, or performing malware analysis from RAM captures.",
+    "path": "memory-forensics/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "memory-safety-patterns",
+    "name": "memory-safety-patterns",
+    "description": "Implement memory-safe programming with RAII, ownership, smart pointers, and resource management across Rust, C++, and C. Use when writing safe systems code, managing resources, or preventing memory bugs.",
+    "path": "memory-safety-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "memory-systems",
+    "name": "memory-systems",
+    "description": ">",
+    "path": "memory-systems/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mermaid-expert",
+    "name": "mermaid-expert",
+    "description": "Create Mermaid diagrams for flowcharts, sequences, ERDs, and",
+    "path": "mermaid-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "methylation-clock",
+    "name": "methylation-clock",
+    "description": "Compute epigenetic age from DNA methylation arrays using PyAging clocks from GEO accessions or local files.",
+    "path": "methylation-clock/SKILL.md",
+    "category": "",
+    "tags": [
+      "[epigenetics",
+      "methylation",
+      "aging",
+      "clock",
+      "pyaging",
+      "GEO",
+      "illlumina-450k",
+      "EPIC]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "microservices-patterns",
+    "name": "microservices-patterns",
+    "description": "Design microservices architectures with service boundaries, event-driven communication, and resilience patterns. Use when building distributed systems, decomposing monoliths, or implementing microservices.",
+    "path": "microservices-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "minecraft-bukkit-pro",
+    "name": "minecraft-bukkit-pro",
+    "description": "Master Minecraft server plugin development with Bukkit, Spigot, and",
+    "path": "minecraft-bukkit-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ml-engineer",
+    "name": "ml-engineer",
+    "description": "Build production ML systems with PyTorch 2.x, TensorFlow, and",
+    "path": "ml-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ml-pipeline-workflow",
+    "name": "ml-pipeline-workflow",
+    "description": "Build end-to-end MLOps pipelines from data preparation through model training, validation, and production deployment. Use when creating ML pipelines, implementing MLOps practices, or automating model training and deployment workflows.",
+    "path": "ml-pipeline-workflow/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mlops-engineer",
+    "name": "mlops-engineer",
+    "description": "Build comprehensive ML pipelines, experiment tracking, and model",
+    "path": "mlops-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mobile-developer",
+    "name": "mobile-developer",
+    "description": "Develop React Native, Flutter, or native mobile apps with modern",
+    "path": "mobile-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mobile-security-coder",
+    "name": "mobile-security-coder",
+    "description": "Expert in secure mobile coding practices specializing in input",
+    "path": "mobile-security-coder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "modern-javascript-patterns",
+    "name": "modern-javascript-patterns",
+    "description": "Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional programming patterns for writing clean, efficient JavaScript code. Use when refactoring legacy code, implementing modern patterns, or optimizing JavaScript applications.",
+    "path": "modern-javascript-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "molecular-docking",
+    "name": "Molecular Docking",
+    "description": "Expert skill for molecular docking simulations, virtual screening, and binding pose prediction. Covers AutoDock Vina, DiffDock, and DockTPrep integration for drug-target interaction studies.",
+    "path": "molecular-docking/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "docking",
+      "autodock",
+      "vina",
+      "diffdock",
+      "virtual-screening",
+      "binding-affinity",
+      "drug-discovery"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "monorepo-architect",
+    "name": "monorepo-architect",
+    "description": "Expert in monorepo architecture, build systems, and dependency management at scale. Masters Nx, Turborepo, Bazel, and Lerna for efficient multi-project development. Use PROACTIVELY for monorepo setup,",
+    "path": "monorepo-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "monorepo-management",
+    "name": "monorepo-management",
+    "description": "Master monorepo management with Turborepo, Nx, and pnpm workspaces to build efficient, scalable multi-package repositories with optimized builds and dependency management. Use when setting up monorepos, optimizing builds, or managing shared dependencies.",
+    "path": "monorepo-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "mtls-configuration",
+    "name": "mtls-configuration",
+    "description": "Configure mutual TLS (mTLS) for zero-trust service-to-service communication. Use when implementing zero-trust networking, certificate management, or securing internal service communication.",
+    "path": "mtls-configuration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "multi-agent-patterns",
+    "name": "multi-agent-patterns",
+    "description": "This skill should be used when the user asks to \"design multi-agent system\", \"implement supervisor pattern\", \"create swarm architecture\", \"coordinate multiple agents\", or mentions multi-agent patterns, context isolation, agent handoffs, sub-agents, or parallel agent execution.",
+    "path": "multi-agent-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "multi-cloud-architecture",
+    "name": "multi-cloud-architecture",
+    "description": "Design multi-cloud architectures using a decision framework to select and integrate services across AWS, Azure, and GCP. Use when building multi-cloud systems, avoiding vendor lock-in, or leveraging best-of-breed services from multiple providers.",
+    "path": "multi-cloud-architecture/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "multi-platform-apps-multi-platform",
+    "name": "multi-platform-apps-multi-platform",
+    "description": "Build and deploy the same feature consistently across web, mobile, and desktop platforms using API-first architecture and parallel implementation strategies.",
+    "path": "multi-platform-apps-multi-platform/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "network-engineer",
+    "name": "network-engineer",
+    "description": "Expert network engineer specializing in modern cloud networking,",
+    "path": "network-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "nextjs-app-router-patterns",
+    "name": "nextjs-app-router-patterns",
+    "description": "Master Next.js 14+ App Router with Server Components, streaming, parallel routes, and advanced data fetching. Use when building Next.js applications, implementing SSR/SSG, or optimizing React Server Components.",
+    "path": "nextjs-app-router-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "nft-standards",
+    "name": "nft-standards",
+    "description": "Implement NFT standards (ERC-721, ERC-1155) with proper metadata handling, minting strategies, and marketplace integration. Use when creating NFT contracts, building NFT marketplaces, or implementing digital asset systems.",
+    "path": "nft-standards/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "nodejs-backend-patterns",
+    "name": "nodejs-backend-patterns",
+    "description": "Build production-ready Node.js backend services with Express/Fastify, implementing middleware patterns, error handling, authentication, database integration, and API design best practices. Use when creating Node.js servers, REST APIs, GraphQL backends, or microservices architectures.",
+    "path": "nodejs-backend-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "notebooklm",
+    "name": "notebooklm",
+    "description": "Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Drastically reduced hallucinations through document-only responses.",
+    "path": "notebooklm/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "nutrigx_advisor",
+    "name": "nutrigx-advisor",
+    "description": "Personalised nutrition report from consumer genetic data (23andMe, AncestryDNA, VCF) — interrogates nutritionally-relevant SNPs and generates actionable dietary guidance, all computed locally.",
+    "path": "nutrigx_advisor/SKILL.md",
+    "category": "",
+    "tags": [
+      "[nutrigenomics",
+      "nutrition",
+      "diet",
+      "genetics",
+      "23andme",
+      "ancestrydna",
+      "vcf]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "nx-workspace-patterns",
+    "name": "nx-workspace-patterns",
+    "description": "Configure and optimize Nx monorepo workspaces. Use when setting up Nx, configuring project boundaries, optimizing build caching, or implementing affected commands.",
+    "path": "nx-workspace-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "observability-engineer",
+    "name": "observability-engineer",
+    "description": "Build production-ready monitoring, logging, and tracing systems.",
+    "path": "observability-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "observability-monitoring-monitor-setup",
+    "name": "observability-monitoring-monitor-setup",
+    "description": "You are a monitoring and observability expert specializing in implementing comprehensive monitoring solutions. Set up metrics collection, distributed tracing, log aggregation, and create insightful da",
+    "path": "observability-monitoring-monitor-setup/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "observability-monitoring-slo-implement",
+    "name": "observability-monitoring-slo-implement",
+    "description": "You are an SLO (Service Level Objective) expert specializing in implementing reliability standards and error budget-based practices. Design SLO frameworks, define SLIs, and build monitoring that balances reliability with delivery velocity.",
+    "path": "observability-monitoring-slo-implement/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "obsidian-bases",
+    "name": "obsidian-bases",
+    "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
+    "path": "obsidian-bases/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "obsidian-cli",
+    "name": "obsidian-cli",
+    "description": "Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins, run JavaScript, capture errors, take screenshots, and inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vault operations from the command line, or develop and debug Obsidian plugins and themes.",
+    "path": "obsidian-cli/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "obsidian-markdown",
+    "name": "obsidian-markdown",
+    "description": "Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes.",
+    "path": "obsidian-markdown/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "omics-target-evidence-mapper",
+    "name": "omics-target-evidence-mapper",
+    "description": "Aggregate public target-level evidence across omics and translational sources for research triage.",
+    "path": "omics-target-evidence-mapper/SKILL.md",
+    "category": "",
+    "tags": [
+      ""
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "on-call-handoff-patterns",
+    "name": "on-call-handoff-patterns",
+    "description": "Master on-call shift handoffs with context transfer, escalation procedures, and documentation. Use when transitioning on-call responsibilities, documenting shift summaries, or improving on-call processes.",
+    "path": "on-call-handoff-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "openapi-spec-generation",
+    "name": "openapi-spec-generation",
+    "description": "Generate and maintain OpenAPI 3.1 specifications from code, design-first specs, and validation patterns. Use when creating API documentation, generating SDKs, or ensuring API contract compliance.",
+    "path": "openapi-spec-generation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "payment-integration",
+    "name": "payment-integration",
+    "description": "Integrate Stripe, PayPal, and payment processors. Handles checkout",
+    "path": "payment-integration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "paypal-integration",
+    "name": "paypal-integration",
+    "description": "Integrate PayPal payment processing with support for express checkout, subscriptions, and refund management. Use when implementing PayPal payments, processing online transactions, or building e-commerce checkout flows.",
+    "path": "paypal-integration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "pci-compliance",
+    "name": "pci-compliance",
+    "description": "Implement PCI DSS compliance requirements for secure handling of payment card data and payment systems. Use when securing payment processing, achieving PCI compliance, or implementing payment card security measures.",
+    "path": "pci-compliance/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "pdf",
+    "name": "pdf",
+    "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.",
+    "path": "pdf/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "performance-engineer",
+    "name": "performance-engineer",
+    "description": "Expert performance engineer specializing in modern observability,",
+    "path": "performance-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "performance-testing-review-ai-review",
+    "name": "performance-testing-review-ai-review",
+    "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
+    "path": "performance-testing-review-ai-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "performance-testing-review-multi-agent-review",
+    "name": "performance-testing-review-multi-agent-review",
+    "description": "Use when working with performance testing review multi agent review",
+    "path": "performance-testing-review-multi-agent-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "pharmgx-reporter",
+    "name": "pharmgx-reporter",
+    "description": "Pharmacogenomic report from DTC genetic data (23andMe/AncestryDNA) — 12 genes, 31 SNPs, 51 drugs",
+    "path": "pharmgx-reporter/SKILL.md",
+    "category": "",
+    "tags": [
+      "[pharmacogenomics",
+      "CPIC",
+      "DTC-genetics",
+      "precision-medicine]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "php-pro",
+    "name": "php-pro",
+    "description": "Write idiomatic PHP code with generators, iterators, SPL data",
+    "path": "php-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "planning-with-files",
+    "name": "planning-with-files",
+    "description": "Implements Manus-style file-based planning to organize and track progress on complex tasks. Creates task_plan.md, findings.md, and progress.md. Use when asked to plan out, break down, or organize a multi-step project, research task, or any work requiring >5 tool calls. Supports automatic session recovery after /clear.",
+    "path": "planning-with-files/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "posix-shell-pro",
+    "name": "posix-shell-pro",
+    "description": "Expert in strict POSIX sh scripting for maximum portability across",
+    "path": "posix-shell-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "postgresql",
+    "name": "postgresql",
+    "description": "Design a PostgreSQL-specific schema. Covers best-practices, data types, indexing, constraints, performance patterns, and advanced features",
+    "path": "postgresql/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "postmortem-writing",
+    "name": "postmortem-writing",
+    "description": "Write effective blameless postmortems with root cause analysis, timelines, and action items. Use when conducting incident reviews, writing postmortem documents, or improving incident response processes.",
+    "path": "postmortem-writing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "pptx",
+    "name": "pptx",
+    "description": "Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from any .pptx file (even if the extracted content will be used elsewhere, like in an email or summary); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates, layouts, speaker notes, or comments. Trigger whenever the user mentions \\\"deck,\\\" \\\"slides,\\\" \\\"presentation,\\\" or references a .pptx filename, regardless of what they plan to do with the content afterward. If a .pptx file needs to be opened, created, or touched, use this skill.",
+    "path": "pptx/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "profile-report",
+    "name": "profile-report",
+    "description": ">-",
+    "path": "profile-report/SKILL.md",
+    "category": "",
+    "tags": [
+      "[profile",
+      "report-synthesis",
+      "personal-genomics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "project-development",
+    "name": "project-development",
+    "description": "This skill should be used when the user asks to \"start an LLM project\", \"design batch pipeline\", \"evaluate task-model fit\", \"structure agent project\", or mentions pipeline architecture, agent-assisted development, cost estimation, or choosing between LLM and traditional approaches.",
+    "path": "project-development/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "projection-patterns",
+    "name": "projection-patterns",
+    "description": "Build read models and projections from event streams. Use when implementing CQRS read sides, building materialized views, or optimizing query performance in event-sourced systems.",
+    "path": "projection-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "prometheus-configuration",
+    "name": "prometheus-configuration",
+    "description": "Set up Prometheus for comprehensive metric collection, storage, and monitoring of infrastructure and applications. Use when implementing metrics collection, setting up monitoring infrastructure, or configuring alerting systems.",
+    "path": "prometheus-configuration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "prompt-engineer",
+    "name": "prompt-engineer",
+    "description": "Expert prompt engineer specializing in advanced prompting",
+    "path": "prompt-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "prompt-engineering-patterns",
+    "name": "prompt-engineering-patterns",
+    "description": "Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or designing production prompt templates.",
+    "path": "prompt-engineering-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "protein-structure-analysis",
+    "name": "Protein Structure Analysis",
+    "description": "Expert skill for protein 3D structure analysis using Biotite. Covers PDB/mmCIF parsing, secondary structure assignment, contact maps, binding site detection, B-factor analysis, and structural alignment.",
+    "path": "protein-structure-analysis/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "protein",
+      "structure",
+      "biotite",
+      "pdb",
+      "mmcif",
+      "alphafold",
+      "secondary-structure",
+      "contact-map"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "proteomics-de",
+    "name": "proteomics-de",
+    "description": "Differential expression analysis for label-free quantitative (LFQ) intensity data with standard MaxQuant and DIA-NN output. Workflow includes preprocessing, imputation, and statistical testing.",
+    "path": "proteomics-de/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "protocol-reverse-engineering",
+    "name": "protocol-reverse-engineering",
+    "description": "Master network protocol reverse engineering including packet analysis, protocol dissection, and custom protocol documentation. Use when analyzing network traffic, understanding proprietary protocols, or debugging network communication.",
+    "path": "protocol-reverse-engineering/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "protocols-io",
+    "name": "protocols-io",
+    "description": ">-",
+    "path": "protocols-io/SKILL.md",
+    "category": "",
+    "tags": [
+      "[protocols",
+      "lab-methods",
+      "reproducibility",
+      "protocols-io",
+      "scientific-methods",
+      "DOI]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "pubmed-summariser",
+    "name": "pubmed-summariser",
+    "description": ">-",
+    "path": "pubmed-summariser/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "python-development-python-scaffold",
+    "name": "python-development-python-scaffold",
+    "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
+    "path": "python-development-python-scaffold/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "python-packaging",
+    "name": "python-packaging",
+    "description": "Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.",
+    "path": "python-packaging/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "python-performance-optimization",
+    "name": "python-performance-optimization",
+    "description": "Profile and optimize Python code using cProfile, memory profilers, and performance best practices. Use when debugging slow Python code, optimizing bottlenecks, or improving application performance.",
+    "path": "python-performance-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "python-pro",
+    "name": "python-pro",
+    "description": "Master Python 3.12+ with modern features, async programming,",
+    "path": "python-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "python-testing-patterns",
+    "name": "python-testing-patterns",
+    "description": "Implement comprehensive testing strategies with pytest, fixtures, mocking, and test-driven development. Use when writing Python tests, setting up test suites, or implementing testing best practices.",
+    "path": "python-testing-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "quant-analyst",
+    "name": "quant-analyst",
+    "description": "Build financial models, backtest trading strategies, and analyze",
+    "path": "quant-analyst/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "rag-implementation",
+    "name": "rag-implementation",
+    "description": "Build Retrieval-Augmented Generation (RAG) systems for LLM applications with vector databases and semantic search. Use when implementing knowledge-grounded AI, building document Q&A systems, or integrating LLMs with external knowledge bases.",
+    "path": "rag-implementation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "react-best-practices",
+    "name": "vercel-react-best-practices",
+    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+    "path": "react-best-practices/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "react-modernization",
+    "name": "react-modernization",
+    "description": "Upgrade React applications to latest versions, migrate from class components to hooks, and adopt concurrent features. Use when modernizing React codebases, migrating to React Hooks, or upgrading to latest React versions.",
+    "path": "react-modernization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "react-native-architecture",
+    "name": "react-native-architecture",
+    "description": "Build production React Native apps with Expo, navigation, native modules, offline sync, and cross-platform patterns. Use when developing mobile apps, implementing native integrations, or architecting React Native projects.",
+    "path": "react-native-architecture/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "react-native-skills",
+    "name": "vercel-react-native-skills",
+    "description": "",
+    "path": "react-native-skills/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "react-state-management",
+    "name": "react-state-management",
+    "description": "Master modern React state management with Redux Toolkit, Zustand, Jotai, and React Query. Use when setting up global state, managing server state, or choosing between state management solutions.",
+    "path": "react-state-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "receiving-code-review",
+    "name": "receiving-code-review",
+    "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+    "path": "receiving-code-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "recombinator",
+    "name": "recombinator",
+    "description": "Produce offspring genomes from parent pairs via meiotic recombination, mutation, and clinical evaluation",
+    "path": "recombinator/SKILL.md",
+    "category": "",
+    "tags": [
+      "[genomebook",
+      "recombination",
+      "meiosis",
+      "mutation",
+      "offspring",
+      "clinical-genetics]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "reference-builder",
+    "name": "reference-builder",
+    "description": "Creates exhaustive technical references and API documentation.",
+    "path": "reference-builder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "remotion",
+    "name": "remotion-best-practices",
+    "description": "Best practices for Remotion - Video creation in React",
+    "path": "remotion/SKILL.md",
+    "category": "",
+    "tags": [
+      "remotion",
+      "video",
+      "react",
+      "animation",
+      "composition"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "repro-enforcer",
+    "name": "repro-enforcer",
+    "description": "Export any bioinformatics analysis as a reproducible bundle with Conda environment, Singularity container definition, and Nextflow pipeline.",
+    "path": "repro-enforcer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "requesting-code-review",
+    "name": "requesting-code-review",
+    "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+    "path": "requesting-code-review/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "reverse-engineer",
+    "name": "reverse-engineer",
+    "description": "Expert reverse engineer specializing in binary analysis,",
+    "path": "reverse-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "risk-manager",
+    "name": "risk-manager",
+    "description": "Monitor portfolio risk, R-multiples, and position limits. Creates",
+    "path": "risk-manager/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "risk-metrics-calculation",
+    "name": "risk-metrics-calculation",
+    "description": "Calculate portfolio risk metrics including VaR, CVaR, Sharpe, Sortino, and drawdown analysis. Use when measuring portfolio risk, implementing risk limits, or building risk monitoring systems.",
+    "path": "risk-metrics-calculation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "rnaseq-de",
+    "name": "rnaseq-de",
+    "description": "Differential expression analysis for bulk RNA-seq and pseudo-bulk count matrices with QC, PCA, and contrast testing.",
+    "path": "rnaseq-de/SKILL.md",
+    "category": "",
+    "tags": [
+      "[rna-seq",
+      "differential expression",
+      "bulk",
+      "pseudo-bulk",
+      "transcriptomics",
+      "DESeq2",
+      "PyDESeq2",
+      "QC",
+      "PCA]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "ruby-pro",
+    "name": "ruby-pro",
+    "description": "Write idiomatic Ruby code with metaprogramming, Rails patterns, and",
+    "path": "ruby-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "rust-async-patterns",
+    "name": "rust-async-patterns",
+    "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when building async Rust applications, implementing concurrent systems, or debugging async code.",
+    "path": "rust-async-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "rust-pro",
+    "name": "rust-pro",
+    "description": "Master Rust 1.75+ with modern async patterns, advanced type system",
+    "path": "rust-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "saga-orchestration",
+    "name": "saga-orchestration",
+    "description": "Implement saga patterns for distributed transactions and cross-aggregate workflows. Use when coordinating multi-step business processes, handling compensating transactions, or managing long-running workflows.",
+    "path": "saga-orchestration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "sales-automator",
+    "name": "sales-automator",
+    "description": "Draft cold emails, follow-ups, and proposal templates. Creates",
+    "path": "sales-automator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "sast-configuration",
+    "name": "sast-configuration",
+    "description": "Configure Static Application Security Testing (SAST) tools for automated vulnerability detection in application code. Use when setting up security scanning, implementing DevSecOps practices, or automating code vulnerability detection.",
+    "path": "sast-configuration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "scala-pro",
+    "name": "scala-pro",
+    "description": "Master enterprise-grade Scala development with functional",
+    "path": "scala-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "screen-reader-testing",
+    "name": "screen-reader-testing",
+    "description": "Test web applications with screen readers including VoiceOver, NVDA, and JAWS. Use when validating screen reader compatibility, debugging accessibility issues, or ensuring assistive technology support.",
+    "path": "screen-reader-testing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "scrna-embedding",
+    "name": "scrna-embedding",
+    "description": "Local scVI/scANVI-based single-cell latent embedding and batch-aware integration from raw-count .h5ad or 10x Matrix Market input, with stable integrated AnnData export for downstream latent analysis.",
+    "path": "scrna-embedding/SKILL.md",
+    "category": "",
+    "tags": [
+      "[scrna",
+      "single-cell",
+      "scvi",
+      "scanvi",
+      "embedding",
+      "integration",
+      "batch-correction",
+      "h5ad",
+      "10x]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "scrna-orchestrator",
+    "name": "scrna-orchestrator",
+    "description": "Local Scanpy pipeline for single-cell RNA-seq QC, optional doublet detection, clustering, marker discovery, optional CellTypist annotation, optional latent downstream mode from integrated.h5ad/X_scvi, and optional dataset-level plus within-cluster contrastive marker analysis from raw-count .h5ad or 10x Matrix Market input.",
+    "path": "scrna-orchestrator/SKILL.md",
+    "category": "",
+    "tags": [
+      "[scrna",
+      "single-cell",
+      "scanpy",
+      "clustering",
+      "differential-expression",
+      "h5ad",
+      "mtx",
+      "10x]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "search-specialist",
+    "name": "search-specialist",
+    "description": "Expert web researcher using advanced search techniques and",
+    "path": "search-specialist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "secrets-management",
+    "name": "secrets-management",
+    "description": "Implement secure secrets management for CI/CD pipelines using Vault, AWS Secrets Manager, or native platform solutions. Use when handling sensitive credentials, rotating secrets, or securing CI/CD environments.",
+    "path": "secrets-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-auditor",
+    "name": "security-auditor",
+    "description": "Expert security auditor specializing in DevSecOps, comprehensive",
+    "path": "security-auditor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-compliance-compliance-check",
+    "name": "security-compliance-compliance-check",
+    "description": "You are a compliance expert specializing in regulatory requirements for software systems including GDPR, HIPAA, SOC2, PCI-DSS, and other industry standards. Perform compliance audits and provide implementation guidance.",
+    "path": "security-compliance-compliance-check/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-requirement-extraction",
+    "name": "security-requirement-extraction",
+    "description": "Derive security requirements from threat models and business context. Use when translating threats into actionable requirements, creating security user stories, or building security test cases.",
+    "path": "security-requirement-extraction/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-scanning-security-dependencies",
+    "name": "security-scanning-security-dependencies",
+    "description": "You are a security expert specializing in dependency vulnerability analysis, SBOM generation, and supply chain security. Scan project dependencies across ecosystems to identify vulnerabilities, assess risks, and recommend remediation.",
+    "path": "security-scanning-security-dependencies/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-scanning-security-hardening",
+    "name": "security-scanning-security-hardening",
+    "description": "Coordinate multi-layer security scanning and hardening across application, infrastructure, and compliance controls.",
+    "path": "security-scanning-security-hardening/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "security-scanning-security-sast",
+    "name": "security-scanning-security-sast",
+    "description": "Static Application Security Testing (SAST) for code vulnerability",
+    "path": "security-scanning-security-sast/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-authority-builder",
+    "name": "seo-authority-builder",
+    "description": "Analyzes content for E-E-A-T signals and suggests improvements to",
+    "path": "seo-authority-builder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-cannibalization-detector",
+    "name": "seo-cannibalization-detector",
+    "description": "Analyzes multiple provided pages to identify keyword overlap and",
+    "path": "seo-cannibalization-detector/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-content-auditor",
+    "name": "seo-content-auditor",
+    "description": "Analyzes provided content for quality, E-E-A-T signals, and SEO",
+    "path": "seo-content-auditor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-content-planner",
+    "name": "seo-content-planner",
+    "description": "Creates comprehensive content outlines and topic clusters for SEO.",
+    "path": "seo-content-planner/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-content-refresher",
+    "name": "seo-content-refresher",
+    "description": "Identifies outdated elements in provided content and suggests",
+    "path": "seo-content-refresher/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-content-writer",
+    "name": "seo-content-writer",
+    "description": "Writes SEO-optimized content based on provided keywords and topic",
+    "path": "seo-content-writer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-keyword-strategist",
+    "name": "seo-keyword-strategist",
+    "description": "Analyzes keyword usage in provided content, calculates density,",
+    "path": "seo-keyword-strategist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-meta-optimizer",
+    "name": "seo-meta-optimizer",
+    "description": "Creates optimized meta titles, descriptions, and URL suggestions",
+    "path": "seo-meta-optimizer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-snippet-hunter",
+    "name": "seo-snippet-hunter",
+    "description": "Formats content to be eligible for featured snippets and SERP",
+    "path": "seo-snippet-hunter/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seo-structure-architect",
+    "name": "seo-structure-architect",
+    "description": "Analyzes and optimizes content structure including header",
+    "path": "seo-structure-architect/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "seq-wrangler",
+    "name": "seq-wrangler",
+    "description": "Sequence QC, alignment, and BAM processing. Wraps FastQC, BWA/Bowtie2, SAMtools for automated read-to-BAM pipelines.",
+    "path": "seq-wrangler/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "service-mesh-expert",
+    "name": "service-mesh-expert",
+    "description": "Expert service mesh architect specializing in Istio, Linkerd, and cloud-native networking patterns. Masters traffic management, security policies, observability integration, and multi-cluster mesh con",
+    "path": "service-mesh-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "service-mesh-observability",
+    "name": "service-mesh-observability",
+    "description": "Implement comprehensive observability for service meshes including distributed tracing, metrics, and visualization. Use when setting up mesh monitoring, debugging latency issues, or implementing SLOs for service communication.",
+    "path": "service-mesh-observability/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "shellcheck-configuration",
+    "name": "shellcheck-configuration",
+    "description": "Master ShellCheck static analysis configuration and usage for shell script quality. Use when setting up linting infrastructure, fixing code issues, or ensuring script portability.",
+    "path": "shellcheck-configuration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "similarity-search-patterns",
+    "name": "similarity-search-patterns",
+    "description": "Implement efficient similarity search with vector databases. Use when building semantic search, implementing nearest neighbor queries, or optimizing retrieval performance.",
+    "path": "similarity-search-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "skill-creator",
+    "name": "skill-creator",
+    "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+    "path": "skill-creator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "slack-gif-creator",
+    "name": "slack-gif-creator",
+    "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
+    "path": "slack-gif-creator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "slo-implementation",
+    "name": "slo-implementation",
+    "description": "Define and implement Service Level Indicators (SLIs) and Service Level Objectives (SLOs) with error budgets and alerting. Use when establishing reliability targets, implementing SRE practices, or measuring service performance.",
+    "path": "slo-implementation/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "solidity-security",
+    "name": "solidity-security",
+    "description": "Master smart contract security best practices to prevent common vulnerabilities and implement secure Solidity patterns. Use when writing smart contracts, auditing existing contracts, or implementing security measures for blockchain applications.",
+    "path": "solidity-security/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "soul2dna",
+    "name": "soul2dna",
+    "description": "Compile SOUL.md character profiles into synthetic diploid genomes (.genome.json) via trait-to-allele mapping",
+    "path": "soul2dna/SKILL.md",
+    "category": "",
+    "tags": [
+      "[genomebook",
+      "synthetic-genomics",
+      "soul-compiler",
+      "trait-mapping]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "spark-optimization",
+    "name": "spark-optimization",
+    "description": "Optimize Apache Spark jobs with partitioning, caching, shuffle optimization, and memory tuning. Use when improving Spark performance, debugging slow jobs, or scaling data processing pipelines.",
+    "path": "spark-optimization/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "sql-optimization-patterns",
+    "name": "sql-optimization-patterns",
+    "description": "Master SQL query optimization, indexing strategies, and EXPLAIN analysis to dramatically improve database performance and eliminate slow queries. Use when debugging slow queries, designing database schemas, or optimizing application performance.",
+    "path": "sql-optimization-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "sql-pro",
+    "name": "sql-pro",
+    "description": "Master modern SQL with cloud-native databases, OLTP/OLAP",
+    "path": "sql-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-analyst",
+    "name": "startup-analyst",
+    "description": "Expert startup business analyst specializing in market sizing,",
+    "path": "startup-analyst/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-business-analyst-business-case",
+    "name": "startup-business-analyst-business-case",
+    "description": "Generate comprehensive investor-ready business case document with",
+    "path": "startup-business-analyst-business-case/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-business-analyst-financial-projections",
+    "name": "startup-business-analyst-financial-projections",
+    "description": "Create detailed 3-5 year financial model with revenue, costs, cash",
+    "path": "startup-business-analyst-financial-projections/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-business-analyst-market-opportunity",
+    "name": "startup-business-analyst-market-opportunity",
+    "description": "Generate comprehensive market opportunity analysis with TAM/SAM/SOM",
+    "path": "startup-business-analyst-market-opportunity/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-financial-modeling",
+    "name": "startup-financial-modeling",
+    "description": "This skill should be used when the user asks to \"create financial",
+    "path": "startup-financial-modeling/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "startup-metrics-framework",
+    "name": "startup-metrics-framework",
+    "description": "This skill should be used when the user asks about \"key startup",
+    "path": "startup-metrics-framework/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "stride-analysis-patterns",
+    "name": "stride-analysis-patterns",
+    "description": "Apply STRIDE methodology to systematically identify threats. Use when analyzing system security, conducting threat modeling sessions, or creating security documentation.",
+    "path": "stride-analysis-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "stripe-integration",
+    "name": "stripe-integration",
+    "description": "Implement Stripe payment processing for robust, PCI-compliant payment flows including checkout, subscriptions, and webhooks. Use when integrating Stripe payments, building subscription systems, or implementing secure checkout flows.",
+    "path": "stripe-integration/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "struct-predictor",
+    "name": "struct-predictor",
+    "description": "Protein structure prediction with Boltz-2. Accepts YAML inputs (single protein or multi-chain complex), runs boltz predict, extracts per-residue pLDDT and PAE confidence, and writes a markdown report with figures.",
+    "path": "struct-predictor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "subagent-driven-development",
+    "name": "subagent-driven-development",
+    "description": "Use when executing implementation plans with independent tasks in the current session",
+    "path": "subagent-driven-development/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "supabase-postgres-best-practices",
+    "name": "supabase-postgres-best-practices",
+    "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+    "path": "supabase-postgres-best-practices/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "systematic-debugging",
+    "name": "systematic-debugging",
+    "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+    "path": "systematic-debugging/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "systems-programming-rust-project",
+    "name": "systems-programming-rust-project",
+    "description": "You are a Rust project architecture expert specializing in scaffolding production-ready Rust applications. Generate complete project structures with cargo tooling, proper module organization, testing",
+    "path": "systems-programming-rust-project/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tailwind-design-system",
+    "name": "tailwind-design-system",
+    "description": "Build scalable design systems with Tailwind CSS, design tokens, component libraries, and responsive patterns. Use when creating component libraries, implementing design systems, or standardizing UI patterns.",
+    "path": "tailwind-design-system/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "target-validation-scorer",
+    "name": "target-validation-scorer",
+    "description": "Synthetic target validation query for TGFBR1/IPF with pre-cached evidence",
+    "path": "target-validation-scorer/SKILL.md",
+    "category": "",
+    "tags": [
+      "[drug-discovery",
+      "target-validation",
+      "evidence-grading",
+      "decision-support",
+      "kinase]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "tdd-orchestrator",
+    "name": "tdd-orchestrator",
+    "description": "Master TDD orchestrator specializing in red-green-refactor",
+    "path": "tdd-orchestrator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tdd-workflows-tdd-cycle",
+    "name": "tdd-workflows-tdd-cycle",
+    "description": "Use when working with tdd workflows tdd cycle",
+    "path": "tdd-workflows-tdd-cycle/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tdd-workflows-tdd-green",
+    "name": "tdd-workflows-tdd-green",
+    "description": "Implement the minimal code needed to make failing tests pass in the TDD green phase.",
+    "path": "tdd-workflows-tdd-green/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tdd-workflows-tdd-red",
+    "name": "tdd-workflows-tdd-red",
+    "description": "Generate failing tests for the TDD red phase to define expected behavior and edge cases.",
+    "path": "tdd-workflows-tdd-red/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tdd-workflows-tdd-refactor",
+    "name": "tdd-workflows-tdd-refactor",
+    "description": "Use when working with tdd workflows tdd refactor",
+    "path": "tdd-workflows-tdd-refactor/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "team-collaboration-issue",
+    "name": "team-collaboration-issue",
+    "description": "You are a GitHub issue resolution expert specializing in systematic bug investigation, feature implementation, and collaborative development workflows. Your expertise spans issue triage, root cause an",
+    "path": "team-collaboration-issue/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "team-collaboration-standup-notes",
+    "name": "team-collaboration-standup-notes",
+    "description": "You are an expert team communication specialist focused on async-first standup practices, AI-assisted note generation from commit history, and effective remote team coordination patterns.",
+    "path": "team-collaboration-standup-notes/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "team-composition-analysis",
+    "name": "team-composition-analysis",
+    "description": "This skill should be used when the user asks to \"plan team",
+    "path": "team-composition-analysis/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "temporal-python-pro",
+    "name": "temporal-python-pro",
+    "description": "Master Temporal workflow orchestration with Python SDK. Implements",
+    "path": "temporal-python-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "temporal-python-testing",
+    "name": "temporal-python-testing",
+    "description": "Test Temporal workflows with pytest, time-skipping, and mocking strategies. Covers unit testing, integration testing, replay testing, and local development setup. Use when implementing Temporal workflow tests or debugging test failures.",
+    "path": "temporal-python-testing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "terraform-module-library",
+    "name": "terraform-module-library",
+    "description": "Build reusable Terraform modules for AWS, Azure, and GCP infrastructure following infrastructure-as-code best practices. Use when creating infrastructure modules, standardizing cloud provisioning, or implementing reusable IaC components.",
+    "path": "terraform-module-library/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "terraform-specialist",
+    "name": "terraform-specialist",
+    "description": "Expert Terraform/OpenTofu specialist mastering advanced IaC",
+    "path": "terraform-specialist/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "test-automator",
+    "name": "test-automator",
+    "description": "Master AI-powered test automation with modern frameworks,",
+    "path": "test-automator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "test-driven-development",
+    "name": "test-driven-development",
+    "description": "Use when implementing any feature or bugfix, before writing implementation code",
+    "path": "test-driven-development/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "theme-factory",
+    "name": "theme-factory",
+    "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+    "path": "theme-factory/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "threat-mitigation-mapping",
+    "name": "threat-mitigation-mapping",
+    "description": "Map identified threats to appropriate security controls and mitigations. Use when prioritizing security investments, creating remediation plans, or validating control effectiveness.",
+    "path": "threat-mitigation-mapping/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "threat-modeling-expert",
+    "name": "threat-modeling-expert",
+    "description": "Expert in threat modeling methodologies, security architecture review, and risk assessment. Masters STRIDE, PASTA, attack trees, and security requirement extraction. Use for security architecture reviews, threat identification, and secure-by-design planning.",
+    "path": "threat-modeling-expert/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tool-design",
+    "name": "tool-design",
+    "description": "This skill should be used when the user asks to \"design agent tools\", \"create tool descriptions\", \"reduce tool complexity\", \"implement MCP tools\", or mentions tool consolidation, architectural reduction, tool naming conventions, or agent-tool interfaces.",
+    "path": "tool-design/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "track-management",
+    "name": "track-management",
+    "description": "Use this skill when creating, managing, or working with Conductor",
+    "path": "track-management/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "turborepo-caching",
+    "name": "turborepo-caching",
+    "description": "Configure Turborepo for efficient monorepo builds with local and remote caching. Use when setting up Turborepo, optimizing build pipelines, or implementing distributed caching.",
+    "path": "turborepo-caching/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "tutorial-engineer",
+    "name": "tutorial-engineer",
+    "description": "Creates step-by-step tutorials and educational content from code.",
+    "path": "tutorial-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "typescript-advanced-types",
+    "name": "typescript-advanced-types",
+    "description": "Master TypeScript's advanced type system including generics, conditional types, mapped types, template literals, and utility types for building type-safe applications. Use when implementing complex type logic, creating reusable type utilities, or ensuring compile-time type safety in TypeScript projects.",
+    "path": "typescript-advanced-types/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "typescript-pro",
+    "name": "typescript-pro",
+    "description": "Master TypeScript with advanced types, generics, and strict type",
+    "path": "typescript-pro/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ui-ux-designer",
+    "name": "ui-ux-designer",
+    "description": "Create interface designs, wireframes, and design systems. Masters",
+    "path": "ui-ux-designer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ui-ux-pro-max",
+    "name": "ui-ux-pro-max",
+    "description": "UI/UX design intelligence for web and mobile. Includes 50+ styles, 161 color palettes, 57 font pairings, 161 product types, 99 UX guidelines, and 25 chart types across 10 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, and HTML/CSS). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, and check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, and mobile app. Elements: button, modal, navbar, sidebar, card, table, form, and chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, and flat design. Topics: color systems, accessibility, animation, layout, typography, font pairing, spacing, interaction states, shadow, and gradient. Integrations: shadcn/ui MCP for component search and examples.",
+    "path": "ui-ux-pro-max/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ui-visual-validator",
+    "name": "ui-visual-validator",
+    "description": "Rigorous visual validation expert specializing in UI testing,",
+    "path": "ui-visual-validator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "ukb-navigator",
+    "name": "ukb-navigator",
+    "description": "Semantic search across UK Biobank's 12,000+ data fields and publications — find the right variables for your research question.",
+    "path": "ukb-navigator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "unit-testing-test-generate",
+    "name": "unit-testing-test-generate",
+    "description": "Generate comprehensive, maintainable unit tests across languages with strong coverage and edge case focus.",
+    "path": "unit-testing-test-generate/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "unity-developer",
+    "name": "unity-developer",
+    "description": "Build Unity games with optimized C# scripts, efficient rendering,",
+    "path": "unity-developer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "unity-ecs-patterns",
+    "name": "unity-ecs-patterns",
+    "description": "Master Unity ECS (Entity Component System) with DOTS, Jobs, and Burst for high-performance game development. Use when building data-oriented games, optimizing performance, or working with large entity counts.",
+    "path": "unity-ecs-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "using-git-worktrees",
+    "name": "using-git-worktrees",
+    "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
+    "path": "using-git-worktrees/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "using-superpowers",
+    "name": "using-superpowers",
+    "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
+    "path": "using-superpowers/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "uv-package-manager",
+    "name": "uv-package-manager",
+    "description": "Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python projects, managing dependencies, or optimizing Python development workflows with uv.",
+    "path": "uv-package-manager/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "variant-annotation",
+    "name": "variant-annotation",
+    "description": "Bundled synthetic 20-variant VCF used for demo mode",
+    "path": "variant-annotation/SKILL.md",
+    "category": "",
+    "tags": [
+      "[genomics",
+      "vcf",
+      "variant-annotation",
+      "vep",
+      "clinvar",
+      "gnomad]"
+    ],
+    "source": "custom"
+  },
+  {
+    "id": "vcf-annotator",
+    "name": "vcf-annotator",
+    "description": "Annotate VCF variants with VEP, ClinVar, gnomAD frequencies, and ancestry-aware context. Generates prioritised variant reports.",
+    "path": "vcf-annotator/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "vector-database-engineer",
+    "name": "vector-database-engineer",
+    "description": "Expert in vector databases, embedding strategies, and semantic search implementation. Masters Pinecone, Weaviate, Qdrant, Milvus, and pgvector for RAG applications, recommendation systems, and similar",
+    "path": "vector-database-engineer/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "vector-index-tuning",
+    "name": "vector-index-tuning",
+    "description": "Optimize vector index performance for latency, recall, and memory. Use when tuning HNSW parameters, selecting quantization strategies, or scaling vector search infrastructure.",
+    "path": "vector-index-tuning/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "verification-before-completion",
+    "name": "verification-before-completion",
+    "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+    "path": "verification-before-completion/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "wcag-audit-patterns",
+    "name": "wcag-audit-patterns",
+    "description": "Conduct WCAG 2.2 accessibility audits with automated testing, manual verification, and remediation guidance. Use when auditing websites for accessibility, fixing WCAG violations, or implementing accessible design patterns.",
+    "path": "wcag-audit-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "web-artifacts-builder",
+    "name": "web-artifacts-builder",
+    "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+    "path": "web-artifacts-builder/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "web-design-guidelines",
+    "name": "web-design-guidelines",
+    "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+    "path": "web-design-guidelines/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "web3-testing",
+    "name": "web3-testing",
+    "description": "Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, setting up blockchain test suites, or validating DeFi protocols.",
+    "path": "web3-testing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "webapp-testing",
+    "name": "webapp-testing",
+    "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+    "path": "webapp-testing/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "workflow-orchestration-patterns",
+    "name": "workflow-orchestration-patterns",
+    "description": "Design durable workflows with Temporal for distributed systems. Covers workflow vs activity separation, saga patterns, state management, and determinism constraints. Use when building long-running processes, distributed transactions, or microservice orchestration.",
+    "path": "workflow-orchestration-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "workflow-patterns",
+    "name": "workflow-patterns",
+    "description": "Use this skill when implementing tasks according to Conductor's TDD",
+    "path": "workflow-patterns/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "writing-plans",
+    "name": "writing-plans",
+    "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+    "path": "writing-plans/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "writing-skills",
+    "name": "writing-skills",
+    "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+    "path": "writing-skills/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "xlsx",
+    "name": "xlsx",
+    "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \\\"the xlsx in my downloads\\\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+    "path": "xlsx/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  }
+]
