@@ -100,7 +100,7 @@ ln -sf /Users/$USER/skills/skills ~/.gemini/antigravity/skills
 
 Pronto! O Antigravity vai encontrar todas as 450+ skills automaticamente ao iniciar a próxima conversa.
 
-#### Método 2: MCP Server (mais poderoso)
+#### Método 2: MCP Server (Recomendado / Mais poderoso)
 
 Adicione ao arquivo `~/.gemini/settings.json`:
 
@@ -118,7 +118,7 @@ Adicione ao arquivo `~/.gemini/settings.json`:
 }
 ```
 
-> **Diferença**: o MCP Server expõe ferramentas de busca (`search_skills`, `search_agents`) que permitem ao Antigravity encontrar a skill certa automaticamente por keyword, enquanto o symlink apenas torna os arquivos visíveis.
+> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 450+ skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
 
 ---
 
