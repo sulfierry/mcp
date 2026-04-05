@@ -17,12 +17,14 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 ## 🏗 Architecture
 
+> The ecosystem leverages exactly **450** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
+
 ```
 MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
         │
         ▼ (stdio or SSE)
 ┌──────────────────────────────────────────┐
-│      FastMCP Server (localhost)           │
+│      FastMCP Server (localhost)          │
 │                                          │
 │  Tools:                  Resources:      │
 │   • list_skills()         • skills://    │
@@ -36,9 +38,40 @@ MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
            │
    ┌───────┴───────┐
    │  skills/ 450  │   ← SKILL.md files from 12 repos
-   │  agents/ 10   │   ← Agent personas (SKILL.md)
+   │  agents/ 10   │   ← Agent personas (Dual-Core)
    └───────────────┘
 ```
+
+---
+
+---
+
+## 🤖 Agent Personas (Core Team)
+
+> **Nota Arquitetural:** O ecossistema roda sob o paradigma **"Dual-Core"**, separando a Pesquisa de Ponta Científica da implementação de Código (SOTA Engineering).
+
+### 🔬 Deep Research & Scientific Discovery
+| Agent | ID | Descrição |
+|-------|-----|-----------|
+| Deep Researcher | `deep-researcher` | Investigação profunda de web, literatura complexa, citações |
+| Investigative Orchestrator | `investigative-orchestrator` | Divisão de perguntas complexas viasequential/parallel thinking |
+| Bioinformatics Researcher | `bioinformatics-researcher` | Biologia computacional, protein analysis, omics |
+| Scientific Writer | `scientific-writer` | Pesquisa → escrita → citação → LaTeX |
+
+### 🚀 Elite State-of-the-Art Engineering (SOTA)
+| Agent | ID | Descrição |
+|-------|-----|-----------|
+| SOTA Engineer | `state-of-the-art-engineer` | Polyglot architect (C++/Python/UI). DOD e Memory Safety. |
+| Algorithmic Thinker | `algorithmic-thinker` | Abordagem Chain-of-Thought e mapeamento de complexidade O(N) |
+| Self-Improving Agent | `self-improving-agent` | Auto-cura baseada em Tracebacks e prevenção de regressão |
+| MCP Server Builder | `mcp-server-builder` | Infraestrutura C++/Python, Protocolos e API Boundaries |
+
+### 💻 Base Programming & DevOps
+| Agent | ID | Descrição |
+|-------|-----|-----------|
+| Python Architect | `python-architect` | Clean architecture, async, typing, packaging |
+| DevSecOps Expert| `ai-security-auditor` | Master SecOps, AI Vetting e proteção de ambiente |
+| Code Reviewer | `code-reviewer` | Review com scoring multi-dimensional e red flags |
 
 ---
 
@@ -241,35 +274,6 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
   }
 }
 ```
-
----
-
-## 🤖 Agent Personas (Core Team)
-
-> **Nota Arquitetural:** O ecossistema roda sob o paradigma **"Dual-Core"**, separando a Pesquisa de Ponta Científica da implementação de Código (SOTA Engineering).
-
-### 🔬 Deep Research & Scientific Discovery
-| Agent | ID | Descrição |
-|-------|-----|-----------|
-| Deep Researcher | `deep-researcher` | Investigação profunda de web, literatura complexa, citações |
-| Investigative Orchestrator | `investigative-orchestrator` | Divisão de perguntas complexas viasequential/parallel thinking |
-| Bioinformatics Researcher | `bioinformatics-researcher` | Biologia computacional, protein analysis, omics |
-| Scientific Writer | `scientific-writer` | Pesquisa → escrita → citação → LaTeX |
-
-### 🚀 Elite State-of-the-Art Engineering (SOTA)
-| Agent | ID | Descrição |
-|-------|-----|-----------|
-| SOTA Engineer | `state-of-the-art-engineer` | Polyglot architect (C++/Python/UI). DOD e Memory Safety. |
-| Algorithmic Thinker | `algorithmic-thinker` | Abordagem Chain-of-Thought e mapeamento de complexidade O(N) |
-| Self-Improving Agent | `self-improving-agent` | Auto-cura baseada em Tracebacks e prevenção de regressão |
-| MCP Server Builder | `mcp-server-builder` | Infraestrutura C++/Python, Protocolos e API Boundaries |
-
-### 💻 Base Programming & DevOps
-| Agent | ID | Descrição |
-|-------|-----|-----------|
-| Python Architect | `python-architect` | Clean architecture, async, typing, packaging |
-| DevSecOps Expert| `ai-security-auditor` | Master SecOps, AI Vetting e proteção de ambiente |
-| Code Reviewer | `code-reviewer` | Review com scoring multi-dimensional e red flags |
 
 ---
 
