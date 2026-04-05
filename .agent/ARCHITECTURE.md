@@ -14,7 +14,7 @@ Antigravity Kit is a modular system consisting of:
 
 ---
 
-## 🏗️ Directory Structure
+## 🏗️ Architecture
 
 ```plaintext
 .agent/
@@ -28,7 +28,7 @@ Antigravity Kit is a modular system consisting of:
 
 ---
 
-## 🤖 Agents (20)
+## 🤖 Agent Personas
 
 Specialist AI personas for different domains.
 
@@ -39,11 +39,14 @@ Specialist AI personas for different domains.
 | `frontend-specialist`    | Web UI/UX                  | frontend-design, react-best-practices, tailwind-patterns |
 | `backend-specialist`     | API, business logic        | api-patterns, nodejs-best-practices, database-design     |
 | `database-architect`     | Schema, SQL                | database-design, prisma-expert                           |
+| `cpp-pro`                | C++ Systems/Performance    | cpp-pro                                                  |
 | `mobile-developer`       | iOS, Android, RN           | mobile-design                                            |
+| `algorithmic-thinker`    | Algorithm/Logic Design     | algorithmic-thinker, clean-code                          |
+| `mcp-server-builder`     | Protocol infra             | mcp-server-builder, server-management                    |
 | `game-developer`         | Game logic, mechanics      | game-development                                         |
 | `devops-engineer`        | CI/CD, Docker              | deployment-procedures, docker-expert                     |
-| `security-auditor`       | Security compliance        | vulnerability-scanner, red-team-tactics                  |
-| `penetration-tester`     | Offensive security         | red-team-tactics                                         |
+| `ai-security-auditor`    | Master SecOps & AI Vetting | agent-vetting, advanced-code-auditing, vulnerability-scanner |
+| `penetration-tester`     | Offensive security         | offensive-ai, red-team-tactics                           |
 | `test-engineer`          | Testing strategies         | testing-patterns, tdd-workflow, webapp-testing           |
 | `debugger`               | Root cause analysis        | systematic-debugging                                     |
 | `performance-optimizer`  | Speed, Web Vitals          | performance-profiling                                    |
@@ -80,6 +83,12 @@ Modular knowledge domains that agents can load on-demand. based on task context.
 | `nodejs-best-practices` | Node.js async, modules         |
 | `python-patterns`       | Python standards, FastAPI      |
 
+### Systems Programming
+
+| Skill                   | Description                    |
+| ----------------------- | ------------------------------ |
+| `cpp-pro`               | C++20/23, template metaprogramming, Zero-cost abstractions |
+
 ### Database
 
 | Skill             | Description                 |
@@ -113,10 +122,31 @@ Modular knowledge domains that agents can load on-demand. based on task context.
 
 ### Security
 
-| Skill                   | Description              |
-| ----------------------- | ------------------------ |
-| `vulnerability-scanner` | Security auditing, OWASP |
-| `red-team-tactics`      | Offensive security       |
+| Skill                      | Description              |
+| -------------------------- | ------------------------ |
+| `agent-vetting`            | AI Agent Firewall, prompt/tool verification      |
+| `advanced-code-auditing`   | Audit C++/Python/Web3 (Trail of Bits methodology) |
+| `offensive-ai`             | Pentesting, Threat Hunting (Hexstrike/Nova)      |
+| `vulnerability-scanner`    | Application security auditing, OWASP             |
+| `red-team-tactics`         | Offensive security fundamentals                  |
+
+### Elite State-of-the-Art Engineering (SOTA)
+
+| Skill                      | Description              |
+| -------------------------- | ------------------------ |
+| `state-of-the-art-engineer`| Polyglot systems architect (C++/React/Python), DOD, memory safety |
+| `algorithmic-thinker`      | Chain of thought reasoning for complexity optimization and logic |
+| `self-improving-agent`     | Autonomous memory curation to prevent regression bugs   |
+| `mcp-server-builder`       | Expert scaffolding for MCP servers, integration, and API boundaries |
+
+### Deep Research & Scientific Discovery (Autonomous Intelligence)
+
+| Skill                      | Description              |
+| -------------------------- | ------------------------ |
+| `deep-researcher`          | Autonomous deep-web crawler, long-running searches and synthesis |
+| `investigative-orchestrator`| Rotes macro questions to parallel/sequential thinking threads |
+| `hypothesis-generation`    | Hypothesis formulation from complex data inputs |
+| `lit-synthesizer`          | Mass text and literature summarization |
 
 ### Architecture & Planning
 

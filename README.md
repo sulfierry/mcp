@@ -1,13 +1,14 @@
 # 🧬 Skills MCP Server
 
-A local **Model Context Protocol (MCP)** server that exposes **450+ curated AI agent skills** and **10 specialist agent personas** as callable tools. Covers bioinformatics, scientific writing, full-stack development, DevOps, and more — all running on `localhost` for privacy and low latency.
+A local **Model Context Protocol (MCP)** server structured under a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **450+ curated AI agent skills** as callable tools. Covers bioinformatics, scientific writing, polyglot algorithms (C++/Python), and complete agentic orchestration — all running on `localhost` for privacy and low latency.
 
 ## 📊 At a Glance
 
 | Metric | Value |
 |--------|-------|
 | **Skills** | 450+ |
-| **Agent Personas** | 10 |
+| **Mega-Workflows** | 6 Core Modalities |
+| **Agent Personas** | Dual-Core Squad |
 | **Source Repositories** | 12 |
 | **MCP Tools** | 8 |
 | **Transport** | stdio + SSE (HTTP) |
@@ -243,29 +244,32 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 
 ---
 
-## 🤖 Agent Personas (10)
+## 🤖 Agent Personas (Core Team)
 
-### 🧬 Bioinformatics
+> **Nota Arquitetural:** O ecossistema roda sob o paradigma **"Dual-Core"**, separando a Pesquisa de Ponta Científica da implementação de Código (SOTA Engineering).
+
+### 🔬 Deep Research & Scientific Discovery
 | Agent | ID | Descrição |
 |-------|-----|-----------|
-| Bioinformatics Researcher | `bioinformatics-researcher` | Computational biology, protein analysis, omics |
-| Docking Specialist | `docking-specialist` | Molecular docking, virtual screening |
+| Deep Researcher | `deep-researcher` | Investigação profunda de web, literatura complexa, citações |
+| Investigative Orchestrator | `investigative-orchestrator` | Divisão de perguntas complexas viasequential/parallel thinking |
+| Bioinformatics Researcher | `bioinformatics-researcher` | Biologia computacional, protein analysis, omics |
+| Scientific Writer | `scientific-writer` | Pesquisa → escrita → citação → LaTeX |
 
-### 📝 Scientific Writing
+### 🚀 Elite State-of-the-Art Engineering (SOTA)
 | Agent | ID | Descrição |
 |-------|-----|-----------|
-| Scientific Writer | `scientific-writer` | Pipeline completo: pesquisa → escrita → citação → LaTeX |
-| Academic Pipeline | `academic-pipeline` | 10 estágios com peer review e verificação de integridade |
-| Deep Research | `deep-research` | 7 modos: full, quick, PRISMA, Socrático, fact-check |
+| SOTA Engineer | `state-of-the-art-engineer` | Polyglot architect (C++/Python/UI). DOD e Memory Safety. |
+| Algorithmic Thinker | `algorithmic-thinker` | Abordagem Chain-of-Thought e mapeamento de complexidade O(N) |
+| Self-Improving Agent | `self-improving-agent` | Auto-cura baseada em Tracebacks e prevenção de regressão |
+| MCP Server Builder | `mcp-server-builder` | Infraestrutura C++/Python, Protocolos e API Boundaries |
 
-### 💻 Programming & DevOps
+### 💻 Base Programming & DevOps
 | Agent | ID | Descrição |
 |-------|-----|-----------|
-| Full-Stack Developer | `fullstack-developer` | React/Next.js + FastAPI/Django + PostgreSQL + Docker |
-| UI/UX Designer | `ui-ux-designer` | Design systems, WCAG 2.2, Figma→código |
-| DevOps Engineer | `devops-engineer` | Docker, K8s, Terraform, CI/CD, monitoring |
 | Python Architect | `python-architect` | Clean architecture, async, typing, packaging |
-| Code Reviewer | `code-reviewer` | Review com scoring 6 dimensões, red flags de segurança |
+| DevSecOps Expert| `ai-security-auditor` | Master SecOps, AI Vetting e proteção de ambiente |
+| Code Reviewer | `code-reviewer` | Review com scoring multi-dimensional e red flags |
 
 ---
 

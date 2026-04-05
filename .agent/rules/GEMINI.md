@@ -154,6 +154,7 @@ When user's prompt is NOT in English:
 | **MOBILE** (iOS, Android, RN, Flutter) | `mobile-developer`    | mobile-design                 |
 | **WEB** (Next.js, React web)           | `frontend-specialist` | frontend-design               |
 | **BACKEND** (API, server, DB)          | `backend-specialist`  | api-patterns, database-design |
+| **NATIVE** (C++, Systems, High Perf)   | `cpp-pro`             | cpp-pro                       |
 
 > 🔴 **Mobile + frontend-specialist = WRONG.** Mobile = mobile-developer ONLY.
 
@@ -233,6 +234,15 @@ When user's prompt is NOT in English:
 4. IMPLEMENTATION → Code + tests
 
 > 🔴 **Edit mode:** If multi-file or structural change → Offer to create `{task-slug}.md`. For single-file fixes → Proceed directly.
+
+### 🛡️ Quality Gates & Agentic Workflows (Sub-agent Reviews)
+
+For complex features, especially in C++ and systems programming, follow the **Test-First Agentic Code** protocol:
+
+1. **Test-First**: Test skeletons MUST be generated before implementation code.
+2. **AI Vetting Gate**: Before any multi-agent execution or code deployment, `ai-security-auditor` MUST vet the plan using `agent-vetting` to prevent prompt injection or MCP tool abuse.
+3. **Isolated Context Reviews**: LLMs cannot reliably review their own outputs in the same context instance. To combat confirmation bias, use **MCP Sub-agents** for isolated quality reviews (e.g., `advanced-code-auditing`, Code Review Agent).
+4. **Quality Gates Checkpoints**: A task phase cannot move forward unless tests, linters, and the independent agentic review all pass cleanly.
 
 ---
 
