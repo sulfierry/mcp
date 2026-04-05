@@ -40,10 +40,7 @@ if AGENTS_DIR.exists():
 
 # ── Create MCP Server ────────────────────────────────────────────────
 
-mcp = FastMCP(
-    "Skills MCP Server",
-    dependencies=["pyyaml"],
-)
+mcp = FastMCP("Skills MCP Server")
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -139,8 +136,28 @@ def get_agent(agent_id: str) -> str:
     """
     agent = agent_registry.get_skill(agent_id)
     if not agent:
-        return json.dumps({"error": f"Agent '{agent_id}' not found."})
+        available = [a["id"] for a in agent_registry.list_skills()]
+        return json.dumps({
+            "error": f"Agent '{agent_id}' not found.",
+            "available_agents": available,
+        })
     return json.dumps(agent, indent=2)
+
+
+@mcp.tool()
+def search_agents(query: str) -> str:
+    """Search for specialist agents matching a keyword or task description.
+    
+    Args:
+        query: Search terms (e.g., 'python backend', 'ui design', 'scientific writing')
+    
+    Returns matching agents ranked by relevance. Use this when you need 
+    to find the right specialist persona for a task.
+    """
+    results = agent_registry.search_skills(query)
+    if not results:
+        return json.dumps({"message": f"No agents matching '{query}'.", "count": 0})
+    return json.dumps({"query": query, "count": len(results), "results": results}, indent=2)
 
 
 # ══════════════════════════════════════════════════════════════════════

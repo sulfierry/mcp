@@ -1,99 +1,88 @@
 ---
-name: data-extractor
-description: Extract numerical data from scientific figure images using Claude vision + OpenCV calibration. Supports 26+ plot types including bar charts, scatter plots, forest plots, Kaplan-Meier curves, box plots, and more.
-version: 0.1.0
-metadata:
-  openclaw:
-    requires:
-      bins:
-        - python3
-      env:
-        - ANTHROPIC_API_KEY
-      config: []
-    always: false
-    emoji: "📊"
-    homepage: https://github.com/ClawBio/ClawBio
-    os: [darwin, linux]
-    install:
-      - kind: pip
-        package: anthropic
-        bins: []
-      - kind: pip
-        package: opencv-python-headless
-        bins: []
-      - kind: pip
-        package: numpy
-        bins: []
-      - kind: pip
-        package: Pillow
-        bins: []
-      - kind: pip
-        package: pydantic
-        bins: []
-      - kind: pip
-        package: fastapi
-        bins: []
-      - kind: pip
-        package: uvicorn
-        bins: []
+name: Data Extractor
+description: "Extract numerical data from scientific figure images using Claude vision + OpenCV calibration. Supports 26+ plot types including bar charts, scatter plots, forest plots, Kaplan-Meier curves, box plots, and more."
+category: scientific-writing
+tags: figure, data-extraction, plot, visualization, OCR, digitize, image-analysis
+source: custom
 ---
 
-# 📊 Data Extractor
+# Data Extractor
 
-You are the **Data Extractor**, a ClawBio skill for digitizing scientific figures. Your role is to extract numerical data from plot images for meta-analyses and systematic reviews.
+## Use this skill when
 
-## When to Use This Skill
+- Extracting numerical data from published figure images
+- Digitizing plots from PDF papers for meta-analysis
+- Re-creating figures from old publications without source data
+- Validating reported values against their visual representations
+- Converting raster figures to data tables for re-analysis
 
-Route to this skill when the user:
-- Provides an image file (PNG, JPG, TIFF) containing a scientific figure
-- Asks to "extract data from a figure", "digitize a plot", "read values from a chart"
-- Mentions "meta-analysis data extraction" or "figure digitization"
-- Wants to convert a bar chart, scatter plot, or other figure to CSV/JSON
+## Instructions
 
-## Capabilities
+### Supported Plot Types
 
-### Supported Plot Types (26)
-scatter, bar, line, box, violin, histogram, heatmap, forest, kaplan_meier,
-dot_strip, stacked_bar, funnel, roc, volcano, waterfall, bland_altman,
-paired, bubble, area, dose_response, manhattan, correlation_matrix,
-error_bar, table, other
+| Plot Type | Extraction Method | Output |
+|-----------|------------------|--------|
+| Bar chart | Height measurement + axis calibration | Category → value table |
+| Scatter plot | Point detection + coordinate mapping | (x, y) pairs |
+| Line chart | Curve tracing + sampling | (x, y) series |
+| Box plot | Median, Q1, Q3, whisker detection | Summary statistics |
+| Forest plot | Point estimate + CI extraction | Effect size ± CI |
+| Kaplan-Meier | Survival curve digitization | Time → survival table |
+| Heatmap | Color → value mapping | Matrix of values |
+| Violin plot | Distribution envelope → kernel density | Density estimates |
+| ROC curve | Curve tracing | (FPR, TPR) pairs |
+| Volcano plot | Point detection with labels | (logFC, -log10p) pairs |
 
-### Pipeline (4 phases)
-1. **Panel Detection** — Identify sub-panels in multi-panel figures (Claude vision)
-2. **Pre-Analysis** — Identify axes, scale (linear/log), legend entries, error bars (Claude tool calling)
-3. **CV Calibration + Extraction** — OpenCV detects markers/bars at pixel level, Claude extracts numerical data with calibration context
-4. **Validation** — Heuristic checks for axis range, series count, error bar polarity
+### Workflow
 
-### Output Formats
-- **CSV** — One row per data point with series name, x/y values, error bars
-- **JSON** — Structured ExtractedData objects with full metadata
-- **Web UI** — Interactive table + SVG preview with editable cells
-
-## Usage
-
-### CLI
-```bash
-python data_extractor.py --image figure.png --output results/
-python data_extractor.py --web --port 8765
-python data_extractor.py --demo
-```
-
-### API (importable)
 ```python
-from api import run
-result = run(options={"image_path": "figure.png", "output_dir": "results/"})
+import cv2
+import numpy as np
+
+def extract_data_from_figure(image_path: str, plot_type: str = "scatter"):
+    """
+    Semi-automated data extraction workflow:
+    
+    1. Load and preprocess image
+    2. Detect axes and scale bars
+    3. Calibrate coordinate system
+    4. Extract data points
+    5. Map pixel coordinates to data values
+    """
+    img = cv2.imread(image_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    
+    # Step 1: Detect axes
+    edges = cv2.Canny(gray, 50, 150)
+    lines = cv2.HoughLinesP(edges, 1, np.pi/180, threshold=100,
+                            minLineLength=100, maxLineGap=10)
+    
+    # Step 2: Use OCR for axis labels and tick marks
+    # (requires pytesseract or Claude vision)
+    
+    # Step 3: Map pixel → data coordinates
+    # px_to_data = lambda px: (px - origin_px) * scale + data_min
+    
+    return data_points
+
+# For Claude Vision: describe the figure and ask for data extraction
+VISION_PROMPT = """
+Analyze this scientific figure and extract all numerical data:
+
+1. Identify the plot type (bar, scatter, line, etc.)
+2. Read axis labels and units
+3. Extract all data points with their values
+4. Note any error bars, confidence intervals, or annotations
+5. Return as a structured table
+
+Format the output as CSV:
+x_label, y_label, value, error_lower, error_upper, group
+"""
 ```
 
-### Web UI
-Launch with `--web` flag. Upload images, draw boxes around plots, extract and edit data interactively.
+### Best Practices
 
-## Input Formats
-- PNG, JPG, JPEG, TIFF image files
-- Screenshots from papers, posters, slides
-- Multi-panel composite figures (auto-detected and split)
-
-## Notes
-- Requires ANTHROPIC_API_KEY environment variable
-- Uses Claude Sonnet for pre-analysis/detection, Claude Opus for extraction
-- OpenCV calibration improves accuracy for scatter/bar plots with clear markers
-- Error bars are reported as ± extent (delta from mean), not absolute positions
+- **Always cross-validate** extracted values against reported text
+- **Report extraction uncertainty** (±pixel resolution mapped to data units)
+- **Document the source** figure, panel, and page number
+- **Use vector figures** (PDF/SVG) when available for higher accuracy

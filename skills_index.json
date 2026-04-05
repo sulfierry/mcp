@@ -896,11 +896,19 @@
   },
   {
     "id": "data-extractor",
-    "name": "data-extractor",
+    "name": "Data Extractor",
     "description": "Extract numerical data from scientific figure images using Claude vision + OpenCV calibration. Supports 26+ plot types including bar charts, scatter plots, forest plots, Kaplan-Meier curves, box plots, and more.",
     "path": "data-extractor/SKILL.md",
-    "category": "",
-    "tags": [],
+    "category": "scientific-writing",
+    "tags": [
+      "figure",
+      "data-extraction",
+      "plot",
+      "visualization",
+      "OCR",
+      "digitize",
+      "image-analysis"
+    ],
     "source": "custom"
   },
   {
@@ -1726,6 +1734,26 @@
     "source": "custom"
   },
   {
+    "id": "grant-proposal-writer",
+    "name": "Grant Proposal Writer",
+    "description": "Expert skill for writing research grant proposals for NSF, NIH, FAPESP, CAPES, and CNPq. Covers specific aims, research strategy, budget justification, broader impacts, and agency-specific formatting requirements.",
+    "path": "grant-proposal-writer/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "grant",
+      "proposal",
+      "nsf",
+      "nih",
+      "fapesp",
+      "capes",
+      "cnpq",
+      "funding",
+      "research-plan",
+      "budget"
+    ],
+    "source": "custom"
+  },
+  {
     "id": "graphql-architect",
     "name": "graphql-architect",
     "description": "Master modern GraphQL with federation, performance optimization,",
@@ -2030,6 +2058,26 @@
     "source": "custom"
   },
   {
+    "id": "latex-manuscript",
+    "name": "LaTeX Manuscript",
+    "description": "Expert skill for LaTeX scientific document compilation, versioning, diff generation, BibTeX/Biber bibliography management, and troubleshooting. Covers manuscript preparation, figure management, and publisher submission requirements.",
+    "path": "latex-manuscript/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "latex",
+      "bibtex",
+      "biber",
+      "compilation",
+      "manuscript",
+      "typesetting",
+      "pdf",
+      "figures",
+      "tables",
+      "academic"
+    ],
+    "source": "custom"
+  },
+  {
     "id": "legacy-modernizer",
     "name": "legacy-modernizer",
     "description": "Refactor legacy codebases, migrate outdated frameworks, and",
@@ -2063,6 +2111,26 @@
     "path": "lit-synthesizer/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "literature-review",
+    "name": "Literature Review",
+    "description": "Expert skill for systematic literature search, PubMed/arXiv/Semantic Scholar queries, PRISMA-compliant reviews, citation graph analysis, and research gap identification for scientific papers and theses.",
+    "path": "literature-review/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "literature",
+      "review",
+      "pubmed",
+      "arxiv",
+      "systematic-review",
+      "prisma",
+      "citations",
+      "search",
+      "bibliography",
+      "research"
+    ],
     "source": "custom"
   },
   {
@@ -2522,6 +2590,24 @@
     "path": "pdf/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "peer-reviewer",
+    "name": "Peer Reviewer",
+    "description": "Expert skill for systematic peer review of scientific manuscripts. Implements multi-perspective review with quantitative scoring rubrics, structural analysis, statistical verification, and constructive revision suggestions.",
+    "path": "peer-reviewer/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "peer-review",
+      "manuscript",
+      "review",
+      "revision",
+      "evaluation",
+      "academic",
+      "quality",
+      "scientific"
+    ],
     "source": "custom"
   },
   {
@@ -3020,6 +3106,28 @@
     "path": "scala-pro/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "scientific-paper-writer",
+    "name": "Scientific Paper Writer",
+    "description": "Expert skill for writing publication-ready scientific papers with IMRaD structure, LaTeX output, data integration, citation management, and journal-specific formatting (Nature, Science, NeurIPS, IEEE, APA 7).",
+    "path": "scientific-paper-writer/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "paper",
+      "manuscript",
+      "imrad",
+      "latex",
+      "writing",
+      "nature",
+      "science",
+      "neurips",
+      "ieee",
+      "apa",
+      "academic",
+      "publication"
+    ],
     "source": "custom"
   },
   {
@@ -3626,6 +3734,24 @@
     "path": "theme-factory/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "thesis-writer",
+    "name": "Thesis Writer",
+    "description": "Expert skill for writing PhD/MSc thesis chapters, dissertations, and academic monographs. Covers chapter structure, argument flow, committee expectations, defense preparation, and LaTeX thesis templates.",
+    "path": "thesis-writer/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "thesis",
+      "dissertation",
+      "phd",
+      "masters",
+      "academic-writing",
+      "chapters",
+      "defense",
+      "latex"
+    ],
     "source": "custom"
   },
   {

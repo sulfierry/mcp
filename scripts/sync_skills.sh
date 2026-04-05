@@ -41,6 +41,12 @@ CURATED_GUANYANG="python-pro fastapi-pro async-python-patterns test-driven-devel
 
 CURATED_BIO="structural-biology proteomics chemoinformatics machine-learning pathway-analysis data-visualization database-access workflow-management differential-expression single-cell variant-calling sequence-io read-alignment read-qc"
 
+CURATED_WRITING="scientific-schematics research-lookup peer-review citation-management clinical-reports research-grants scientific-slides latex-posters hypothesis-generation market-research-reports"
+
+CURATED_ACADEMIC="deep-research academic-paper academic-paper-reviewer academic-pipeline"
+
+CURATED_VOLTAGENT="api-designer backend-developer frontend-developer fullstack-developer ui-designer python-pro typescript-pro fastapi-developer django-developer nextjs-developer react-specialist rust-engineer golang-pro sql-pro cloud-architect devops-engineer docker-expert kubernetes-specialist terraform-engineer security-engineer sre-engineer code-reviewer debugger error-detective qa-expert security-auditor test-automator performance-engineer ai-engineer data-engineer llm-architect ml-engineer prompt-engineer documentation-engineer mcp-developer refactoring-specialist legacy-modernizer"
+
 # Check if a skill name is in a curated list
 is_curated() {
     local name="$1"
@@ -49,13 +55,24 @@ is_curated() {
 }
 
 if $LIST_ONLY; then
-    echo -e "${CYAN}📚 Available skill sources:${NC}"
-    echo -e "  ${GREEN}•${NC} guanyang/antigravity-skills (skills/)"
-    echo -e "  ${GREEN}•${NC} rmyndharis/antigravity-skills (skills/)"
+    echo -e "${CYAN}📚 Available skill sources (12 repos):${NC}"
+    echo -e ""
+    echo -e "  ${BLUE}── Bioinformatics & Science ──${NC}"
+    echo -e "  ${GREEN}•${NC} ClawBio/ClawBio (skills/)"
     echo -e "  ${GREEN}•${NC} GPTomics/bioSkills (.)"
     echo -e "  ${GREEN}•${NC} K-Dense-AI/claude-scientific-skills (scientific-skills/)"
     echo -e "  ${GREEN}•${NC} jaechang-hits/SciAgent-Skills (skills/)"
-    echo -e "  ${GREEN}•${NC} ClawBio/ClawBio (skills/)"
+    echo -e ""
+    echo -e "  ${BLUE}── Scientific Writing ──${NC}"
+    echo -e "  ${GREEN}•${NC} K-Dense-AI/claude-scientific-writer (skills/)"
+    echo -e "  ${GREEN}•${NC} zhangchenhaobest/academic-research-skills (.)"
+    echo -e "  ${GREEN}•${NC} InternScience/Awesome-Scientific-Skills (skills/)"
+    echo -e ""
+    echo -e "  ${BLUE}── Programming & DevOps ──${NC}"
+    echo -e "  ${GREEN}•${NC} VoltAgent/awesome-claude-code-subagents ⭐16K (categories/)"
+    echo -e "  ${GREEN}•${NC} tech-leads-club/agent-skills ⭐2K (packages/skills-catalog/skills/)"
+    echo -e "  ${GREEN}•${NC} guanyang/antigravity-skills (skills/)"
+    echo -e "  ${GREEN}•${NC} rmyndharis/antigravity-skills (skills/)"
     exit 0
 fi
 
@@ -123,7 +140,7 @@ clone_and_sync() {
 
         # Skip non-skill directories
         case "$skill_name" in
-            .git|node_modules|__pycache__|resources|workflows|bioskills-installer|.github|.claude-plugin|assets|templates|tests|bot|docs|examples|img|scripts|slides|corpas-30x|robotary|GENOMEBOOK|commands|clawbio|demo|references) continue ;;
+            .git|node_modules|__pycache__|resources|workflows|bioskills-installer|.github|.claude-plugin|.cursor-plugin|.nx|assets|templates|tests|bot|docs|examples|img|scripts|slides|corpas-30x|robotary|GENOMEBOOK|commands|clawbio|demo|references|tools|libs|packages|core|\(*\)) continue ;;
         esac
 
         if $SYNC_ALL; then
@@ -139,12 +156,64 @@ clone_and_sync() {
 }
 
 # Sync from each source with appropriate curated list
-clone_and_sync "guanyang/antigravity-skills" "https://github.com/guanyang/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
-clone_and_sync "rmyndharis/antigravity-skills" "https://github.com/rmyndharis/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
+# -- Bioinformatics & Science --
+clone_and_sync "ClawBio/ClawBio" "https://github.com/ClawBio/ClawBio.git" "skills" ""
 clone_and_sync "GPTomics/bioSkills" "https://github.com/GPTomics/bioSkills.git" "." "$CURATED_BIO"
 clone_and_sync "K-Dense-AI/claude-scientific-skills" "https://github.com/K-Dense-AI/claude-scientific-skills.git" "scientific-skills" ""
 clone_and_sync "jaechang-hits/SciAgent-Skills" "https://github.com/jaechang-hits/SciAgent-Skills.git" "skills" ""
-clone_and_sync "ClawBio/ClawBio" "https://github.com/ClawBio/ClawBio.git" "skills" ""
+
+# -- Scientific Writing --
+clone_and_sync "K-Dense-AI/claude-scientific-writer" "https://github.com/K-Dense-AI/claude-scientific-writer.git" "skills" "$CURATED_WRITING"
+clone_and_sync "zhangchenhaobest/academic-research-skills" "https://github.com/zhangchenhaobest/academic-research-skills.git" "." "$CURATED_ACADEMIC"
+clone_and_sync "InternScience/Awesome-Scientific-Skills" "https://github.com/InternScience/Awesome-Scientific-Skills.git" "skills" ""
+
+# -- Programming & DevOps --
+# VoltAgent: 100+ subagents in categories/NN-topic/agent.md (16K+ stars)
+# Scan all category subdirectories for .md agent files
+sync_voltagent() {
+    local repo_dir="$TMP_DIR/VoltAgent_awesome-claude-code-subagents"
+    echo -e "${BLUE}📦 Cloning VoltAgent/awesome-claude-code-subagents...${NC}"
+    if [[ -d "$repo_dir" ]]; then
+        (cd "$repo_dir" && git pull --quiet 2>/dev/null) || true
+    else
+        git clone --depth 1 --quiet "https://github.com/VoltAgent/awesome-claude-code-subagents.git" "$repo_dir" 2>/dev/null || {
+            echo -e "  ${YELLOW}⚠ Failed to clone VoltAgent (skipping)${NC}"
+            return 0
+        }
+    fi
+
+    local cats_dir="$repo_dir/categories"
+    [[ ! -d "$cats_dir" ]] && return 0
+
+    for cat_dir in "$cats_dir"/*/; do
+        [[ ! -d "$cat_dir" ]] && continue
+        for agent_md in "$cat_dir"/*.md; do
+            [[ ! -f "$agent_md" ]] && continue
+            local agent_name
+            agent_name="$(basename "$agent_md" .md)"
+            [[ "$agent_name" == "README" ]] && continue
+
+            if $SYNC_ALL || is_curated "$agent_name" "$CURATED_VOLTAGENT"; then
+                local dest="$SKILLS_DIR/$agent_name"
+                if [[ -d "$dest" ]] && ! $FORCE; then
+                    skip_count=$((skip_count + 1))
+                    continue
+                fi
+                mkdir -p "$dest"
+                # Convert .md to SKILL.md format
+                cp "$agent_md" "$dest/SKILL.md" 2>/dev/null || true
+                sync_count=$((sync_count + 1))
+                echo -e "  ${GREEN}✓${NC} $agent_name (VoltAgent)"
+            fi
+        done
+    done
+    echo ""
+}
+sync_voltagent
+
+clone_and_sync "tech-leads-club/agent-skills" "https://github.com/tech-leads-club/agent-skills.git" "packages/skills-catalog/skills" ""
+clone_and_sync "guanyang/antigravity-skills" "https://github.com/guanyang/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
+clone_and_sync "rmyndharis/antigravity-skills" "https://github.com/rmyndharis/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
 
 echo -e "${GREEN}✅ Sync complete: $sync_count skills synced, $skip_count skipped (already exist)${NC}"
 
