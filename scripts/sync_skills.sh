@@ -55,12 +55,11 @@ is_curated() {
 }
 
 if $LIST_ONLY; then
-    echo -e "${CYAN}📚 Available skill sources (13 repos):${NC}"
+    echo -e "${CYAN}📚 Available skill sources (12 repos):${NC}"
     echo -e ""
     echo -e "  ${BLUE}── Bioinformatics & Science ──${NC}"
     echo -e "  ${GREEN}•${NC} ClawBio/ClawBio (skills/)"
     echo -e "  ${GREEN}•${NC} GPTomics/bioSkills (.)"
-    echo -e "  ${GREEN}•${NC} K-Dense-AI/claude-scientific-skills (scientific-skills/)"
     echo -e "  ${GREEN}•${NC} K-Dense-AI/scientific-agent-skills (scientific-skills/) ★ 133 scientific skills"
     echo -e "  ${GREEN}•${NC} jaechang-hits/SciAgent-Skills (skills/)"
     echo -e ""
@@ -160,7 +159,7 @@ clone_and_sync() {
 # -- Bioinformatics & Science --
 clone_and_sync "ClawBio/ClawBio" "https://github.com/ClawBio/ClawBio.git" "skills" ""
 clone_and_sync "GPTomics/bioSkills" "https://github.com/GPTomics/bioSkills.git" "." "$CURATED_BIO"
-clone_and_sync "K-Dense-AI/claude-scientific-skills" "https://github.com/K-Dense-AI/claude-scientific-skills.git" "scientific-skills" ""
+# Note: claude-scientific-skills was renamed to scientific-agent-skills (same repo)
 clone_and_sync "K-Dense-AI/scientific-agent-skills" "https://github.com/K-Dense-AI/scientific-agent-skills.git" "scientific-skills" ""
 clone_and_sync "jaechang-hits/SciAgent-Skills" "https://github.com/jaechang-hits/SciAgent-Skills.git" "skills" ""
 

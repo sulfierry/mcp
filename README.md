@@ -9,7 +9,7 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 | **Skills** | 573 |
 | **Mega-Workflows** | 6 Core Modalities |
 | **Agent Personas** | Dual-Core Squad |
-| **Source Repositories** | 13 |
+| **Source Repositories** | 12 |
 | **MCP Tools** | 8 |
 | **Transport** | stdio + SSE (HTTP) |
 
@@ -374,7 +374,7 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 | `kinase-interaction-modeling` | 🧬 Bio | DT-Kinase Level 4 CNN, DTI prediction |
 | `drug-target-interaction` | 🧬 Bio | ChEMBL, molecular fingerprints |
 
-### Synced Skills (de 13 repositórios)
+### Synced Skills (de 12 repositórios)
 
 | Repositório | ⭐ | Skills | Foco |
 |-------------|-----|--------|------|
@@ -382,8 +382,7 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 | tech-leads-club/agent-skills | 2K | 20+ | Security-audited, multi-platform |
 | ClawBio/ClawBio | — | 43 | Genomics, PGx, clinical |
 | GPTomics/bioSkills | — | 426 | Proteomics, RNA-seq, single-cell |
-| K-Dense-AI/claude-scientific-skills | — | 134 | Scientific schematics, grants |
-| **K-Dense-AI/scientific-agent-skills** | **—** | **119** | **Drug discovery, scRNA-seq, genomics, ML, clinical, 78 databases, lab automation** |
+| **K-Dense-AI/scientific-agent-skills** | **—** | **133** | **Drug discovery, scRNA-seq, genomics, ML, clinical, 78 databases, lab automation** |
 | jaechang-hits/SciAgent-Skills | — | 196 | Life sciences |
 | K-Dense-AI/claude-scientific-writer | 1.4K | 10 | Citation, peer review, slides |
 | zhangchenhaobest/academic-research-skills | — | 4 | Deep research, pipeline |
