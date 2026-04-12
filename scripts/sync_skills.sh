@@ -219,7 +219,79 @@ clone_and_sync "rmyndharis/antigravity-skills" "https://github.com/rmyndharis/an
 
 echo -e "${GREEN}✅ Sync complete: $sync_count skills synced, $skip_count skipped (already exist)${NC}"
 
-# Generate catalog
+# ─── Phase 2: Merge agents into skills/ ───────────────────────────────────────
+AGENTS_DIR="$PROJECT_DIR/agents"
+if [[ -d "$AGENTS_DIR" ]]; then
+    echo ""
+    echo -e "${CYAN}🤖 Merging agents into skills/ for universal discovery...${NC}"
+    agent_count=0
+    for agent_dir in "$AGENTS_DIR"/*/; do
+        [[ ! -d "$agent_dir" ]] && continue
+        agent_name="$(basename "$agent_dir")"
+        [[ ! -f "$agent_dir/SKILL.md" ]] && continue
+
+        dest="$SKILLS_DIR/$agent_name"
+        if [[ -d "$dest" ]] && ! $FORCE; then
+            continue
+        fi
+
+        cp -R "$agent_dir" "$dest"
+        agent_count=$((agent_count + 1))
+        echo -e "  ${GREEN}✓${NC} $agent_name (agent → skill)"
+    done
+
+    if [[ $agent_count -gt 0 ]]; then
+        echo -e "${GREEN}✅ $agent_count agents merged into skills/${NC}"
+    else
+        echo -e "  ${YELLOW}•${NC} All agents already present in skills/"
+    fi
+fi
+
+# ─── Phase 3: IDE Symlinks ────────────────────────────────────────────────────
+echo ""
+echo -e "${CYAN}🔗 Setting up IDE symlinks...${NC}"
+
+create_symlink() {
+    local target="$1"
+    local link_path="$2"
+    local ide_name="$3"
+
+    # Create parent directory if needed
+    mkdir -p "$(dirname "$link_path")"
+
+    # Check if already correctly linked
+    if [[ -L "$link_path" ]]; then
+        local current_target
+        current_target="$(readlink "$link_path")"
+        if [[ "$current_target" == "$target" ]]; then
+            echo -e "  ${GREEN}✓${NC} $ide_name — already linked"
+            return 0
+        fi
+        # Stale symlink → remove and recreate
+        rm "$link_path"
+    elif [[ -d "$link_path" ]]; then
+        # Real directory exists → skip (don't overwrite user data)
+        echo -e "  ${YELLOW}⚠${NC} $ide_name — skipped (real directory exists at $link_path)"
+        return 0
+    fi
+
+    ln -sf "$target" "$link_path"
+    echo -e "  ${GREEN}✓${NC} $ide_name — linked → $link_path"
+}
+
+# Google Antigravity (Gemini)
+create_symlink "$SKILLS_DIR" "$HOME/.gemini/antigravity/skills" "Antigravity (Gemini)"
+
+# Claude Code CLI
+create_symlink "$SKILLS_DIR" "$HOME/.claude/skills" "Claude Code CLI"
+
+# VS Code — GitHub Copilot Agent Skills
+# Uses .github/skills/ in the MCP project itself for dev-time discovery
+create_symlink "$SKILLS_DIR" "$PROJECT_DIR/.github/skills" "VS Code Copilot (project)"
+
+echo ""
+
+# ─── Phase 4: Generate catalog ────────────────────────────────────────────────
 echo -e "${CYAN}📋 Generating skills catalog...${NC}"
 cd "$PROJECT_DIR"
 if [[ -d ".venv" ]]; then
@@ -232,3 +304,14 @@ PYTHONPATH="$PROJECT_DIR/server" python3 "$SCRIPT_DIR/build_catalog.py" 2>/dev/n
 echo ""
 total=$(find "$SKILLS_DIR" -name "SKILL.md" | wc -l | tr -d ' ')
 echo -e "${CYAN}🧬 Total skills available: $total${NC}"
+
+# ─── Summary ──────────────────────────────────────────────────────────────────
+echo ""
+echo -e "${CYAN}📌 Skills are now available in:${NC}"
+echo -e "  ${GREEN}•${NC} Antigravity (Gemini):  ~/.gemini/antigravity/skills/"
+echo -e "  ${GREEN}•${NC} Claude Code CLI:       ~/.claude/skills/"
+echo -e "  ${GREEN}•${NC} VS Code Copilot:       .github/skills/ (this project)"
+echo -e ""
+echo -e "  ${BLUE}Tip:${NC} For MCP Server (recommended), run:"
+echo -e "    ${CYAN}claude mcp add --scope user skills-server $PROJECT_DIR/.venv/bin/python3 $PROJECT_DIR/server/mcp_skills_server.py${NC}"
+echo -e ""

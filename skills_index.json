@@ -429,6 +429,22 @@
     "source": "custom"
   },
   {
+    "id": "bioinformatics-researcher",
+    "name": "Bioinformatics Researcher",
+    "description": "Specialist AI agent persona for computational biology and bioinformatics research. Expert in protein structure analysis, molecular docking, kinase biology, drug-target interactions, sequence analysis, and scientific data visualization.",
+    "path": "bioinformatics-researcher/SKILL.md",
+    "category": "research",
+    "tags": [
+      "bioinformatics",
+      "computational-biology",
+      "protein",
+      "kinase",
+      "docking",
+      "research"
+    ],
+    "source": "custom"
+  },
+  {
     "id": "biopython",
     "name": "biopython",
     "description": "Comprehensive molecular biology toolkit. Use for sequence manipulation, file parsing (FASTA/GenBank/PDB), phylogenetics, and programmatic NCBI/PubMed access (Bio.Entrez). Best for batch processing, custom bioinformatics pipelines, BLAST automation. For quick lookups use gget; for multi-service integration use bioservices.",
@@ -1492,6 +1508,22 @@
     "path": "docker-expert/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "docking-specialist",
+    "name": "Docking Specialist",
+    "description": "Specialist AI agent for molecular docking campaigns. Expert in receptor preparation, ligand libraries, binding site analysis, docking protocols, and results interpretation for drug discovery pipelines.",
+    "path": "docking-specialist/SKILL.md",
+    "category": "drug-discovery",
+    "tags": [
+      "docking",
+      "virtual-screening",
+      "autodock",
+      "vina",
+      "diffdock",
+      "drug-discovery"
+    ],
     "source": "custom"
   },
   {
@@ -3770,6 +3802,28 @@
     "source": "custom"
   },
   {
+    "id": "python-architect",
+    "name": "Python Architect Agent",
+    "description": "Expert Python architect specializing in clean architecture, async patterns, type-safe code, packaging, and performance optimization. Masters FastAPI, Django, SQLAlchemy, pytest, Poetry/uv, and modern Python 3.12+ features. Applies SOLID principles and domain-driven design.",
+    "path": "python-architect/SKILL.md",
+    "category": "agent",
+    "tags": [
+      "python",
+      "architecture",
+      "fastapi",
+      "django",
+      "async",
+      "typing",
+      "pytest",
+      "packaging",
+      "performance",
+      "clean-code",
+      "ddd",
+      "solid"
+    ],
+    "source": "custom"
+  },
+  {
     "id": "python-development-python-scaffold",
     "name": "python-development-python-scaffold",
     "description": "You are a Python project architecture expert specializing in scaffolding production-ready Python applications. Generate complete project structures with modern tooling (uv, FastAPI, Django), type hint",
@@ -4244,6 +4298,25 @@
     "path": "scientific-visualization/SKILL.md",
     "category": "",
     "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "scientific-writer",
+    "name": "Scientific Writer Agent",
+    "description": "End-to-end academic writing agent that orchestrates the full research-to-publication pipeline: literature search → outline → draft → citation management → peer review → revision → LaTeX formatting. Specialized for computational biology, bioinformatics, and drug discovery papers.",
+    "path": "scientific-writer/SKILL.md",
+    "category": "agent",
+    "tags": [
+      "writing",
+      "paper",
+      "manuscript",
+      "thesis",
+      "latex",
+      "academic",
+      "publication",
+      "research",
+      "pipeline"
+    ],
     "source": "custom"
   },
   {

@@ -6,7 +6,7 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 | Metric | Value |
 |--------|-------|
-| **Skills** | 569 |
+| **Skills** | 573 |
 | **Mega-Workflows** | 6 Core Modalities |
 | **Agent Personas** | Dual-Core Squad |
 | **Source Repositories** | 13 |
@@ -17,7 +17,7 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 ## 🏗 Architecture
 
-> The ecosystem leverages exactly **569** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
+> The ecosystem leverages exactly **573** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
 
 ```
 MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
@@ -119,7 +119,7 @@ chmod +x scripts/sync_skills.sh start_server.sh
 
 ---
 
-> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/` a partir dos 13 repositórios de referência) ou quando quiser atualizar para versões mais recentes. Se você clonou o repo e o diretório `skills/` já contém 569 pastas, **não precisa rodar novamente**.
+> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/` a partir dos 13 repositórios de referência) ou quando quiser atualizar para versões mais recentes. Se você clonou o repo e o diretório `skills/` já contém 573 pastas, **não precisa rodar novamente**.
 
 ---
 
@@ -136,7 +136,7 @@ O Claude Code descobre skills automaticamente a partir do diretório `.claude/sk
 ln -sf /Users/$USER/mcp/skills ~/.claude/skills
 ```
 
-Pronto! O Claude Code vai autodescobrir e usar as 569 skills em qualquer projeto.
+Pronto! O Claude Code vai autodescobrir e usar as 573 skills em qualquer projeto.
 
 #### Método 2: Symlink por projeto
 
@@ -248,7 +248,7 @@ Ou para configuração **global** (disponível em todos os projetos), adicione a
 Abra o painel de saída do VS Code (`Cmd+Shift+U`) e selecione "MCP" para ver os logs do servidor. Você deve ver:
 
 ```
-🧬 Skills Registry loaded: 569 skills discovered
+🧬 Skills Registry loaded: 573 skills discovered
 🤖 Agent Registry loaded: 10 agents discovered
 🚀 Starting MCP Skills Server (stdio mode)
 ```
@@ -266,7 +266,7 @@ O Antigravity descobre skills automaticamente a partir do diretório `~/.gemini/
 ln -sf /Users/$USER/mcp/skills ~/.gemini/antigravity/skills
 ```
 
-Pronto! O Antigravity vai encontrar todas as 569 skills automaticamente ao iniciar a próxima conversa.
+Pronto! O Antigravity vai encontrar todas as 573 skills automaticamente ao iniciar a próxima conversa.
 
 #### Método 2: MCP Server (Recomendado / Mais poderoso)
 
@@ -286,7 +286,7 @@ Adicione ao arquivo `~/.gemini/settings.json`:
 }
 ```
 
-> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 569 skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
+> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 573 skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
 
 ---
 
