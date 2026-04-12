@@ -6,10 +6,10 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 | Metric | Value |
 |--------|-------|
-| **Skills** | 450+ |
+| **Skills** | 569 |
 | **Mega-Workflows** | 6 Core Modalities |
 | **Agent Personas** | Dual-Core Squad |
-| **Source Repositories** | 12 |
+| **Source Repositories** | 13 |
 | **MCP Tools** | 8 |
 | **Transport** | stdio + SSE (HTTP) |
 
@@ -17,7 +17,7 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 ## 🏗 Architecture
 
-> The ecosystem leverages exactly **450** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
+> The ecosystem leverages exactly **569** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
 
 ```
 MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
@@ -119,9 +119,143 @@ chmod +x scripts/sync_skills.sh start_server.sh
 
 ---
 
+> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/` a partir dos 13 repositórios de referência) ou quando quiser atualizar para versões mais recentes. Se você clonou o repo e o diretório `skills/` já contém 569 pastas, **não precisa rodar novamente**.
+
+---
+
 ## 🔌 Ativação Local — Passo a Passo
 
-### Opção A: Google Antigravity (Gemini)
+### Opção A: Claude Code CLI
+
+O Claude Code descobre skills automaticamente a partir do diretório `.claude/skills/` (projeto) ou `~/.claude/skills/` (global). Existem **três formas** de ativar:
+
+#### Método 1: Symlink para skills globais (mais simples)
+
+```bash
+# Skills ficam disponíveis em TODOS os projetos
+ln -sf /Users/$USER/mcp/skills ~/.claude/skills
+```
+
+Pronto! O Claude Code vai autodescobrir e usar as 569 skills em qualquer projeto.
+
+#### Método 2: Symlink por projeto
+
+```bash
+# Dentro do diretório do seu projeto
+mkdir -p .claude
+ln -sf /Users/$USER/mcp/skills .claude/skills
+```
+
+#### Método 3: MCP Server via CLI (Recomendado / Mais poderoso)
+
+```bash
+# Registrar globalmente (disponível em todos os projetos)
+claude mcp add --scope user skills-server \
+  /Users/$USER/mcp/.venv/bin/python3 \
+  /Users/$USER/mcp/server/mcp_skills_server.py
+
+# OU registrar apenas no projeto atual
+claude mcp add --scope project skills-server \
+  /Users/$USER/mcp/.venv/bin/python3 \
+  /Users/$USER/mcp/server/mcp_skills_server.py
+```
+
+Comandos úteis para gerenciar:
+
+```bash
+claude mcp list                    # Ver servidores configurados
+claude mcp get skills-server       # Detalhes do servidor
+claude mcp remove skills-server    # Remover servidor
+```
+
+> **Por que MCP Server é melhor que symlink?** O symlink entrega o texto das skills diretamente. O servidor MCP adiciona **Tools inteligentes** — `search_skills()`, `search_agents()`, `get_skill()` — que permitem ao agente caçar autonomamente a skill ideal para cada prompt, sem carregar todas na memória.
+
+#### Verificação
+
+```bash
+# Verificar que o servidor foi registrado
+claude mcp list
+
+# Testar comunicação
+claude "list your available MCP tools"
+```
+
+---
+
+### Opção B: VS Code (GitHub Copilot + MCP)
+
+O VS Code com GitHub Copilot suporta skills de **duas formas** complementares:
+
+#### Método 1: Skills nativas do Copilot (autodescoberta)
+
+O Copilot Agent Mode descobre skills em `.github/skills/` automaticamente:
+
+```bash
+# No diretório do seu projeto
+ln -sf /Users/$USER/mcp/skills .github/skills
+```
+
+> **Dica para monorepos:** Ative `"chat.useCustomizationsInParentRepositories": true` no `settings.json` para autodescobrir skills de diretórios pai.
+
+Opcionalmente, crie também um `copilot-instructions.md` para regras globais:
+
+```bash
+# Criar instruções globais do projeto
+cat > .github/copilot-instructions.md << 'EOF'
+Use the available skills in .github/skills/ for scientific, bioinformatics,
+and engineering tasks. Search for relevant SKILL.md files when working with
+specialized packages (RDKit, Scanpy, PyTorch, etc.) or databases (PubChem,
+ChEMBL, UniProt, ClinVar, COSMIC, etc.).
+EOF
+```
+
+#### Método 2: MCP Server (ferramentas avançadas de busca)
+
+Adicione ao arquivo `.vscode/mcp.json` na raiz do seu projeto:
+
+```json
+{
+  "servers": {
+    "skills-server": {
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
+      "env": {
+        "PYTHONPATH": "/Users/$USER/mcp/server"
+      }
+    }
+  }
+}
+```
+
+Ou para configuração **global** (disponível em todos os projetos), adicione ao `settings.json` do VS Code (`Cmd+Shift+P` → `Preferences: Open User Settings (JSON)`):
+
+```json
+{
+  "mcp.servers": {
+    "skills-server": {
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
+      "env": {
+        "PYTHONPATH": "/Users/$USER/mcp/server"
+      }
+    }
+  }
+}
+```
+
+#### Verificação
+
+Abra o painel de saída do VS Code (`Cmd+Shift+U`) e selecione "MCP" para ver os logs do servidor. Você deve ver:
+
+```
+🧬 Skills Registry loaded: 569 skills discovered
+🤖 Agent Registry loaded: 10 agents discovered
+🚀 Starting MCP Skills Server (stdio mode)
+```
+
+---
+
+### Opção C: Google Antigravity (Gemini)
 
 O Antigravity descobre skills automaticamente a partir do diretório `~/.gemini/antigravity/skills/`. Existem **duas formas** de ativar:
 
@@ -132,7 +266,7 @@ O Antigravity descobre skills automaticamente a partir do diretório `~/.gemini/
 ln -sf /Users/$USER/mcp/skills ~/.gemini/antigravity/skills
 ```
 
-Pronto! O Antigravity vai encontrar todas as 450+ skills automaticamente ao iniciar a próxima conversa.
+Pronto! O Antigravity vai encontrar todas as 569 skills automaticamente ao iniciar a próxima conversa.
 
 #### Método 2: MCP Server (Recomendado / Mais poderoso)
 
@@ -152,66 +286,11 @@ Adicione ao arquivo `~/.gemini/settings.json`:
 }
 ```
 
-> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 450+ skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
+> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 569 skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
 
 ---
 
-### Opção B: VS Code (com extensão MCP)
-
-#### Passo 1: Instalar a extensão MCP
-
-No VS Code, instale uma das extensões compatíveis:
-- **GitHub Copilot** (inclui suporte MCP nativo)
-- **Continue** (extensão open-source com MCP)
-- **Cline** (extensão para Claude com MCP)
-
-#### Passo 2: Configurar o MCP Server
-
-Adicione ao arquivo `.vscode/mcp.json` na raiz do seu projeto:
-
-```json
-{
-  "servers": {
-    "skills-server": {
-      "command": "/Users/$USER/mcp/.venv/bin/python3",
-      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
-      "env": {
-        "PYTHONPATH": "/Users/$USER/mcp/server"
-      }
-    }
-  }
-}
-```
-
-Ou para configuração **global** (disponível em todos os projetos), adicione ao `settings.json` do VS Code:
-
-```json
-{
-  "mcp.servers": {
-    "skills-server": {
-      "command": "/Users/$USER/mcp/.venv/bin/python3",
-      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
-      "env": {
-        "PYTHONPATH": "/Users/$USER/mcp/server"
-      }
-    }
-  }
-}
-```
-
-#### Passo 3: Verificar
-
-Abra o painel de saída do VS Code (`Cmd+Shift+U`) e selecione "MCP" para ver os logs do servidor. Você deve ver:
-
-```
-🧬 Skills Registry loaded: 450 skills discovered
-🤖 Agent Registry loaded: 10 agents discovered
-🚀 Starting MCP Skills Server (stdio mode)
-```
-
----
-
-### Opção C: Claude Desktop
+### Opção D: Claude Desktop
 
 Adicione ao arquivo `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
@@ -233,7 +312,7 @@ Reinicie o Claude Desktop. O ícone 🔌 deve aparecer indicando o MCP server co
 
 ---
 
-### Opção D: Cursor
+### Opção E: Cursor
 
 Adicione ao arquivo `~/.cursor/mcp.json`:
 
@@ -253,7 +332,7 @@ Adicione ao arquivo `~/.cursor/mcp.json`:
 
 ---
 
-### Opção E: Modo HTTP/SSE (qualquer cliente)
+### Opção F: Modo HTTP/SSE (qualquer cliente)
 
 Para clientes que suportam transporte SSE/HTTP:
 
@@ -295,7 +374,7 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 | `kinase-interaction-modeling` | 🧬 Bio | DT-Kinase Level 4 CNN, DTI prediction |
 | `drug-target-interaction` | 🧬 Bio | ChEMBL, molecular fingerprints |
 
-### Synced Skills (de 12 repositórios)
+### Synced Skills (de 13 repositórios)
 
 | Repositório | ⭐ | Skills | Foco |
 |-------------|-----|--------|------|
@@ -304,6 +383,7 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 | ClawBio/ClawBio | — | 43 | Genomics, PGx, clinical |
 | GPTomics/bioSkills | — | 426 | Proteomics, RNA-seq, single-cell |
 | K-Dense-AI/claude-scientific-skills | — | 134 | Scientific schematics, grants |
+| **K-Dense-AI/scientific-agent-skills** | **—** | **119** | **Drug discovery, scRNA-seq, genomics, ML, clinical, 78 databases, lab automation** |
 | jaechang-hits/SciAgent-Skills | — | 196 | Life sciences |
 | K-Dense-AI/claude-scientific-writer | 1.4K | 10 | Citation, peer review, slides |
 | zhangchenhaobest/academic-research-skills | — | 4 | Deep research, pipeline |
