@@ -1,6 +1,6 @@
 # 🧬 Skills MCP Server
 
-A local **Model Context Protocol (MCP)** server structured under a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **450+ curated AI agent skills** as callable tools. Covers bioinformatics, scientific writing, polyglot algorithms (C++/Python), and complete agentic orchestration — all running on `localhost` for privacy and low latency.
+A local **Model Context Protocol (MCP)** server structured under a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **573 curated AI agent skills** as callable tools. Covers bioinformatics, drug discovery, scientific writing, polyglot algorithms (C++/Python), and complete agentic orchestration — all running on `localhost` for privacy and low latency.
 
 ## 📊 At a Glance
 
@@ -10,8 +10,87 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 | **Mega-Workflows** | 6 Core Modalities |
 | **Agent Personas** | Dual-Core Squad |
 | **Source Repositories** | 12 |
-| **MCP Tools** | 8 |
+| **MCP Tools** | 7 |
 | **Transport** | stdio + SSE (HTTP) |
+
+---
+
+## 💡 O que é MCP? (Explicação simples)
+
+**MCP (Model Context Protocol)** é um "controle remoto" que dá **poderes extras** a uma IA. Sem MCP, a IA só conversa baseada na memória do treinamento. Com MCP, ela pode buscar em bancos de dados, rodar scripts, acessar APIs — qualquer coisa que o servidor ofereça.
+
+### Analogia
+
+Imagine a IA conversando por chat:
+
+```
+Sem MCP:
+  Você:  "Qual a estrutura 3D da proteína BRAF?"
+  IA:    "Sei que é uma quinase..." (resposta genérica, da memória)
+
+Com MCP:
+  Você:  "Qual a estrutura 3D da proteína BRAF?"
+  IA:    → chama search_skills("protein structure")
+         → encontra a skill 'struct-predictor'
+         → segue as instruções para consultar o PDB
+  IA:    "A estrutura cristalográfica de BRAF (PDB: 6U2G) mostra..."
+         (resposta específica, com dados reais)
+```
+
+### Ciclo de vida do servidor
+
+O MCP server **NÃO** fica rodando permanentemente em background:
+
+```
+Você NÃO está usando o IDE:
+  MCP server? 💤 DESLIGADO (zero recursos)
+
+Você abre o IDE (Antigravity, Claude Code, VS Code...):
+  IDE lê o config → inicia o skills-server automaticamente
+  MCP server? 🟢 LIGADO (~10MB RAM)
+  IA ganha ferramentas: search_skills(), get_skill(), etc.
+
+Você fecha o IDE:
+  MCP server? 💤 DESLIGADO automaticamente
+```
+
+### Como funciona
+
+```
+          Você digita um prompt
+                  │
+                  ▼
+      ┌──────────────────────┐
+      │    IDE (o "cérebro")  │  Antigravity, Claude Code, VS Code...
+      └──────────┬───────────┘
+                 │ stdio (texto via terminal)
+                 ▼
+      ┌──────────────────────┐
+      │   MCP Skills Server  │  O "assistente" com poderes extras
+      │                      │
+      │  Tools disponíveis:  │
+      │  • search_skills()   │  "busque 'docking' nas 573 skills"
+      │  • get_skill()       │  "me dê o SKILL.md completo da skill X"
+      │  • search_agents()   │  "qual agente entende de proteínas?"
+      │  • list_skills()     │  "liste todas as skills disponíveis"
+      └──────────┬───────────┘
+                 │
+         ┌───────┴───────┐
+         │  skills/  573 │  ← SKILL.md files de 12 repos
+         │  agents/   10 │  ← Agent personas (Dual-Core)
+         └───────────────┘
+```
+
+### Symlink vs MCP Server — por que ter os dois?
+
+| | Symlink | MCP Server |
+|---|---|---|
+| **Como funciona** | A IA vê todas as skills listadas no início da conversa | A IA tem **ferramentas** para buscar e ler skills sob demanda |
+| **Analogia** | Ter o catálogo da biblioteca na mesa | Ter um bibliotecário que busca o livro certo |
+| **Vantagem** | Descoberta passiva automática | Busca inteligente por keyword |
+| **Limitação** | Carrega muitos nomes no contexto | Precisa do processo Python rodando |
+
+**Ter os dois é o setup ideal** — o catálogo mostra o que existe, o bibliotecário vai buscar o livro certo quando preciso.
 
 ---
 
@@ -20,7 +99,7 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 > The ecosystem leverages exactly **573** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
 
 ```
-MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
+MCP Client (Antigravity / Claude Code / VS Code / Cursor)
         │
         ▼ (stdio or SSE)
 ┌──────────────────────────────────────────┐
@@ -37,12 +116,10 @@ MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
 └──────────┬───────────────────────────────┘
            │
    ┌───────┴───────┐
-   │  skills/ 450  │   ← SKILL.md files from 12 repos
+   │  skills/ 573  │   ← SKILL.md files from 12 repos
    │  agents/ 10   │   ← Agent personas (Dual-Core)
    └───────────────┘
 ```
-
----
 
 ---
 
@@ -52,9 +129,9 @@ MCP Client (Antigravity / VS Code / Claude Desktop / Cursor)
 
 ### 🔬 Deep Research & Scientific Discovery
 | Agent | ID | Descrição |
-|-------|-----|-----------|
+|-------|-----|-----------| 
 | Deep Researcher | `deep-researcher` | Investigação profunda de web, literatura complexa, citações |
-| Investigative Orchestrator | `investigative-orchestrator` | Divisão de perguntas complexas viasequential/parallel thinking |
+| Investigative Orchestrator | `investigative-orchestrator` | Divisão de perguntas complexas via sequential/parallel thinking |
 | Bioinformatics Researcher | `bioinformatics-researcher` | Biologia computacional, protein analysis, omics |
 | Scientific Writer | `scientific-writer` | Pesquisa → escrita → citação → LaTeX |
 
@@ -91,7 +168,7 @@ source .venv/bin/activate
 pip install fastmcp pyyaml
 ```
 
-### 2. Sincronize skills dos repositórios de referência
+### 2. Sincronize skills e configure os IDEs automaticamente
 
 ```bash
 chmod +x scripts/sync_skills.sh start_server.sh
@@ -106,20 +183,20 @@ chmod +x scripts/sync_skills.sh start_server.sh
 ./scripts/sync_skills.sh --list
 ```
 
-### 3. Inicie o servidor
+O script executa **4 fases** automaticamente:
 
-```bash
-# Modo stdio (para Antigravity, Claude Desktop, VS Code)
-./start_server.sh
+| Fase | O que faz |
+|------|-----------|
+| **1. Sync** | Clona 12 repos e copia skills para `skills/` |
+| **2. Merge** | Copia agentes de `agents/` → `skills/` para descoberta universal |
+| **3. Symlinks** | Cria links para Antigravity, Claude Code CLI e VS Code Copilot |
+| **4. Catalog** | Reconstrói `skills_index.json` com todas as skills indexadas |
 
-# Modo HTTP/SSE (para clientes web, testes, debug)
-./start_server.sh --sse
-# → Servidor em http://localhost:8765
-```
+> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/`) ou quando quiser atualizar. Se o diretório `skills/` já contém 573 pastas, **não precisa rodar novamente**.
 
----
+### 3. Registre o MCP Server no seu IDE preferido
 
-> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/` a partir dos 13 repositórios de referência) ou quando quiser atualizar para versões mais recentes. Se você clonou o repo e o diretório `skills/` já contém 573 pastas, **não precisa rodar novamente**.
+Escolha uma ou mais opções abaixo (**todas** podem coexistir):
 
 ---
 
@@ -127,40 +204,26 @@ chmod +x scripts/sync_skills.sh start_server.sh
 
 ### Opção A: Claude Code CLI
 
-O Claude Code descobre skills automaticamente a partir do diretório `.claude/skills/` (projeto) ou `~/.claude/skills/` (global). Existem **três formas** de ativar:
+O Claude Code descobre skills de **duas formas** complementares:
 
-#### Método 1: Symlink para skills globais (mais simples)
+#### Forma 1: Symlink (autodescoberta passiva)
 
-```bash
-# Skills ficam disponíveis em TODOS os projetos
-ln -sf /Users/$USER/mcp/skills ~/.claude/skills
-```
-
-Pronto! O Claude Code vai autodescobrir e usar as 573 skills em qualquer projeto.
-
-#### Método 2: Symlink por projeto
+Já criado automaticamente pelo `sync_skills.sh`:
 
 ```bash
-# Dentro do diretório do seu projeto
-mkdir -p .claude
-ln -sf /Users/$USER/mcp/skills .claude/skills
+~/.claude/skills/ → /Users/$USER/mcp/skills/   # (symlink)
 ```
 
-#### Método 3: MCP Server via CLI (Recomendado / Mais poderoso)
+#### Forma 2: MCP Server via CLI (busca ativa — recomendado)
 
 ```bash
 # Registrar globalmente (disponível em todos os projetos)
 claude mcp add --scope user skills-server \
   /Users/$USER/mcp/.venv/bin/python3 \
   /Users/$USER/mcp/server/mcp_skills_server.py
-
-# OU registrar apenas no projeto atual
-claude mcp add --scope project skills-server \
-  /Users/$USER/mcp/.venv/bin/python3 \
-  /Users/$USER/mcp/server/mcp_skills_server.py
 ```
 
-Comandos úteis para gerenciar:
+Comandos úteis:
 
 ```bash
 claude mcp list                    # Ver servidores configurados
@@ -168,50 +231,23 @@ claude mcp get skills-server       # Detalhes do servidor
 claude mcp remove skills-server    # Remover servidor
 ```
 
-> **Por que MCP Server é melhor que symlink?** O symlink entrega o texto das skills diretamente. O servidor MCP adiciona **Tools inteligentes** — `search_skills()`, `search_agents()`, `get_skill()` — que permitem ao agente caçar autonomamente a skill ideal para cada prompt, sem carregar todas na memória.
-
-#### Verificação
-
-```bash
-# Verificar que o servidor foi registrado
-claude mcp list
-
-# Testar comunicação
-claude "list your available MCP tools"
-```
-
 ---
 
 ### Opção B: VS Code (GitHub Copilot + MCP)
 
-O VS Code com GitHub Copilot suporta skills de **duas formas** complementares:
+#### Forma 1: Skills nativas do Copilot (autodescoberta)
 
-#### Método 1: Skills nativas do Copilot (autodescoberta)
-
-O Copilot Agent Mode descobre skills em `.github/skills/` automaticamente:
+Já criado automaticamente pelo `sync_skills.sh`:
 
 ```bash
-# No diretório do seu projeto
-ln -sf /Users/$USER/mcp/skills .github/skills
+.github/skills/ → /Users/$USER/mcp/skills/   # (symlink no projeto)
 ```
 
-> **Dica para monorepos:** Ative `"chat.useCustomizationsInParentRepositories": true` no `settings.json` para autodescobrir skills de diretórios pai.
+> **Dica para monorepos:** Ative `"chat.useCustomizationsInParentRepositories": true` no `settings.json`.
 
-Opcionalmente, crie também um `copilot-instructions.md` para regras globais:
+#### Forma 2: MCP Server (ferramentas avançadas de busca)
 
-```bash
-# Criar instruções globais do projeto
-cat > .github/copilot-instructions.md << 'EOF'
-Use the available skills in .github/skills/ for scientific, bioinformatics,
-and engineering tasks. Search for relevant SKILL.md files when working with
-specialized packages (RDKit, Scanpy, PyTorch, etc.) or databases (PubChem,
-ChEMBL, UniProt, ClinVar, COSMIC, etc.).
-EOF
-```
-
-#### Método 2: MCP Server (ferramentas avançadas de busca)
-
-Adicione ao arquivo `.vscode/mcp.json` na raiz do seu projeto:
+Adicione ao `.vscode/mcp.json` (por projeto) ou ao `settings.json` global (`Cmd+Shift+P` → `Preferences: Open User Settings (JSON)`):
 
 ```json
 {
@@ -227,50 +263,21 @@ Adicione ao arquivo `.vscode/mcp.json` na raiz do seu projeto:
 }
 ```
 
-Ou para configuração **global** (disponível em todos os projetos), adicione ao `settings.json` do VS Code (`Cmd+Shift+P` → `Preferences: Open User Settings (JSON)`):
-
-```json
-{
-  "mcp.servers": {
-    "skills-server": {
-      "command": "/Users/$USER/mcp/.venv/bin/python3",
-      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
-      "env": {
-        "PYTHONPATH": "/Users/$USER/mcp/server"
-      }
-    }
-  }
-}
-```
-
-#### Verificação
-
-Abra o painel de saída do VS Code (`Cmd+Shift+U`) e selecione "MCP" para ver os logs do servidor. Você deve ver:
-
-```
-🧬 Skills Registry loaded: 573 skills discovered
-🤖 Agent Registry loaded: 10 agents discovered
-🚀 Starting MCP Skills Server (stdio mode)
-```
-
 ---
 
 ### Opção C: Google Antigravity (Gemini)
 
-O Antigravity descobre skills automaticamente a partir do diretório `~/.gemini/antigravity/skills/`. Existem **duas formas** de ativar:
+#### Forma 1: Symlink (autodescoberta)
 
-#### Método 1: Symlink (mais simples)
+Já criado automaticamente pelo `sync_skills.sh`:
 
 ```bash
-# Criar link simbólico para o diretório de skills
-ln -sf /Users/$USER/mcp/skills ~/.gemini/antigravity/skills
+~/.gemini/antigravity/skills/ → /Users/$USER/mcp/skills/   # (symlink)
 ```
 
-Pronto! O Antigravity vai encontrar todas as 573 skills automaticamente ao iniciar a próxima conversa.
+#### Forma 2: MCP Server (recomendado)
 
-#### Método 2: MCP Server (Recomendado / Mais poderoso)
-
-Adicione ao arquivo `~/.gemini/settings.json`:
+Adicione ao `~/.gemini/settings.json`:
 
 ```json
 {
@@ -285,14 +292,12 @@ Adicione ao arquivo `~/.gemini/settings.json`:
   }
 }
 ```
-
-> **Por que este método é melhor?** Enquanto o symlink apenas entrega o texto das 573 skills, o servidor MCP adiciona **Ferramentas Inteligentes (Tools)** ao Antigravity. Eu ganho a habilidade de rodar `search_skills()` ou `search_agents()` automaticamente para caçar e encontrar a skill perfeita para o seu prompt, além disso o próprio Antigravity inicia e desliga o servidor automaticamente em segundo plano!
 
 ---
 
 ### Opção D: Claude Desktop
 
-Adicione ao arquivo `~/Library/Application Support/Claude/claude_desktop_config.json`:
+Adicione ao `~/Library/Application Support/Claude/claude_desktop_config.json`:
 
 ```json
 {
@@ -308,13 +313,11 @@ Adicione ao arquivo `~/Library/Application Support/Claude/claude_desktop_config.
 }
 ```
 
-Reinicie o Claude Desktop. O ícone 🔌 deve aparecer indicando o MCP server conectado.
-
 ---
 
 ### Opção E: Cursor
 
-Adicione ao arquivo `~/.cursor/mcp.json`:
+Adicione ao `~/.cursor/mcp.json`:
 
 ```json
 {
@@ -356,12 +359,28 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 
 ---
 
+### ✅ Verificação
+
+Após configurar qualquer opção, verifique:
+
+```bash
+# Claude Code CLI
+claude mcp list
+
+# Ou em qualquer IDE, peça:
+"list your available MCP tools"
+```
+
+Você deve ver as 7 tools disponíveis: `list_skills`, `search_skills`, `get_skill`, `get_skill_scripts`, `list_agents`, `search_agents`, `get_agent`.
+
+---
+
 ## 📚 Skills Library
 
 ### Custom Skills (escritas manualmente)
 
 | Skill | Categoria | Descrição |
-|-------|-----------|-----------|
+|-------|-----------|-----------| 
 | `scientific-paper-writer` | 📝 Writing | IMRaD, templates Nature/IEEE/NeurIPS/APA7 |
 | `literature-review` | 📝 Writing | PubMed/arXiv/Semantic Scholar + PRISMA |
 | `peer-reviewer` | 📝 Writing | Scoring 0-100 em 8 dimensões |
@@ -394,7 +413,7 @@ O servidor fica disponível em `http://localhost:8765/sse`. Configure seu client
 ## 🛠 MCP Tools Reference
 
 | Tool | Descrição | Exemplo |
-|------|-----------|---------|
+|------|-----------|---------| 
 | `list_skills()` | Lista todas as skills | "What skills do you have?" |
 | `search_skills(query)` | Busca por keyword | `search_skills("protein docking")` |
 | `get_skill(id)` | Conteúdo completo da skill | `get_skill("molecular-docking")` |
@@ -471,6 +490,8 @@ mkdir -p agents/meu-agente
 - [Model Context Protocol](https://modelcontextprotocol.io/)
 - [FastMCP SDK](https://gofastmcp.com/)
 - [MCP Specification](https://spec.modelcontextprotocol.io/)
+- [Agent Skills Standard](https://agentskills.io/)
+- [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills)
 - [VoltAgent Subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
 - [Tech Leads Club Agent Skills](https://github.com/tech-leads-club/agent-skills)
 
