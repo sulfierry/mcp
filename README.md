@@ -15,6 +15,54 @@ A local **Model Context Protocol (MCP)** server structured under a **Dual-Core A
 
 ---
 
+## 🚀 Quick Start (3 passos)
+
+### 1. Clone e instale dependências
+
+```bash
+git clone https://github.com/sulfierry/mcp.git
+cd mcp
+
+# Criar ambiente virtual
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Instalar dependências
+pip install fastmcp pyyaml
+```
+
+### 2. Sincronize skills e configure os IDEs automaticamente
+
+```bash
+chmod +x scripts/sync_skills.sh start_server.sh
+
+# Sincronizar skills curadas (recomendado)
+./scripts/sync_skills.sh
+
+# OU sincronizar TODAS as skills disponíveis
+./scripts/sync_skills.sh --all
+
+# Ver repositórios disponíveis
+./scripts/sync_skills.sh --list
+```
+
+O script executa **4 fases** automaticamente:
+
+| Fase | O que faz |
+|------|-----------|
+| **1. Sync** | Clona 12 repos e copia skills para `skills/` |
+| **2. Merge** | Copia agentes de `agents/` → `skills/` para descoberta universal |
+| **3. Symlinks** | Cria links para Antigravity, Claude Code CLI e VS Code Copilot |
+| **4. Catalog** | Reconstrói `skills_index.json` com todas as skills indexadas |
+
+> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/`) ou quando quiser atualizar. Se o diretório `skills/` já contém 573 pastas, **não precisa rodar novamente**.
+
+### 3. Registre o MCP Server no seu IDE preferido
+
+Escolha uma ou mais opções abaixo (**todas** podem coexistir):
+
+---
+
 ## 💡 O que é MCP? (Explicação simples)
 
 **MCP (Model Context Protocol)** é um "controle remoto" que dá **poderes extras** a uma IA. Sem MCP, a IA só conversa baseada na memória do treinamento. Com MCP, ela pode buscar em bancos de dados, rodar scripts, acessar APIs — qualquer coisa que o servidor ofereça.
@@ -149,54 +197,6 @@ MCP Client (Antigravity / Claude Code / VS Code / Cursor)
 | Python Architect | `python-architect` | Clean architecture, async, typing, packaging |
 | DevSecOps Expert| `ai-security-auditor` | Master SecOps, AI Vetting e proteção de ambiente |
 | Code Reviewer | `code-reviewer` | Review com scoring multi-dimensional e red flags |
-
----
-
-## 🚀 Quick Start (3 passos)
-
-### 1. Clone e instale dependências
-
-```bash
-git clone https://github.com/sulfierry/mcp.git
-cd mcp
-
-# Criar ambiente virtual
-python3 -m venv .venv
-source .venv/bin/activate
-
-# Instalar dependências
-pip install fastmcp pyyaml
-```
-
-### 2. Sincronize skills e configure os IDEs automaticamente
-
-```bash
-chmod +x scripts/sync_skills.sh start_server.sh
-
-# Sincronizar skills curadas (recomendado)
-./scripts/sync_skills.sh
-
-# OU sincronizar TODAS as skills disponíveis
-./scripts/sync_skills.sh --all
-
-# Ver repositórios disponíveis
-./scripts/sync_skills.sh --list
-```
-
-O script executa **4 fases** automaticamente:
-
-| Fase | O que faz |
-|------|-----------|
-| **1. Sync** | Clona 12 repos e copia skills para `skills/` |
-| **2. Merge** | Copia agentes de `agents/` → `skills/` para descoberta universal |
-| **3. Symlinks** | Cria links para Antigravity, Claude Code CLI e VS Code Copilot |
-| **4. Catalog** | Reconstrói `skills_index.json` com todas as skills indexadas |
-
-> **Preciso rodar `sync_skills.sh`?** Só na **primeira vez** (para popular `skills/`) ou quando quiser atualizar. Se o diretório `skills/` já contém 573 pastas, **não precisa rodar novamente**.
-
-### 3. Registre o MCP Server no seu IDE preferido
-
-Escolha uma ou mais opções abaixo (**todas** podem coexistir):
 
 ---
 
