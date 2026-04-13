@@ -67,7 +67,7 @@ Choose one or more options below (**all** can coexist):
 >
 > | IDE / CLI | Config file | How to verify |
 > |-----------|-------------|---------------|
-> | **Antigravity (Gemini)** | `~/.gemini/settings.json` | Ask: *"list your MCP tools"* |
+> | **Antigravity (Gemini)** | `~/.gemini/antigravity/mcp_config.json` | Ask: *"list your MCP tools"* |
 > | **Claude Code CLI** | `claude mcp add` (stored in `~/.claude/`) | `claude mcp list` |
 > | **Claude Desktop** | `~/Library/Application Support/Claude/claude_desktop_config.json` | Settings → Developer → MCP |
 > | **VS Code (Copilot)** | `.vscode/mcp.json` or global `settings.json` | Copilot chat → *"list MCP tools"* |
@@ -348,17 +348,18 @@ Already created automatically by `sync_skills.sh`:
 
 #### Method 2: MCP Server (recommended)
 
-Add to `~/.gemini/settings.json`:
+> **Important:** Antigravity reads MCP config from `~/.gemini/antigravity/mcp_config.json`, **not** from `~/.gemini/settings.json`. The sync script handles this automatically.
+
+Add to `~/.gemini/antigravity/mcp_config.json`:
 
 ```json
 {
   "mcpServers": {
     "skills-server": {
-      "command": "/Users/$USER/mcp/.venv/bin/python3",
-      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
-      "env": {
-        "PYTHONPATH": "/Users/$USER/mcp/server"
-      }
+      "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
+      "command": "bash",
+      "args": ["/Users/$USER/mcp/start_server.sh"],
+      "env": {}
     }
   }
 }
@@ -439,25 +440,24 @@ Local skills directory: `~/.codex/skills/`
 
 #### Method 3: MCP Server via config.toml (recommended)
 
-The sync script auto-appends MCP configuration to `~/.codex/config.toml`. You can also configure it manually:
+The sync script auto-configures MCP via `codex mcp add`. You can also configure it manually:
+
+> **Important:** Codex CLI uses `[mcp_servers.<name>]` tables, **not** `[mcp] servers = {...}`.
 
 ```toml
 # ~/.codex/config.toml
 
-[mcp]
-servers = { skills-server = { command = "/Users/$USER/mcp/.venv/bin/python3", args = ["/Users/$USER/mcp/server/mcp_skills_server.py"] } }
+[mcp_servers.skills-server]
+command = "/Users/$USER/mcp/.venv/bin/python3"
+args = ["/Users/$USER/mcp/server/mcp_skills_server.py"]
+
+[mcp_servers.skills-server.env]
+PYTHONPATH = "/Users/$USER/mcp/server"
 ```
 
-For project-level configuration, create `.codex/config.toml` in your repo root:
+For project-level configuration, create `.codex/config.toml` in your repo root with the same format.
 
-```toml
-# .codex/config.toml (project-level)
-
-[mcp]
-servers = { skills-server = { command = "/Users/$USER/mcp/.venv/bin/python3", args = ["/Users/$USER/mcp/server/mcp_skills_server.py"] } }
-```
-
-> **Tip:** Use `codex --help` and the `/init` command inside Codex TUI to scaffold additional `AGENTS.md` files per project.
+> **Tip:** Use `codex mcp add skills-server -- /path/to/python /path/to/server.py` to auto-generate the correct format.
 
 ---
 

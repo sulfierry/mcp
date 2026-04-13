@@ -20,20 +20,20 @@ NC='\033[0m'
 
 # Create venv if needed
 if [[ ! -d "$VENV_DIR" ]]; then
-    echo -e "${CYAN}📦 Creating virtual environment...${NC}"
+    echo -e "${CYAN}📦 Creating virtual environment...${NC}" >&2
     python3 -m venv "$VENV_DIR"
 fi
 
 # Ensure the venv python exists
 if [[ ! -x "$PYTHON" ]]; then
-    echo -e "${YELLOW}⚠ Venv python not found at $PYTHON${NC}"
-    echo -e "${CYAN}Recreating virtual environment...${NC}"
+    echo -e "${YELLOW}⚠ Venv python not found at $PYTHON${NC}" >&2
+    echo -e "${CYAN}Recreating virtual environment...${NC}" >&2
     rm -rf "$VENV_DIR"
     python3 -m venv "$VENV_DIR"
 fi
 
 # Install deps if needed (using venv pip directly)
-"$VENV_DIR/bin/pip" install -q -r "$SCRIPT_DIR/server/requirements.txt" 2>/dev/null || true
+"$VENV_DIR/bin/pip" install -q -r "$SCRIPT_DIR/server/requirements.txt" >/dev/null 2>&1 || true
 
 # Parse args
 TRANSPORT="stdio"
@@ -44,7 +44,7 @@ if [[ "${1:-}" == "--sse" ]]; then
     PORT="${2:-8765}"
 fi
 
-echo -e "${GREEN}🚀 Starting MCP Skills Server (${TRANSPORT})${NC}"
+echo -e "${GREEN}🚀 Starting MCP Skills Server (${TRANSPORT})${NC}" >&2
 
 # Run server using venv python directly (no source activate needed)
 cd "$SCRIPT_DIR"
