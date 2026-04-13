@@ -347,7 +347,7 @@ if [[ ! -f "$CODEX_HOME/AGENTS.md" ]]; then
     cat > "$CODEX_HOME/AGENTS.md" << 'AGENTSEOF'
 # Skills MCP Server — Codex Integration
 
-You have access to **573+ curated AI agent skills** via an MCP server.
+You have access to **1,176+ curated AI agent skills** via an MCP server.
 Use the following MCP tools to discover and load skills on demand:
 
 - `list_skills()` — list all available skills
@@ -380,6 +380,36 @@ MCPEOF
     echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — MCP server added to config.toml"
 fi
 
+# Qwen CLI
+# Qwen Code uses ~/.qwen/settings.json with mcpServers for MCP integration.
+QWEN_HOME="${QWEN_HOME:-$HOME/.qwen}"
+mkdir -p "$QWEN_HOME"
+create_symlink "$SKILLS_DIR" "$QWEN_HOME/skills" "Qwen CLI"
+
+# Auto-generate ~/.qwen/settings.json MCP section if not configured
+if [[ -f "$QWEN_HOME/settings.json" ]] && grep -q 'skills-server' "$QWEN_HOME/settings.json" 2>/dev/null; then
+    echo -e "  ${GREEN}✓${NC} Qwen CLI — MCP already configured in settings.json"
+else
+    if [[ ! -f "$QWEN_HOME/settings.json" ]]; then
+        cat > "$QWEN_HOME/settings.json" << QWENEOF
+{
+  "mcpServers": {
+    "skills-server": {
+      "command": "$PROJECT_DIR/.venv/bin/python3",
+      "args": ["$PROJECT_DIR/server/mcp_skills_server.py"],
+      "env": {
+        "PYTHONPATH": "$PROJECT_DIR/server"
+      }
+    }
+  }
+}
+QWENEOF
+        echo -e "  ${GREEN}✓${NC} Qwen CLI — settings.json created with MCP server"
+    else
+        echo -e "  ${YELLOW}⚠${NC} Qwen CLI — settings.json exists but missing skills-server. Add manually."
+    fi
+fi
+
 echo ""
 
 # ─── Phase 4: Generate catalog ────────────────────────────────────────────────
@@ -403,6 +433,7 @@ echo -e "  ${GREEN}•${NC} Antigravity (Gemini):  ~/.gemini/antigravity/skills/
 echo -e "  ${GREEN}•${NC} Claude Code CLI:       ~/.claude/skills/"
 echo -e "  ${GREEN}•${NC} VS Code Copilot:       .github/skills/ (this project)"
 echo -e "  ${GREEN}•${NC} OpenAI Codex CLI:      ~/.codex/skills/ + AGENTS.md + config.toml"
+echo -e "  ${GREEN}•${NC} Qwen CLI:              ~/.qwen/skills/ + settings.json"
 echo -e ""
 echo -e "  ${BLUE}Tip:${NC} For MCP Server (recommended), run:"
 echo -e "    ${CYAN}claude mcp add --scope user skills-server $PROJECT_DIR/.venv/bin/python3 $PROJECT_DIR/server/mcp_skills_server.py${NC}"

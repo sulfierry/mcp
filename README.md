@@ -1,17 +1,17 @@
 # 🧬 Skills MCP Server
 
-A local **Model Context Protocol (MCP)** server built on a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **573 curated AI agent skills** as callable tools — covering bioinformatics, drug discovery, scientific writing, polyglot algorithms (C++/Python), and complete agentic orchestration — all running on `localhost` for privacy and low latency.
+A local **Model Context Protocol (MCP)** server built on a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **1,176 curated AI agent skills** as callable tools — covering bioinformatics, drug discovery, scientific writing, systems programming (C/C++/CUDA), HPC, evolutionary optimization, and complete agentic orchestration — all running on `localhost` for privacy and low latency.
 
-> **Supported IDEs:** Antigravity (Gemini) · Claude Code CLI · Claude Desktop · VS Code (Copilot) · Cursor · **OpenAI Codex CLI** · Any MCP-compatible client (HTTP/SSE)
+> **Supported IDEs:** Antigravity (Gemini) · Claude Code CLI · Claude Desktop · VS Code (Copilot) · Cursor · OpenAI Codex CLI · Qwen CLI · Any MCP-compatible client (HTTP/SSE)
 
 ## 📊 At a Glance
 
 | Metric | Value |
 |--------|-------|
-| **Skills** | 573 |
+| **Skills** | 1,176 |
 | **Mega-Workflows** | 6 Core Modalities |
-| **Agent Personas** | Dual-Core Squad |
-| **Source Repositories** | 12 |
+| **Agent Personas** | Dual-Core Squad + Low-Level |
+| **Source Repositories** | 10 |
 | **MCP Tools** | 7 |
 | **Transport** | stdio + SSE (HTTP) |
 
@@ -52,16 +52,30 @@ The script runs **4 phases** automatically:
 
 | Phase | What it does |
 |-------|--------------|
-| **1. Sync** | Clones 12 repos and copies skills into `skills/` |
+| **1. Sync** | Clones 10 repos (flat + nested scan) and copies skills into `skills/` |
 | **2. Merge** | Copies agents from `agents/` → `skills/` for universal discovery |
-| **3. Symlinks** | Creates links for Antigravity, Claude Code CLI, VS Code Copilot, and **OpenAI Codex CLI** |
+| **3. Symlinks** | Creates links for Antigravity, Claude Code CLI, VS Code Copilot, and OpenAI Codex CLI |
 | **4. Catalog** | Rebuilds `skills_index.json` with all indexed skills |
 
-> **Do I need to run `sync_skills.sh`?** Only the **first time** (to populate `skills/`) or when you want to update. If `skills/` already contains 573 folders, **you don't need to run it again**.
+> **Do I need to run `sync_skills.sh`?** Only the **first time** (to populate `skills/`) or when you want to update. If `skills/` already has 1,000+ folders, **you don't need to run it again**.
 
 ### 3. Register the MCP Server in your preferred IDE
 
 Choose one or more options below (**all** can coexist):
+
+> **Do I need to activate MCP manually?** No. **All** supported IDEs and CLIs load MCP servers automatically from their config files on startup:
+>
+> | IDE / CLI | Config file | How to verify |
+> |-----------|-------------|---------------|
+> | **Antigravity (Gemini)** | `~/.gemini/settings.json` | Ask: *"list your MCP tools"* |
+> | **Claude Code CLI** | `claude mcp add` (stored in `~/.claude/`) | `claude mcp list` |
+> | **Claude Desktop** | `~/Library/Application Support/Claude/claude_desktop_config.json` | Settings → Developer → MCP |
+> | **VS Code (Copilot)** | `.vscode/mcp.json` or global `settings.json` | Copilot chat → *"list MCP tools"* |
+> | **Cursor** | `~/.cursor/mcp.json` | Settings → MCP |
+> | **OpenAI Codex CLI** | `~/.codex/config.toml` | Tool list in Codex TUI |
+> | **Qwen CLI** | `~/.qwen/settings.json` | `/mcp` inside Qwen TUI |
+>
+> After running `sync_skills.sh`, just open any of these and the 7 MCP tools will be available immediately. No manual activation needed.
 
 ---
 
@@ -119,14 +133,14 @@ You close the IDE:
       │   MCP Skills Server  │  The "assistant" with extra powers
       │                      │
       │  Available tools:    │
-      │  • search_skills()   │  "search 'docking' across 573 skills"
+      │  • search_skills()   │  "search 'docking' across 1,176 skills"
       │  • get_skill()       │  "give me the full SKILL.md for skill X"
       │  • search_agents()   │  "which agent understands proteins?"
       │  • list_skills()     │  "list all available skills"
       └──────────┬───────────┘
                  │
          ┌───────┴───────┐
-         │  skills/  573 │  ← SKILL.md files from 12 repos
+         │  skills/ 1,176 │  ← SKILL.md files from 10 repos + custom
          │  agents/   10 │  ← Agent personas (Dual-Core)
          └───────────────┘
 ```
@@ -146,7 +160,7 @@ You close the IDE:
 
 ## 🏗 Architecture
 
-> The ecosystem leverages exactly **573** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
+> The ecosystem leverages **1,176** modular skills and **10+** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
 
 ```
 MCP Client (Antigravity / Claude Code / VS Code / Cursor / OpenAI Codex)
@@ -165,10 +179,10 @@ MCP Client (Antigravity / Claude Code / VS Code / Cursor / OpenAI Codex)
 │   • get_agent(id)                        │
 └──────────┬───────────────────────────────┘
            │
-   ┌───────┴───────┐
-   │  skills/ 573  │   ← SKILL.md files from 12 repos
-   │  agents/ 10   │   ← Agent personas (Dual-Core)
-   └───────────────┘
+   ┌───────┴────────┐
+   │ skills/ 1,176  │   ← SKILL.md files from 10 repos + custom
+   │  agents/ 10    │   ← Agent personas (Dual-Core)
+   └────────────────┘
 ```
 
 ---
@@ -200,6 +214,12 @@ MCP Client (Antigravity / Claude Code / VS Code / Cursor / OpenAI Codex)
 | DevSecOps Expert | `ai-security-auditor` | Master SecOps, AI Vetting & environment protection |
 | Code Reviewer | `code-reviewer` | Multi-dimensional scoring review with red flags |
 
+### ⚙️ Low-Level & Systems
+| Agent | ID | Description |
+|-------|-----|-------------|
+| Systems Engineer | `systems-engineer` | Orchestrates C/C++, kernel, embedded, networking, GPU skills |
+| HPC Engineer | `hpc-engineer` | MPI, OpenMP, SLURM, GPU clusters, parallel algorithms |
+
 ---
 
 ## 📚 Skills Library
@@ -220,20 +240,34 @@ MCP Client (Antigravity / Claude Code / VS Code / Cursor / OpenAI Codex)
 | `kinase-interaction-modeling` | 🧬 Bio | DT-Kinase Level 4 CNN, DTI prediction |
 | `drug-target-interaction` | 🧬 Bio | ChEMBL, molecular fingerprints |
 
-### Synced Skills (from 12 repositories)
+### Synced Skills (from 10 repositories)
 
-| Repository | ⭐ | Skills | Focus |
-|------------|-----|--------|-------|
-| VoltAgent/awesome-claude-code-subagents | 16.2K | 100+ | Full-stack, DevOps, ML, meta-orchestration |
-| tech-leads-club/agent-skills | 2K | 20+ | Security-audited, multi-platform |
-| ClawBio/ClawBio | — | 43 | Genomics, PGx, clinical |
-| GPTomics/bioSkills | — | 426 | Proteomics, RNA-seq, single-cell |
-| **K-Dense-AI/scientific-agent-skills** | **—** | **133** | **Drug discovery, scRNA-seq, genomics, ML, clinical, 78 databases, lab automation** |
-| jaechang-hits/SciAgent-Skills | — | 196 | Life sciences |
-| K-Dense-AI/claude-scientific-writer | 1.4K | 10 | Citation, peer review, slides |
-| zhangchenhaobest/academic-research-skills | — | 4 | Deep research, pipeline |
-| guanyang/antigravity-skills | — | 20+ | Python, FastAPI, architecture |
-| rmyndharis/antigravity-skills | — | 20+ | MCP, planning, workflows |
+| Repository | Skills | Focus |
+|------------|--------|-------|
+| ClawBio/ClawBio | 47 | Genomics, PGx, clinical, pharmacogenomics |
+| K-Dense-AI/scientific-agent-skills | 134 | Drug discovery, scRNA-seq, genomics, ML, clinical, 78 databases, lab automation |
+| GPTomics/bioSkills | 438 | Proteomics, RNA-seq, single-cell, spatial transcriptomics, metagenomics, variant calling |
+| jaechang-hits/SciAgent-Skills | 197 | Cell biology, biostatistics, drug discovery, imaging, lab automation |
+| K-Dense-AI/claude-scientific-writer | 81 | Scientific writing, citation, peer review, slides |
+| zhangchenhaobest/academic-research-skills | 4 | Deep research, academic pipeline |
+| VoltAgent/awesome-claude-code-subagents | 100+ | Full-stack, DevOps, ML, meta-orchestration |
+| tech-leads-club/agent-skills | 77 | Security-audited, multi-platform engineering |
+| guanyang/antigravity-skills | 59 | Python, FastAPI, architecture, context management |
+| rmyndharis/antigravity-skills | 305 | MCP, planning, workflows, polyglot programming |
+
+### Custom Skills (low-level & optimization)
+
+| Skill | Category | Description |
+|-------|----------|-------------|
+| `c-systems-programming` | ⚙️ Low-Level | POSIX syscalls, IPC, signals, fork/exec, file descriptors |
+| `embedded-c` | ⚙️ Low-Level | Bare-metal, FreeRTOS/Zephyr, linker scripts, MMIO, DMA |
+| `low-level-debugging` | ⚙️ Low-Level | GDB/LLDB, Valgrind, ASAN/TSAN, perf, strace, core dumps |
+| `compiler-internals` | ⚙️ Low-Level | LLVM passes, IR manipulation, Clang AST, codegen |
+| `gpu-cuda-programming` | ⚙️ Low-Level | CUDA kernels, shared memory, warp shuffles, streams, Nsight |
+| `network-programming-c` | ⚙️ Low-Level | BSD sockets, epoll/kqueue, zero-copy I/O, protocol framing |
+| `kernel-module-dev` | ⚙️ Low-Level | Linux LKMs, char drivers, netfilter hooks, eBPF |
+| `genetic-algorithms` | 🧮 Optimization | GA, GP, DE, CMA-ES, fitness landscape analysis, DEAP |
+| `multi-objective-optimization` | 🧮 Optimization | NSGA-II/III, MOEA/D, Pareto analysis, quality indicators |
 
 ---
 
@@ -391,7 +425,7 @@ The sync script auto-generates `~/.codex/AGENTS.md` with skill catalog instructi
 ```markdown
 # ~/.codex/AGENTS.md
 
-You have access to **573+ curated AI agent skills** via an MCP server.
+You have access to **1,176+ curated AI agent skills** via an MCP server.
 Use the following MCP tools to discover and load skills on demand:
 
 - `list_skills()` — list all available skills
@@ -424,6 +458,53 @@ servers = { skills-server = { command = "/Users/$USER/mcp/.venv/bin/python3", ar
 ```
 
 > **Tip:** Use `codex --help` and the `/init` command inside Codex TUI to scaffold additional `AGENTS.md` files per project.
+
+---
+
+### Option H: Qwen CLI
+
+Qwen Code discovers skills in **two** complementary ways:
+
+#### Method 1: Symlink (passive discovery)
+
+Already created automatically by `sync_skills.sh`:
+
+```bash
+~/.qwen/skills/ → /Users/$USER/mcp/skills/   # (symlink)
+```
+
+#### Method 2: MCP Server via settings.json (recommended)
+
+The sync script auto-generates `~/.qwen/settings.json`. You can also configure it manually:
+
+```json
+{
+  "mcpServers": {
+    "skills-server": {
+      "command": "/Users/$USER/mcp/.venv/bin/python3",
+      "args": ["/Users/$USER/mcp/server/mcp_skills_server.py"],
+      "env": {
+        "PYTHONPATH": "/Users/$USER/mcp/server"
+      }
+    }
+  }
+}
+```
+
+For project-level configuration, create `.qwen/settings.json` in your repo root with the same format.
+
+> **Do I need to activate MCP manually?** No. Qwen CLI loads all servers from `~/.qwen/settings.json` automatically on startup. Just run `qwen` and the skills-server will be available immediately. No extra steps needed.
+
+#### Verification
+
+```bash
+# Option A: CLI command to add/verify
+qwen mcp add --scope user skills-server /Users/$USER/mcp/.venv/bin/python3 /Users/$USER/mcp/server/mcp_skills_server.py
+qwen mcp list                    # verify server is registered
+
+# Option B: Inside Qwen TUI
+/mcp                             # list connected servers and tools
+```
 
 ---
 
