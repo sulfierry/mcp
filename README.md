@@ -2,6 +2,8 @@
 
 A local **Model Context Protocol (MCP)** server built on a **Dual-Core Architecture**: combining **Autonomous Deep Research** with **State-of-the-Art (SOTA) Engineering**. It exposes **573 curated AI agent skills** as callable tools — covering bioinformatics, drug discovery, scientific writing, polyglot algorithms (C++/Python), and complete agentic orchestration — all running on `localhost` for privacy and low latency.
 
+> **Supported IDEs:** Antigravity (Gemini) · Claude Code CLI · Claude Desktop · VS Code (Copilot) · Cursor · **OpenAI Codex CLI** · Any MCP-compatible client (HTTP/SSE)
+
 ## 📊 At a Glance
 
 | Metric | Value |
@@ -52,7 +54,7 @@ The script runs **4 phases** automatically:
 |-------|--------------|
 | **1. Sync** | Clones 12 repos and copies skills into `skills/` |
 | **2. Merge** | Copies agents from `agents/` → `skills/` for universal discovery |
-| **3. Symlinks** | Creates links for Antigravity, Claude Code CLI, and VS Code Copilot |
+| **3. Symlinks** | Creates links for Antigravity, Claude Code CLI, VS Code Copilot, and **OpenAI Codex CLI** |
 | **4. Catalog** | Rebuilds `skills_index.json` with all indexed skills |
 
 > **Do I need to run `sync_skills.sh`?** Only the **first time** (to populate `skills/`) or when you want to update. If `skills/` already contains 573 folders, **you don't need to run it again**.
@@ -147,7 +149,7 @@ You close the IDE:
 > The ecosystem leverages exactly **573** modular skills and **10** specialized agent personas to dynamically respond to queries via the Dual-Core engine.
 
 ```
-MCP Client (Antigravity / Claude Code / VS Code / Cursor)
+MCP Client (Antigravity / Claude Code / VS Code / Cursor / OpenAI Codex)
         │
         ▼ (stdio or SSE)
 ┌──────────────────────────────────────────┐
@@ -367,6 +369,61 @@ Add to `~/.cursor/mcp.json`:
   }
 }
 ```
+
+---
+
+### Option G: OpenAI Codex CLI
+
+The Codex CLI uses **3 integration points**, all auto-configured by `sync_skills.sh`:
+
+#### Method 1: Symlink (passive discovery)
+
+Already created automatically by `sync_skills.sh`:
+
+```bash
+~/.codex/skills/ → /Users/$USER/mcp/skills/   # (symlink)
+```
+
+#### Method 2: AGENTS.md (global instructions)
+
+The sync script auto-generates `~/.codex/AGENTS.md` with skill catalog instructions. You can customize it:
+
+```markdown
+# ~/.codex/AGENTS.md
+
+You have access to **573+ curated AI agent skills** via an MCP server.
+Use the following MCP tools to discover and load skills on demand:
+
+- `list_skills()` — list all available skills
+- `search_skills(query)` — search by keyword
+- `get_skill(id)` — get full SKILL.md content
+- `list_agents()` — list agent personas
+- `search_agents(query)` — search agents by keyword
+
+Local skills directory: `~/.codex/skills/`
+```
+
+#### Method 3: MCP Server via config.toml (recommended)
+
+The sync script auto-appends MCP configuration to `~/.codex/config.toml`. You can also configure it manually:
+
+```toml
+# ~/.codex/config.toml
+
+[mcp]
+servers = { skills-server = { command = "/Users/$USER/mcp/.venv/bin/python3", args = ["/Users/$USER/mcp/server/mcp_skills_server.py"] } }
+```
+
+For project-level configuration, create `.codex/config.toml` in your repo root:
+
+```toml
+# .codex/config.toml (project-level)
+
+[mcp]
+servers = { skills-server = { command = "/Users/$USER/mcp/.venv/bin/python3", args = ["/Users/$USER/mcp/server/mcp_skills_server.py"] } }
+```
+
+> **Tip:** Use `codex --help` and the `/init` command inside Codex TUI to scaffold additional `AGENTS.md` files per project.
 
 ---
 

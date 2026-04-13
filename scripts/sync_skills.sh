@@ -39,7 +39,8 @@ done
 # Curated skill names (space-separated strings for portability)
 CURATED_GUANYANG="python-pro fastapi-pro async-python-patterns test-driven-development systematic-debugging architecture-patterns api-design-principles ai-engineer prompt-engineering-patterns security-auditor code-review-ai-ai-review mcp-builder skill-creator planning-with-files writing-plans executing-plans subagent-driven-development"
 
-CURATED_BIO="structural-biology proteomics chemoinformatics machine-learning pathway-analysis data-visualization database-access workflow-management differential-expression single-cell variant-calling sequence-io read-alignment read-qc"
+# Note: GPTomics/bioSkills was removed — 438 skills exist but none are importable
+# due to nested directory structure (category/subcategory/SKILL.md).
 
 CURATED_WRITING="scientific-schematics research-lookup peer-review citation-management clinical-reports research-grants scientific-slides latex-posters hypothesis-generation market-research-reports"
 
@@ -55,18 +56,17 @@ is_curated() {
 }
 
 if $LIST_ONLY; then
-    echo -e "${CYAN}📚 Available skill sources (12 repos):${NC}"
+    echo -e "${CYAN}📚 Available skill sources (10 repos):${NC}"
     echo -e ""
     echo -e "  ${BLUE}── Bioinformatics & Science ──${NC}"
-    echo -e "  ${GREEN}•${NC} ClawBio/ClawBio (skills/)"
-    echo -e "  ${GREEN}•${NC} GPTomics/bioSkills (.)"
-    echo -e "  ${GREEN}•${NC} K-Dense-AI/scientific-agent-skills (scientific-skills/) ★ 133 scientific skills"
-    echo -e "  ${GREEN}•${NC} jaechang-hits/SciAgent-Skills (skills/)"
+    echo -e "  ${GREEN}•${NC} ClawBio/ClawBio (skills/) ★ 47 bio/pharma skills"
+    echo -e "  ${GREEN}•${NC} K-Dense-AI/scientific-agent-skills (scientific-skills/) ★ 134 scientific skills"
+    echo -e "  ${GREEN}•${NC} GPTomics/bioSkills (nested scan) ★ 438 bioinformatics skills"
+    echo -e "  ${GREEN}•${NC} jaechang-hits/SciAgent-Skills (nested scan) ★ 197 scientific skills"
     echo -e ""
     echo -e "  ${BLUE}── Scientific Writing ──${NC}"
     echo -e "  ${GREEN}•${NC} K-Dense-AI/claude-scientific-writer (skills/)"
     echo -e "  ${GREEN}•${NC} zhangchenhaobest/academic-research-skills (.)"
-    echo -e "  ${GREEN}•${NC} InternScience/Awesome-Scientific-Skills (skills/)"
     echo -e ""
     echo -e "  ${BLUE}── Programming & DevOps ──${NC}"
     echo -e "  ${GREEN}•${NC} VoltAgent/awesome-claude-code-subagents ⭐16K (categories/)"
@@ -155,18 +155,64 @@ clone_and_sync() {
     echo ""
 }
 
+# clone_and_sync_nested — For repos with nested structure (category/skill/SKILL.md)
+# Recursively finds all SKILL.md files and imports using the leaf directory name.
+clone_and_sync_nested() {
+    local name="$1"
+    local url="$2"
+    local subdir="$3"
+
+    local repo_dir="$TMP_DIR/$(echo "$name" | tr '/' '_')"
+
+    echo -e "${BLUE}📦 Cloning $name (nested scan)...${NC}"
+
+    if [[ -d "$repo_dir" ]]; then
+        (cd "$repo_dir" && git pull --quiet 2>/dev/null) || true
+    else
+        git clone --depth 1 --quiet "$url" "$repo_dir" 2>/dev/null || {
+            echo -e "  ${YELLOW}⚠ Failed to clone $name (skipping)${NC}"
+            return 0
+        }
+    fi
+
+    local skills_src="$repo_dir/$subdir"
+
+    if [[ ! -d "$skills_src" ]]; then
+        echo -e "  ${YELLOW}⚠ Skills directory not found: $subdir (skipping)${NC}"
+        return 0
+    fi
+
+    # Recursively find all SKILL.md files at any depth
+    while IFS= read -r skill_md; do
+        local skill_dir
+        skill_dir="$(dirname "$skill_md")"
+        local skill_name
+        skill_name="$(basename "$skill_dir")"
+
+        # Skip non-skill directories
+        case "$skill_name" in
+            .git|node_modules|__pycache__|bioskills-installer|.github|assets|templates|tests|docs|examples|scripts) continue ;;
+        esac
+
+        sync_skill "$skill_dir" "$skill_name" || true
+    done < <(find "$skills_src" -name "SKILL.md" -type f 2>/dev/null)
+
+    echo ""
+}
+
 # Sync from each source with appropriate curated list
 # -- Bioinformatics & Science --
 clone_and_sync "ClawBio/ClawBio" "https://github.com/ClawBio/ClawBio.git" "skills" ""
-clone_and_sync "GPTomics/bioSkills" "https://github.com/GPTomics/bioSkills.git" "." "$CURATED_BIO"
 # Note: claude-scientific-skills was renamed to scientific-agent-skills (same repo)
 clone_and_sync "K-Dense-AI/scientific-agent-skills" "https://github.com/K-Dense-AI/scientific-agent-skills.git" "scientific-skills" ""
-clone_and_sync "jaechang-hits/SciAgent-Skills" "https://github.com/jaechang-hits/SciAgent-Skills.git" "skills" ""
+# Nested repos: these use category/skill/SKILL.md structure
+clone_and_sync_nested "GPTomics/bioSkills" "https://github.com/GPTomics/bioSkills.git" "."
+clone_and_sync_nested "jaechang-hits/SciAgent-Skills" "https://github.com/jaechang-hits/SciAgent-Skills.git" "skills"
 
 # -- Scientific Writing --
 clone_and_sync "K-Dense-AI/claude-scientific-writer" "https://github.com/K-Dense-AI/claude-scientific-writer.git" "skills" "$CURATED_WRITING"
 clone_and_sync "zhangchenhaobest/academic-research-skills" "https://github.com/zhangchenhaobest/academic-research-skills.git" "." "$CURATED_ACADEMIC"
-clone_and_sync "InternScience/Awesome-Scientific-Skills" "https://github.com/InternScience/Awesome-Scientific-Skills.git" "skills" ""
+# Removed: InternScience/Awesome-Scientific-Skills (git submodules not initialized — 0 files)
 
 # -- Programming & DevOps --
 # VoltAgent: 100+ subagents in categories/NN-topic/agent.md (16K+ stars)
@@ -288,6 +334,52 @@ create_symlink "$SKILLS_DIR" "$HOME/.claude/skills" "Claude Code CLI"
 # Uses .github/skills/ in the MCP project itself for dev-time discovery
 create_symlink "$SKILLS_DIR" "$PROJECT_DIR/.github/skills" "VS Code Copilot (project)"
 
+# OpenAI Codex CLI
+# Codex uses AGENTS.md for instructions and config.toml for MCP servers.
+# We symlink skills/ into ~/.codex/ so Codex can reference them,
+# and create an AGENTS.md that points to the skill catalog.
+CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
+mkdir -p "$CODEX_HOME"
+create_symlink "$SKILLS_DIR" "$CODEX_HOME/skills" "OpenAI Codex CLI"
+
+# Auto-generate ~/.codex/AGENTS.md if it doesn't exist yet
+if [[ ! -f "$CODEX_HOME/AGENTS.md" ]]; then
+    cat > "$CODEX_HOME/AGENTS.md" << 'AGENTSEOF'
+# Skills MCP Server — Codex Integration
+
+You have access to **573+ curated AI agent skills** via an MCP server.
+Use the following MCP tools to discover and load skills on demand:
+
+- `list_skills()` — list all available skills
+- `search_skills(query)` — search by keyword (e.g., "protein docking")
+- `get_skill(id)` — get full SKILL.md content
+- `list_agents()` — list agent personas
+- `search_agents(query)` — search agents by keyword
+
+Skills cover: bioinformatics, drug discovery, scientific writing,
+molecular dynamics, DevOps, full-stack engineering, and more.
+
+Local skills directory: `~/.codex/skills/`
+AGENTSEOF
+    echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — AGENTS.md created"
+else
+    echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — AGENTS.md already exists"
+fi
+
+# Auto-generate ~/.codex/config.toml MCP section if not configured
+if [[ -f "$CODEX_HOME/config.toml" ]] && grep -q 'skills-server' "$CODEX_HOME/config.toml" 2>/dev/null; then
+    echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — MCP already configured in config.toml"
+else
+    # Append MCP config (won't overwrite existing content)
+    cat >> "$CODEX_HOME/config.toml" << MCPEOF
+
+# ── Skills MCP Server (auto-generated by sync_skills.sh) ──
+[mcp]
+servers = { skills-server = { command = "$PROJECT_DIR/.venv/bin/python3", args = ["$PROJECT_DIR/server/mcp_skills_server.py"] } }
+MCPEOF
+    echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — MCP server added to config.toml"
+fi
+
 echo ""
 
 # ─── Phase 4: Generate catalog ────────────────────────────────────────────────
@@ -310,6 +402,7 @@ echo -e "${CYAN}📌 Skills are now available in:${NC}"
 echo -e "  ${GREEN}•${NC} Antigravity (Gemini):  ~/.gemini/antigravity/skills/"
 echo -e "  ${GREEN}•${NC} Claude Code CLI:       ~/.claude/skills/"
 echo -e "  ${GREEN}•${NC} VS Code Copilot:       .github/skills/ (this project)"
+echo -e "  ${GREEN}•${NC} OpenAI Codex CLI:      ~/.codex/skills/ + AGENTS.md + config.toml"
 echo -e ""
 echo -e "  ${BLUE}Tip:${NC} For MCP Server (recommended), run:"
 echo -e "    ${CYAN}claude mcp add --scope user skills-server $PROJECT_DIR/.venv/bin/python3 $PROJECT_DIR/server/mcp_skills_server.py${NC}"
