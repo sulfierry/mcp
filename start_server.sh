@@ -10,10 +10,12 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VENV_DIR="$SCRIPT_DIR/.venv"
+PYTHON="$VENV_DIR/bin/python3"
 
 # Colors
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
 NC='\033[0m'
 
 # Create venv if needed
@@ -22,9 +24,16 @@ if [[ ! -d "$VENV_DIR" ]]; then
     python3 -m venv "$VENV_DIR"
 fi
 
-# Activate and install deps
-source "$VENV_DIR/bin/activate"
-pip install -q -r "$SCRIPT_DIR/server/requirements.txt" 2>/dev/null
+# Ensure the venv python exists
+if [[ ! -x "$PYTHON" ]]; then
+    echo -e "${YELLOW}⚠ Venv python not found at $PYTHON${NC}"
+    echo -e "${CYAN}Recreating virtual environment...${NC}"
+    rm -rf "$VENV_DIR"
+    python3 -m venv "$VENV_DIR"
+fi
+
+# Install deps if needed (using venv pip directly)
+"$VENV_DIR/bin/pip" install -q -r "$SCRIPT_DIR/server/requirements.txt" 2>/dev/null || true
 
 # Parse args
 TRANSPORT="stdio"
@@ -37,8 +46,8 @@ fi
 
 echo -e "${GREEN}🚀 Starting MCP Skills Server (${TRANSPORT})${NC}"
 
-# Run server
+# Run server using venv python directly (no source activate needed)
 cd "$SCRIPT_DIR"
-PYTHONPATH="$SCRIPT_DIR/server" python server/mcp_skills_server.py \
+PYTHONPATH="$SCRIPT_DIR/server" exec "$PYTHON" server/mcp_skills_server.py \
     --transport "$TRANSPORT" \
     --port "$PORT"
