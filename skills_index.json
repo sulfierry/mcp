@@ -342,6 +342,15 @@
     "source": "custom"
   },
   {
+    "id": "applied-mathematics",
+    "name": "Applied Mathematics",
+    "description": "Pure and applied mathematics for engineering and science. Calculus, real/complex analysis, abstract algebra, topology, probability theory, information theory, dynamical systems, and mathematical proof techniques.",
+    "path": "applied-mathematics/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "arboreto",
     "name": "arboreto",
     "description": "Infer gene regulatory networks (GRNs) from gene expression data using scalable algorithms (GRNBoost2, GENIE3). Use when analyzing transcriptomics data (bulk RNA-seq, single-cell RNA-seq) to identify transcription factor-target gene relationships and regulatory interactions. Supports distributed computation for large-scale datasets.",
@@ -3619,6 +3628,15 @@
     "source": "custom"
   },
   {
+    "id": "finite-element-methods",
+    "name": "Finite Element Methods",
+    "description": "Finite Element Method (FEM) for engineering and science. Weak formulations, mesh generation, element types, assembly, solvers, error estimation, and production FEM with FEniCSx, Firedrake, and deal.II.",
+    "path": "finite-element-methods/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
     "id": "firmware-analyst",
     "name": "firmware-analyst",
     "description": "Expert firmware analyst specializing in embedded systems, IoT",
@@ -6640,6 +6658,15 @@
     "name": "bio-atac-seq-nucleosome-positioning",
     "description": "Extract nucleosome positions from ATAC-seq data using NucleoATAC, ATACseqQC, and fragment analysis. Use when analyzing chromatin organization, identifying nucleosome-free regions at promoters, or characterizing nucleosome occupancy patterns from ATAC-seq fragment size distributions.",
     "path": "nucleosome-positioning/SKILL.md",
+    "category": "",
+    "tags": [],
+    "source": "custom"
+  },
+  {
+    "id": "numerical-methods",
+    "name": "Numerical Methods",
+    "description": "Numerical computing and scientific computation. ODE/PDE solvers, linear algebra, interpolation, quadrature, root finding, finite differences, spectral methods, and stability analysis using SciPy, NumPy, and JAX.",
+    "path": "numerical-methods/SKILL.md",
     "category": "",
     "tags": [],
     "source": "custom"
