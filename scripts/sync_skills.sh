@@ -292,7 +292,7 @@ if [[ -d "$AGENTS_DIR" ]]; then
     fi
 fi
 
-# ─── Phase 3: IDE Symlinks ────────────────────────────────────────────────────
+# ─── Phase 3a: IDE Symlinks (passive skill discovery) ─────────────────────────
 echo ""
 echo -e "${CYAN}🔗 Setting up IDE symlinks...${NC}"
 
@@ -301,21 +301,17 @@ create_symlink() {
     local link_path="$2"
     local ide_name="$3"
 
-    # Create parent directory if needed
     mkdir -p "$(dirname "$link_path")"
 
-    # Check if already correctly linked
     if [[ -L "$link_path" ]]; then
         local current_target
-        current_target="$(readlink "$link_path")"
+        current_target="$(readlink "$link_path" 2>/dev/null || stat -f '%Y' "$link_path" 2>/dev/null)"
         if [[ "$current_target" == "$target" ]]; then
             echo -e "  ${GREEN}✓${NC} $ide_name — already linked"
             return 0
         fi
-        # Stale symlink → remove and recreate
         rm "$link_path"
     elif [[ -d "$link_path" ]]; then
-        # Real directory exists → skip (don't overwrite user data)
         echo -e "  ${YELLOW}⚠${NC} $ide_name — skipped (real directory exists at $link_path)"
         return 0
     fi
@@ -324,23 +320,121 @@ create_symlink() {
     echo -e "  ${GREEN}✓${NC} $ide_name — linked → $link_path"
 }
 
-# Google Antigravity (Gemini)
 create_symlink "$SKILLS_DIR" "$HOME/.gemini/antigravity/skills" "Antigravity (Gemini)"
-
-# Claude Code CLI
 create_symlink "$SKILLS_DIR" "$HOME/.claude/skills" "Claude Code CLI"
-
-# VS Code — GitHub Copilot Agent Skills
-# Uses .github/skills/ in the MCP project itself for dev-time discovery
 create_symlink "$SKILLS_DIR" "$PROJECT_DIR/.github/skills" "VS Code Copilot (project)"
+create_symlink "$SKILLS_DIR" "${CODEX_HOME:-$HOME/.codex}/skills" "OpenAI Codex CLI"
+create_symlink "$SKILLS_DIR" "${QWEN_HOME:-$HOME/.qwen}/skills" "Qwen CLI"
 
-# OpenAI Codex CLI
-# Codex uses AGENTS.md for instructions and config.toml for MCP servers.
-# We symlink skills/ into ~/.codex/ so Codex can reference them,
-# and create an AGENTS.md that points to the skill catalog.
+# ─── Phase 3b: MCP Server Config (all IDEs) ────────────────────────────────────
+echo ""
+echo -e "${CYAN}⚙️  Configuring MCP server for all IDEs...${NC}"
+
+MCP_CMD="$PROJECT_DIR/.venv/bin/python3"
+MCP_ARG="$PROJECT_DIR/server/mcp_skills_server.py"
+MCP_ENV_PP="$PROJECT_DIR/server"
+
+# Generic: inject mcpServers into a JSON config file
+# If file doesn't exist, creates it. If it exists, adds mcpServers key via python.
+inject_mcp_json() {
+    local config_file="$1"
+    local ide_name="$2"
+
+    mkdir -p "$(dirname "$config_file")"
+
+    if [[ -f "$config_file" ]] && grep -q 'skills-server' "$config_file" 2>/dev/null; then
+        echo -e "  ${GREEN}✓${NC} $ide_name — MCP already configured"
+        return 0
+    fi
+
+    if [[ ! -f "$config_file" ]]; then
+        # Create new file
+        cat > "$config_file" << JSONEOF
+{
+  "mcpServers": {
+    "skills-server": {
+      "command": "$MCP_CMD",
+      "args": ["$MCP_ARG"],
+      "env": {
+        "PYTHONPATH": "$MCP_ENV_PP"
+      }
+    }
+  }
+}
+JSONEOF
+        echo -e "  ${GREEN}✓${NC} $ide_name — config created with MCP server"
+    else
+        # File exists but no skills-server — inject via python
+        python3 -c "
+import json, sys
+try:
+    with open('$config_file', 'r') as f:
+        data = json.load(f)
+except (json.JSONDecodeError, FileNotFoundError):
+    data = {}
+if 'mcpServers' not in data:
+    data['mcpServers'] = {}
+data['mcpServers']['skills-server'] = {
+    'command': '$MCP_CMD',
+    'args': ['$MCP_ARG'],
+    'env': {'PYTHONPATH': '$MCP_ENV_PP'}
+}
+with open('$config_file', 'w') as f:
+    json.dump(data, f, indent=2)
+" 2>/dev/null && \
+            echo -e "  ${GREEN}✓${NC} $ide_name — MCP server injected into existing config" || \
+            echo -e "  ${YELLOW}⚠${NC} $ide_name — could not inject (edit manually: $config_file)"
+    fi
+}
+
+# 1. Google Antigravity (Gemini)
+inject_mcp_json "$HOME/.gemini/settings.json" "Antigravity (Gemini)"
+
+# 2. Claude Code CLI — uses `claude mcp add` (can't inject, explain how)
+if command -v claude &>/dev/null; then
+    if claude mcp list 2>/dev/null | grep -q 'skills-server'; then
+        echo -e "  ${GREEN}✓${NC} Claude Code CLI — MCP already registered"
+    else
+        claude mcp add --scope user skills-server "$MCP_CMD" "$MCP_ARG" 2>/dev/null && \
+            echo -e "  ${GREEN}✓${NC} Claude Code CLI — MCP server registered via CLI" || \
+            echo -e "  ${YELLOW}⚠${NC} Claude Code CLI — run manually: claude mcp add --scope user skills-server $MCP_CMD $MCP_ARG"
+    fi
+else
+    echo -e "  ${YELLOW}⚠${NC} Claude Code CLI — not installed (skip). Install: npm install -g @anthropic-ai/claude-code"
+fi
+
+# 3. Claude Desktop
+CLAUDE_DESKTOP_CONFIG="$HOME/Library/Application Support/Claude/claude_desktop_config.json"
+inject_mcp_json "$CLAUDE_DESKTOP_CONFIG" "Claude Desktop"
+
+# 4. VS Code — project-level .vscode/mcp.json
+VSCODE_MCP="$PROJECT_DIR/.vscode/mcp.json"
+mkdir -p "$PROJECT_DIR/.vscode"
+if [[ -f "$VSCODE_MCP" ]] && grep -q 'skills-server' "$VSCODE_MCP" 2>/dev/null; then
+    echo -e "  ${GREEN}✓${NC} VS Code — MCP already configured"
+else
+    cat > "$VSCODE_MCP" << VSEOF
+{
+  "servers": {
+    "skills-server": {
+      "command": "$MCP_CMD",
+      "args": ["$MCP_ARG"],
+      "env": {
+        "PYTHONPATH": "$MCP_ENV_PP"
+      }
+    }
+  }
+}
+VSEOF
+    echo -e "  ${GREEN}✓${NC} VS Code — .vscode/mcp.json created"
+fi
+
+# 5. Cursor
+inject_mcp_json "$HOME/.cursor/mcp.json" "Cursor"
+
+# 6. OpenAI Codex CLI
 CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 mkdir -p "$CODEX_HOME"
-create_symlink "$SKILLS_DIR" "$CODEX_HOME/skills" "OpenAI Codex CLI"
 
 # Auto-generate ~/.codex/AGENTS.md if it doesn't exist yet
 if [[ ! -f "$CODEX_HOME/AGENTS.md" ]]; then
@@ -375,40 +469,15 @@ else
 
 # ── Skills MCP Server (auto-generated by sync_skills.sh) ──
 [mcp]
-servers = { skills-server = { command = "$PROJECT_DIR/.venv/bin/python3", args = ["$PROJECT_DIR/server/mcp_skills_server.py"] } }
+servers = { skills-server = { command = "$MCP_CMD", args = ["$MCP_ARG"] } }
 MCPEOF
     echo -e "  ${GREEN}✓${NC} OpenAI Codex CLI — MCP server added to config.toml"
 fi
 
-# Qwen CLI
-# Qwen Code uses ~/.qwen/settings.json with mcpServers for MCP integration.
+# 7. Qwen CLI
 QWEN_HOME="${QWEN_HOME:-$HOME/.qwen}"
 mkdir -p "$QWEN_HOME"
-create_symlink "$SKILLS_DIR" "$QWEN_HOME/skills" "Qwen CLI"
-
-# Auto-generate ~/.qwen/settings.json MCP section if not configured
-if [[ -f "$QWEN_HOME/settings.json" ]] && grep -q 'skills-server' "$QWEN_HOME/settings.json" 2>/dev/null; then
-    echo -e "  ${GREEN}✓${NC} Qwen CLI — MCP already configured in settings.json"
-else
-    if [[ ! -f "$QWEN_HOME/settings.json" ]]; then
-        cat > "$QWEN_HOME/settings.json" << QWENEOF
-{
-  "mcpServers": {
-    "skills-server": {
-      "command": "$PROJECT_DIR/.venv/bin/python3",
-      "args": ["$PROJECT_DIR/server/mcp_skills_server.py"],
-      "env": {
-        "PYTHONPATH": "$PROJECT_DIR/server"
-      }
-    }
-  }
-}
-QWENEOF
-        echo -e "  ${GREEN}✓${NC} Qwen CLI — settings.json created with MCP server"
-    else
-        echo -e "  ${YELLOW}⚠${NC} Qwen CLI — settings.json exists but missing skills-server. Add manually."
-    fi
-fi
+inject_mcp_json "$QWEN_HOME/settings.json" "Qwen CLI"
 
 echo ""
 
