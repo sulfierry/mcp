@@ -513,12 +513,30 @@ qwen mcp list                    # verify server is registered
 For clients that support SSE/HTTP transport:
 
 ```bash
-# Start the HTTP server
+# Start the HTTP server manually
 source .venv/bin/activate
 PYTHONPATH=server python3 server/mcp_skills_server.py --transport sse --port 8765
 ```
 
-Server available at `http://localhost:8765/sse`. Configure your MCP client with:
+#### Running as a systemd background service (Recommended for SSE)
+
+We strongly recommend running the SSE server as a background daemon so it's always available for your IDEs:
+
+```bash
+# Check status
+systemctl --user status mcp-skills-server
+
+# Restart (after code changes to skills)
+systemctl --user restart mcp-skills-server
+
+# View logs in real-time
+journalctl --user -u mcp-skills-server -f
+
+# Stop the server
+systemctl --user stop mcp-skills-server
+```
+
+Server will be available at `http://localhost:8765/sse`. Configure your MCP client with:
 
 ```json
 {
@@ -529,6 +547,21 @@ Server available at `http://localhost:8765/sse`. Configure your MCP client with:
   }
 }
 ```
+
+Or, for Antigravity/VS Code, use the `npx mcp-remote` bridge:
+
+```json
+{
+  "mcpServers": {
+    "skills-server": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "http://localhost:8765/sse"],
+      "env": {}
+    }
+  }
+}
+```
+
 
 ---
 

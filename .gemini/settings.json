@@ -2,8 +2,12 @@
   "mcpServers": {
     "skills-server": {
       "$typeName": "exa.cascade_plugins_pb.CascadePluginCommandTemplate",
-      "command": "bash",
-      "args": ["/home/leon/mcp/start_server.sh"],
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://localhost:8765/sse"
+      ],
       "env": {}
     }
   }
