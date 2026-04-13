@@ -217,7 +217,9 @@ def main():
         print(f"   🌐 HTTP: http://{args.host}:{args.port}", file=sys.stderr)
         mcp.run(transport="sse", host=args.host, port=args.port)
     else:
-        mcp.run(transport="stdio")
+        # show_banner=False is critical: FastMCP's Rich banner pollutes stdout,
+        # breaking JSON-RPC communication in stdio transport mode.
+        mcp.run(transport="stdio", show_banner=False)
 
 
 if __name__ == "__main__":

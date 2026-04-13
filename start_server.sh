@@ -32,8 +32,12 @@ if [[ ! -x "$PYTHON" ]]; then
     python3 -m venv "$VENV_DIR"
 fi
 
-# Install deps if needed (using venv pip directly)
-"$VENV_DIR/bin/pip" install -q -r "$SCRIPT_DIR/server/requirements.txt" >/dev/null 2>&1 || true
+# Install deps only if missing (skip pip entirely when already installed to avoid
+# IDE handshake timeout — pip check adds ~2s, import check adds ~0.1s)
+if ! "$PYTHON" -c "import fastmcp, yaml" 2>/dev/null; then
+    echo -e "${CYAN}📦 Installing dependencies...${NC}" >&2
+    "$VENV_DIR/bin/pip" install -q -r "$SCRIPT_DIR/server/requirements.txt" >/dev/null 2>&1 || true
+fi
 
 # Parse args
 TRANSPORT="stdio"
