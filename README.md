@@ -4,12 +4,32 @@ Local **Model Context Protocol** server exposing **1,270+ curated skills** and *
 
 Default support: **Claude Code**, **GitHub Copilot CLI**, **OpenAI Codex CLI** (plus VS Code, Cursor, Claude Desktop, Antigravity, Qwen).
 
+## Why this exists
+
+Using skills **directly from upstream repos** (cloning `awesome-claude-subagents`,
+`scientific-agent-skills`, `bioSkills`, etc. and symlinking into `~/.claude/skills/`)
+looks free but has a real cost: **every session loads the full skill list into
+context as a system reminder**. With 1,270 skills that is **~32 KB / 8-10k
+tokens per session**, paid whether you use any skill or not.
+
+This repo wraps those skills in a thin MCP server that exposes them **lazily**:
+3 tool schemas (~270 tokens) at session start, full SKILL.md bodies only when
+searched or fetched. The numbers:
+
+| Approach | Cost per session | Discovery |
+|----------|------------------|-----------|
+| Raw symlinks into `~/.claude/skills/` | **~8-10k tokens** (full list dumped) | eager |
+| This MCP server (default) | **~270 tokens** (3 tool schemas) | lazy on-demand |
+| MCP + scope filter (e.g. `mol` = 228 skills) | **~270 tokens**, narrower catalog | lazy on-demand |
+
 ## Highlights
 
-- **1,270+ skills**, **9 agents**, **56 categories** (auto-tagged)
-- **Token-efficient**: default `list_skills()` payload ≈ 4 KB (baseline was 483 KB, -99 %)
-- **Project scopes**: filter skills per working dir (`code` / `mol` / `sci`) — activate with `scope <name>`
-- **Namespace-merged API**: 6 tools handle both skills and agents via `kind` filter
+- **1,270+ skills** from 10+ curated upstream repos (bio, scientific writing, engineering, ML/LLM)
+- **~30× cheaper** per session than raw upstream skill symlinks (measured)
+- **3 consolidated tools** — down from 6 (schema budget: 500 tok → 270 tok)
+- **Markdown + prefix-grouped output** — `list_skills(format='md')` is 70 % smaller than JSON
+- **Project scopes**: per-directory skill filtering (`code` / `mol` / `sci`)
+- **Session LRU cache** + budget regression tests (`tests/test_token_budget.py`)
 - **Transport**: stdio + SSE (HTTP)
 
 ## Install
@@ -21,7 +41,14 @@ pip install fastmcp pyyaml
 ./scripts/sync_skills.sh          # first-time: pulls curated skills from 10+ sources
 ```
 
-Sync is idempotent and re-runnable to pull updates. See [`docs/SYNC.md`](docs/SYNC.md) for source list, curation, and opt-out flags.
+The sync script is **token-optimized by default**: it does NOT create
+`~/.claude/skills/` / `~/.codex/skills/` symlinks, because those dirs cause
+the IDE to dump the full 1,270-skill list into every session. Opt in via
+`NATIVE_SKILL_WHITELIST="graphify,foo"` if you need specific skills reachable
+through `/slash` commands, or `ENABLE_NATIVE_SKILL_SYMLINKS=1` to restore
+legacy all-skills behavior.
+
+Sync is idempotent and re-runnable to pull updates. See [`docs/SYNC.md`](docs/SYNC.md) and [`docs/TOKEN-OPTIMIZATION.md`](docs/TOKEN-OPTIMIZATION.md) for the full trade-off and all opt-out flags.
 
 ## Register with your assistant
 
@@ -56,21 +83,24 @@ Or let `sync_skills.sh` configure all of them automatically (VS Code, Cursor, Qw
 
 ## Usage
 
-After registering, the assistant gains 6 tools:
+After registering, the assistant gains **3 consolidated tools**:
 
 | Tool | Purpose |
 |------|---------|
-| `list_skills(limit, offset, category, kind, compact)` | Paginated catalog |
-| `list_categories(kind)` | Counts per category |
-| `search_skills(query, limit, kind, compact)` | Keyword search, merged skill+agent |
-| `get_skill(skill_id, section, kind)` | Fetch SKILL.md (optionally by H2 section) |
-| `list_sections(skill_id, kind)` | H2 titles for cheap TOC |
-| `get_skill_scripts(skill_id, kind)` | Helper scripts from skill's `scripts/` subdir |
+| `list_skills(limit, offset, category, kind, compact, format, group_by_prefix, include_categories, pretty)` | Paginated catalog with optional markdown output, prefix grouping, and category counts |
+| `search_skills(query, limit, kind, compact, format, pretty)` | Keyword search across skills + agents |
+| `get_skill(skill_id, section, kind, mode, verbose, keep_frontmatter)` | Fetch skill body. `mode='outline'` returns H2 titles only (TOC); `mode='scripts'` returns helper scripts |
 
 Typical flow inside the assistant:
 ```
-search_skills("molecular docking") → get_skill("diffdock", section="Usage")
+search_skills("molecular docking", format="md")
+  → get_skill("diffdock", mode="outline")     # cheap: just section titles
+  → get_skill("diffdock", section="Usage")    # one H2 block
 ```
+
+Everything produced is minified JSON by default (`pretty=True` to indent).
+Resources `skills://catalog` and `skills://categories` are also available for
+clients that auto-subscribe.
 
 ## Project scopes
 
@@ -121,7 +151,7 @@ mcp/
 | [`docs/AGENTS.md`](docs/AGENTS.md) | Agent personas, `kind` filter |
 | [`docs/SYNC.md`](docs/SYNC.md) | Source repositories, sync phases, opt-out flags |
 | [`docs/EXTERNAL-MCPS.md`](docs/EXTERNAL-MCPS.md) | Vendored domain servers (pdb, uniprot, sabdab, research, ...) |
-| [`docs/TOKEN-OPTIMIZATION.md`](docs/TOKEN-OPTIMIZATION.md) | How default payload shrank 99 % |
+| [`docs/TOKEN-OPTIMIZATION.md`](docs/TOKEN-OPTIMIZATION.md) | All 20+ optimizations, measured savings vs raw upstream, budget regression tests |
 
 ## License
 
