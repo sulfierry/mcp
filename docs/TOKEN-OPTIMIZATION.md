@@ -107,6 +107,36 @@ Further reductions layered in this pass:
 - `get_skill` drops `path`/`tags`/`source` fields unless `verbose=True`
 - Session LRU cache (FIFO, 256 entries) on `list_skills`/`search_skills`/`get_skill` — eliminates re-serialization on pagination or repeated queries
 
+## Biggest single win: skip native IDE skill symlinks
+
+Native skill discovery (`~/.claude/skills/`, `~/.codex/skills/`, etc.) injects
+the **entire skill list** into every session's system reminder. For 1,270
+skills that is ~32 KB / **~8-10k tokens per session**, dwarfing every other
+optimization in this document.
+
+MCP exposes the same skills lazily via 3 tool schemas (~270 tokens). Native
+symlinks are only needed for slash-command triggers like `/graphify`.
+
+**Default**: native IDE symlinks OFF. Opt-in per-skill via whitelist:
+
+```bash
+# Off by default — MCP handles discovery, no per-session skill list dump
+./scripts/sync_skills.sh
+
+# Keep only one skill reachable via /slash (e.g. graphify)
+NATIVE_SKILL_WHITELIST=graphify ./scripts/sync_skills.sh
+
+# Force legacy behavior (all skills in every IDE native dir)
+ENABLE_NATIVE_SKILL_SYMLINKS=1 ./scripts/sync_skills.sh
+
+# Remove already-created symlinks without a full resync
+./scripts/sync_skills.sh --prune-native-symlinks
+```
+
+Measured: system reminder shrunk from full 1,270-skill list to only the
+small set of default harness skills after pruning — ≈8,000 tokens saved per
+Claude Code session.
+
 ## Budget regression guard
 
 `tests/test_token_budget.py` asserts:

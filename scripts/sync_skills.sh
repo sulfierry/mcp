@@ -27,14 +27,34 @@ SYNC_ALL=false
 FORCE=false
 LIST_ONLY=false
 
+PRUNE_NATIVE=false
 while [[ $# -gt 0 ]]; do
     case $1 in
         --all) SYNC_ALL=true; shift ;;
         --force) FORCE=true; shift ;;
         --list) LIST_ONLY=true; shift ;;
+        --prune-native-symlinks) PRUNE_NATIVE=true; shift ;;
         *) echo -e "${RED}Unknown option: $1${NC}"; exit 1 ;;
     esac
 done
+
+if $PRUNE_NATIVE; then
+    echo -e "${CYAN}🧹 Removing native IDE skill symlinks (keeping MCP registration)...${NC}"
+    for link in \
+        "$HOME/.gemini/antigravity/skills" \
+        "$HOME/.claude/skills" \
+        "$(cd "$(dirname "$0")/.." && pwd)/.github/skills" \
+        "${CODEX_HOME:-$HOME/.codex}/skills" \
+        "${QWEN_HOME:-$HOME/.qwen}/skills"
+    do
+        if [[ -L "$link" ]]; then
+            rm "$link"
+            echo -e "  ${GREEN}✓${NC} removed symlink: $link"
+        fi
+    done
+    echo -e "${GREEN}✅ Native symlinks pruned. MCP server remains active for discovery.${NC}"
+    exit 0
+fi
 
 # Curated skill names (space-separated strings for portability)
 CURATED_GUANYANG="python-pro fastapi-pro async-python-patterns test-driven-development systematic-debugging architecture-patterns api-design-principles ai-engineer prompt-engineering-patterns security-auditor code-review-ai-ai-review mcp-builder skill-creator planning-with-files writing-plans executing-plans subagent-driven-development"
@@ -416,38 +436,78 @@ if [[ -d "$AGENTS_DIR" ]]; then
 fi
 
 # ─── Phase 3a: IDE Symlinks (passive skill discovery) ─────────────────────────
+# WARNING: Native IDE skill discovery (Claude Code ~/.claude/skills/, etc.)
+# injects the FULL skill list into every session's system reminder (~32 KB /
+# ~8-10k tokens for 1,270 skills). The MCP server exposes skills lazily via 3
+# tool schemas (~270 tokens). Prefer MCP; opt into symlinks only if you need
+# offline discovery or MCP is unavailable.
+#
+# Flags:
+#   SKIP_NATIVE_SKILL_SYMLINKS=1   (default 1 — skip all)
+#   ENABLE_NATIVE_SKILL_SYMLINKS=1 (override — create symlinks anyway)
 echo ""
-echo -e "${CYAN}🔗 Setting up IDE symlinks...${NC}"
+_NATIVE_ON="${ENABLE_NATIVE_SKILL_SYMLINKS:-0}"
+_NATIVE_SKIP="${SKIP_NATIVE_SKILL_SYMLINKS:-1}"
+if [[ "$_NATIVE_ON" == "1" ]]; then
+    _NATIVE_SKIP="0"
+fi
 
-create_symlink() {
-    local target="$1"
-    local link_path="$2"
-    local ide_name="$3"
+if [[ "$_NATIVE_SKIP" == "1" ]]; then
+    echo -e "${CYAN}🔗 IDE native skill symlinks: SKIPPED (token-optimized default).${NC}"
+    echo -e "  ${BLUE}ℹ${NC} MCP server exposes all skills lazily — ~32 KB saved per session."
+    echo -e "  ${BLUE}ℹ${NC} Force on with: ENABLE_NATIVE_SKILL_SYMLINKS=1 ./scripts/sync_skills.sh"
 
-    mkdir -p "$(dirname "$link_path")"
+    # Selective whitelist: NATIVE_SKILL_WHITELIST="graphify,foo" symlinks
+    # specific skills into ~/.claude/skills/ for slash-command triggers.
+    if [[ -n "${NATIVE_SKILL_WHITELIST:-}" ]]; then
+        mkdir -p "$HOME/.claude/skills"
+        IFS=',' read -ra _wl <<< "$NATIVE_SKILL_WHITELIST"
+        for sid in "${_wl[@]}"; do
+            sid="$(echo "$sid" | xargs)"  # trim
+            [[ -z "$sid" ]] && continue
+            local_src="$SKILLS_DIR/$sid"
+            local_dst="$HOME/.claude/skills/$sid"
+            if [[ -d "$local_src" ]]; then
+                ln -sfn "$local_src" "$local_dst"
+                echo -e "  ${GREEN}✓${NC} whitelist symlink: $sid"
+            else
+                echo -e "  ${YELLOW}⚠${NC} whitelist skill not found: $sid"
+            fi
+        done
+    fi
+else
+    echo -e "${CYAN}🔗 Setting up IDE symlinks (native discovery enabled)...${NC}"
 
-    if [[ -L "$link_path" ]]; then
-        local current_target
-        current_target="$(readlink "$link_path" 2>/dev/null || stat -f '%Y' "$link_path" 2>/dev/null)"
-        if [[ "$current_target" == "$target" ]]; then
-            echo -e "  ${GREEN}✓${NC} $ide_name — already linked"
+    create_symlink() {
+        local target="$1"
+        local link_path="$2"
+        local ide_name="$3"
+
+        mkdir -p "$(dirname "$link_path")"
+
+        if [[ -L "$link_path" ]]; then
+            local current_target
+            current_target="$(readlink "$link_path" 2>/dev/null || stat -f '%Y' "$link_path" 2>/dev/null)"
+            if [[ "$current_target" == "$target" ]]; then
+                echo -e "  ${GREEN}✓${NC} $ide_name — already linked"
+                return 0
+            fi
+            rm "$link_path"
+        elif [[ -d "$link_path" ]]; then
+            echo -e "  ${YELLOW}⚠${NC} $ide_name — skipped (real directory exists at $link_path)"
             return 0
         fi
-        rm "$link_path"
-    elif [[ -d "$link_path" ]]; then
-        echo -e "  ${YELLOW}⚠${NC} $ide_name — skipped (real directory exists at $link_path)"
-        return 0
-    fi
 
-    ln -sf "$target" "$link_path"
-    echo -e "  ${GREEN}✓${NC} $ide_name — linked → $link_path"
-}
+        ln -sf "$target" "$link_path"
+        echo -e "  ${GREEN}✓${NC} $ide_name — linked → $link_path"
+    }
 
-create_symlink "$SKILLS_DIR" "$HOME/.gemini/antigravity/skills" "Antigravity (Gemini)"
-create_symlink "$SKILLS_DIR" "$HOME/.claude/skills" "Claude Code CLI"
-create_symlink "$SKILLS_DIR" "$PROJECT_DIR/.github/skills" "VS Code Copilot (project)"
-create_symlink "$SKILLS_DIR" "${CODEX_HOME:-$HOME/.codex}/skills" "OpenAI Codex CLI"
-create_symlink "$SKILLS_DIR" "${QWEN_HOME:-$HOME/.qwen}/skills" "Qwen CLI"
+    create_symlink "$SKILLS_DIR" "$HOME/.gemini/antigravity/skills" "Antigravity (Gemini)"
+    create_symlink "$SKILLS_DIR" "$HOME/.claude/skills" "Claude Code CLI"
+    create_symlink "$SKILLS_DIR" "$PROJECT_DIR/.github/skills" "VS Code Copilot (project)"
+    create_symlink "$SKILLS_DIR" "${CODEX_HOME:-$HOME/.codex}/skills" "OpenAI Codex CLI"
+    create_symlink "$SKILLS_DIR" "${QWEN_HOME:-$HOME/.qwen}/skills" "Qwen CLI"
+fi
 
 # ─── Phase 3b: MCP Server Config (all IDEs) ────────────────────────────────────
 echo ""
@@ -770,13 +830,18 @@ echo -e "${CYAN}🧬 Total skills available: $total${NC}"
 
 # ─── Summary ──────────────────────────────────────────────────────────────────
 echo ""
-echo -e "${CYAN}📌 Skills are now available in:${NC}"
-echo -e "  ${GREEN}•${NC} Antigravity (Gemini):  ~/.gemini/antigravity/skills/"
-echo -e "  ${GREEN}•${NC} Claude Code CLI:       ~/.claude/skills/"
-echo -e "  ${GREEN}•${NC} VS Code Copilot:       .github/skills/ (this project)"
-echo -e "  ${GREEN}•${NC} OpenAI Codex CLI:      ~/.codex/skills/ + AGENTS.md + config.toml"
-echo -e "  ${GREEN}•${NC} Qwen CLI:              ~/.qwen/skills/ + settings.json"
-echo -e ""
-echo -e "  ${BLUE}Tip:${NC} For MCP Server (recommended), run:"
-echo -e "    ${CYAN}claude mcp add --scope user skills-server $PROJECT_DIR/.venv/bin/python3 $PROJECT_DIR/server/mcp_skills_server.py${NC}"
+echo -e "${CYAN}📌 Skills discovery:${NC}"
+if [[ "$_NATIVE_SKIP" == "1" ]]; then
+    echo -e "  ${GREEN}•${NC} MCP server (lazy, token-optimized): all IDEs above"
+    echo -e "  ${BLUE}ℹ${NC} Native IDE skill dirs NOT populated (default). Saves ~8-10k tok/session."
+    echo -e "  ${BLUE}ℹ${NC} To re-enable: ENABLE_NATIVE_SKILL_SYMLINKS=1 ./scripts/sync_skills.sh"
+    echo -e "  ${BLUE}ℹ${NC} To prune existing symlinks: ./scripts/sync_skills.sh --prune-native-symlinks"
+else
+    echo -e "  ${GREEN}•${NC} Antigravity (Gemini):  ~/.gemini/antigravity/skills/"
+    echo -e "  ${GREEN}•${NC} Claude Code CLI:       ~/.claude/skills/"
+    echo -e "  ${GREEN}•${NC} VS Code Copilot:       .github/skills/ (this project)"
+    echo -e "  ${GREEN}•${NC} OpenAI Codex CLI:      ~/.codex/skills/ + AGENTS.md + config.toml"
+    echo -e "  ${GREEN}•${NC} Qwen CLI:              ~/.qwen/skills/ + settings.json"
+    echo -e "  ${YELLOW}⚠${NC} Native symlinks ON — full skill list injected per session (~8-10k tok)"
+fi
 echo -e ""
