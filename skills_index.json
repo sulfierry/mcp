@@ -287,6 +287,23 @@
     "kind": "skill"
   },
   {
+    "id": "alphafold-suite",
+    "name": "alphafold-suite",
+    "description": "AlphaFold 2/3, AlphaFold-Multimer, ColabFold, OpenFold, AlphaFlow, AlphaMissense, AlphaPulldown. Running predictions (local, ColabFold, AF3 server), MSA strategies, template handling, confidence metrics (pLDDT/PAE/pTM/ipTM), ensemble workflows. Triggers on AlphaFold, AF2, AF3, AlphaFold-Multimer, ColabFold, OpenFold, AlphaMissense.",
+    "path": "alphafold-suite/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[alphafold",
+      "af2",
+      "af3",
+      "colabfold",
+      "structure-prediction",
+      "deepmind]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "amplicon-processing",
     "name": "bio-microbiome-amplicon-processing",
     "description": "Amplicon sequence variant (ASV) inference from 16S rRNA or ITS amplicon sequencing using DADA2. Covers quality filtering, error learning, denoising, and chimera removal. Use when processing demultiplexed amplicon FASTQ files to generate an ASV table for downstream analysis.",
@@ -1185,6 +1202,22 @@
     "kind": "skill"
   },
   {
+    "id": "boltz-structure-prediction",
+    "name": "boltz-structure-prediction",
+    "description": "Boltz-1 and Boltz-2 open-source AlphaFold3-class structure prediction (MIT Jameel Clinic, 2024-2025). Protein + ligand + nucleic acid + modified residues complexes. Diffusion-based. Installation (uv/pip), YAML input schema, MSA handling, template injection, confidence (pLDDT/PAE/pTM/ipTM). Triggers on Boltz, Boltz-1, Boltz-2, structure prediction, AF3 alternative, protein-ligand complex.",
+    "path": "boltz-structure-prediction/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[boltz",
+      "alphafold3",
+      "structure-prediction",
+      "diffusion",
+      "protein]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "boltzgen",
     "name": "boltzgen",
     "description": ">",
@@ -1617,6 +1650,21 @@
     "path": "cfdna-preprocessing/SKILL.md",
     "category": "cancer-genomics",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "chai-1-rosettafold",
+    "name": "chai-1-rosettafold",
+    "description": "Chai-1 (Chai Discovery 2024) and RoseTTAFold/RoseTTAFold2/RoseTTAFold All-Atom structure prediction alternatives to AlphaFold. Complex prediction with ligand/NA/modified residues, MSA-free mode, constraint-guided prediction. Triggers on Chai-1, Chai Discovery, RoseTTAFold, RF2, RFAA, structure prediction, MSA-free.",
+    "path": "chai-1-rosettafold/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[chai",
+      "rosettafold",
+      "structure-prediction",
+      "msa-free]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -4534,6 +4582,23 @@
     "kind": "skill"
   },
   {
+    "id": "free-energy-calculations",
+    "name": "free-energy-calculations",
+    "description": "Alchemical free-energy methods for binding affinity (ΔG). FEP (Free Energy Perturbation), TI (Thermodynamic Integration), ABFE (Absolute Binding Free Energy), RBFE (Relative Binding Free Energy), MBAR/BAR analysis. Tools: FEP+ (Schrödinger), BFEE2, OpenMM+openmmtools+openfe, YANK, Amber TI, GROMACS pmx. OpenFF Sage ligand params. Triggers on FEP, free energy, alchemical, ABFE, RBFE, binding affinity, thermodynamic integration, MBAR, BAR.",
+    "path": "free-energy-calculations/SKILL.md",
+    "category": "mol-dynamics",
+    "tags": [
+      "[fep",
+      "free-energy",
+      "abfe",
+      "rbfe",
+      "alchemical",
+      "binding-affinity]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "frontend-design",
     "name": "frontend-design",
     "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
@@ -7215,6 +7280,24 @@
     "kind": "skill"
   },
   {
+    "id": "modern-ai-docking",
+    "name": "modern-ai-docking",
+    "description": "AI-era molecular docking: DiffDock-L, Gnina, Uni-Mol Docking, UMol, NeuralPLexer. Plus GPU-accelerated classical: Vina-GPU, AutoDock-GPU, Smina. Virtual screening with deep-learning rescorers. Triggers on DiffDock, Gnina, Uni-Mol docking, UMol, NeuralPLexer, AI docking, GPU docking, deep learning docking.",
+    "path": "modern-ai-docking/SKILL.md",
+    "category": "drug-discovery",
+    "tags": [
+      "[docking",
+      "diffdock",
+      "gnina",
+      "uni-mol",
+      "umol",
+      "virtual-screening",
+      "ai-docking]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "modern-javascript-patterns",
     "name": "modern-javascript-patterns",
     "description": "Master ES6+ features including async/await, destructuring, spread operators, arrow functions, promises, modules, iterators, generators, and functional programming patterns for writing clean, efficient JavaScript code. Use when refactoring legacy code, implementing modern patterns, or optimizing JavaScript applications.",
@@ -7319,6 +7402,23 @@
     "path": "molecular-io/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "molecular-language-models",
+    "name": "molecular-language-models",
+    "description": "Molecular language models for SMILES/SELFIES: MolFormer / MoLFormer-XL (IBM), ChemBERTa / ChemBERTa-2, SMI-TED, MolT5, ChemGPT, Uni-Mol / Uni-Mol 2, MolGPT, GROVER. Embeddings for property prediction, virtual screening, reaction prediction, generative chemistry. Triggers on MolFormer, ChemBERTa, SMI-TED, Uni-Mol, molecular language model, SMILES embeddings, chemical LM.",
+    "path": "molecular-language-models/SKILL.md",
+    "category": "cheminformatics",
+    "tags": [
+      "[molformer",
+      "chemberta",
+      "smi-ted",
+      "molecular-language-model",
+      "smiles",
+      "cheminformatics]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -8152,6 +8252,23 @@
     "path": "opencv-bioimage-analysis/SKILL.md",
     "category": "imaging",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "openmm-modern-md",
+    "name": "openmm-modern-md",
+    "description": "Modern molecular dynamics with OpenMM, GROMACS, AMBER, NAMD. Force fields (AMBER ff14SB/ff19SB, CHARMM36m, OpenFF Sage), water models (TIP3P/TIP4P/OPC), solvation, equilibration protocols, production MD, enhanced sampling (metadynamics, REMD, GaMD), trajectory analysis with MDAnalysis. GPU acceleration. Triggers on molecular dynamics, MD, OpenMM, GROMACS, AMBER, NAMD, force field, CHARMM, metadynamics.",
+    "path": "openmm-modern-md/SKILL.md",
+    "category": "mol-dynamics",
+    "tags": [
+      "[molecular-dynamics",
+      "openmm",
+      "gromacs",
+      "amber",
+      "md",
+      "force-field]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -9001,6 +9118,24 @@
     "kind": "skill"
   },
   {
+    "id": "protein-language-models",
+    "name": "protein-language-models",
+    "description": "Protein language models (pLMs): ESM-1/2/3, ESMFold, ProtBERT, ProtT5, Ankh, SaProt, ProstT5, ProteinBERT. Embeddings for function prediction, zero-shot mutation effect, representation learning for downstream ML tasks. Triggers on ESM, ProtBERT, ProtT5, Ankh, SaProt, protein language model, pLM, protein embeddings, ESMFold.",
+    "path": "protein-language-models/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[esm",
+      "protbert",
+      "prott5",
+      "ankh",
+      "saprot",
+      "protein-embeddings",
+      "pLM]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "protein-structure-analysis",
     "name": "Protein Structure Analysis",
     "description": "Expert skill for protein 3D structure analysis using Biotite. Covers PDB/mmCIF parsing, secondary structure assignment, contact maps, binding site detection, B-factor analysis, and structural alignment.",
@@ -9015,6 +9150,21 @@
       "alphafold",
       "secondary-structure",
       "contact-map"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "proteinmpnn-suite",
+    "name": "proteinmpnn-suite",
+    "description": "ProteinMPNN, LigandMPNN, SolubleMPNN, ThermoMPNN for sequence design on fixed backbone. Inverse folding — designs sequences that fold into a given 3D structure. Use for de novo binder sequences after RFdiffusion, thermostabilization, solubility improvement. Triggers on ProteinMPNN, LigandMPNN, SolubleMPNN, ThermoMPNN, inverse folding, sequence design.",
+    "path": "proteinmpnn-suite/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[proteinmpnn",
+      "sequence-design",
+      "inverse-folding",
+      "binder]"
     ],
     "source": "custom",
     "kind": "skill"
@@ -9972,6 +10122,21 @@
     "path": "reverse-engineer/SKILL.md",
     "category": "security",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "rfdiffusion-design",
+    "name": "rfdiffusion-design",
+    "description": "RFdiffusion and RFdiffusion-All-Atom for de novo protein backbone design. Motif scaffolding, unconditional generation, binder design, symmetric oligomers, FrameFlow, Chroma, Genie, ProteinGenerator. Triggers on RFdiffusion, RFdiffusion-AA, de novo design, protein backbone generation, scaffold design, FrameFlow, Chroma.",
+    "path": "rfdiffusion-design/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[rfdiffusion",
+      "protein-design",
+      "diffusion",
+      "de-novo]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
