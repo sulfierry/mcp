@@ -230,6 +230,65 @@ class SkillRegistry:
             "skills": items,
         }
 
+    @staticmethod
+    def group_by_prefix(items: list[dict], min_group: int = 2) -> dict:
+        """Group compact items by id prefix (first `-` segment).
+
+        Singletons stay under `_`. Reduces repeated prefix bytes in large lists.
+        """
+        from collections import defaultdict
+        buckets: dict[str, list[dict]] = defaultdict(list)
+        for it in items:
+            prefix = it["id"].split("-", 1)[0]
+            buckets[prefix].append(it)
+        groups: dict[str, list] = {"_": []}
+        for prefix, bucket in buckets.items():
+            if len(bucket) < min_group:
+                groups["_"].extend(bucket)
+                continue
+            # Strip prefix from ids to save bytes
+            groups[prefix] = [
+                {**it, "id": it["id"][len(prefix) + 1:] or it["id"]}
+                for it in bucket
+            ]
+        if not groups["_"]:
+            groups.pop("_")
+        return groups
+
+    @staticmethod
+    def to_markdown(payload: dict) -> str:
+        """Render a list_skills / search_skills payload as compact markdown."""
+        lines = []
+        header_bits = []
+        for k in ("total", "count", "has_more", "offset", "limit", "query"):
+            if k in payload:
+                header_bits.append(f"{k}={payload[k]}")
+        if header_bits:
+            lines.append("<!-- " + " ".join(header_bits) + " -->")
+
+        skills = payload.get("skills") or payload.get("results") or []
+        if isinstance(skills, dict):
+            # prefix-grouped
+            for prefix, bucket in skills.items():
+                lines.append(f"\n## {prefix}" if prefix != "_" else "\n## misc")
+                for it in bucket:
+                    desc = it.get("description")
+                    tail = f" — {desc}" if desc else ""
+                    cat = f" [{it.get('category','')}]" if it.get("category") else ""
+                    lines.append(f"- {it['id']}{cat}{tail}")
+        else:
+            for it in skills:
+                desc = it.get("description")
+                tail = f" — {desc}" if desc else ""
+                cat = f" [{it.get('category','')}]" if it.get("category") else ""
+                lines.append(f"- {it['id']}{cat}{tail}")
+
+        if "categories" in payload:
+            lines.append("\n## categories")
+            for c in payload["categories"]:
+                lines.append(f"- {c['category']}: {c['count']}")
+        return "\n".join(lines)
+
     def list_categories(self) -> list[dict]:
         """Return counts per category for compact overview."""
         from collections import Counter

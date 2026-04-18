@@ -12,7 +12,7 @@ Baseline `list_skills()` payload once exceeded 483 KB (≈ 120 K tokens) for 1,1
 | `get_skill(id, section='Quick Start')` | 5-30 KB | ~1 KB | −80 to −98 % |
 | `list_sections(id)` | — | ~200 chars | cheap TOC |
 | `skills://catalog` auto-load resource | 483 KB | 109 KB | −77 % |
-| Tool schemas in context | ~800 tokens (9 tools) | ~500 tokens (6 tools) | merged namespace |
+| Tool schemas in context | ~800 tokens (9 tools) | ~270 tokens (3 tools) | merged + consolidated |
 
 ## Techniques
 
@@ -69,24 +69,40 @@ This skips `claude mcp add --scope user skills-server` and writing `~/.copilot/m
 
 ## Raw MCP tool schema budget (current)
 
-6 tools, ~500 tokens of permanent schema:
+**3 tools, ~270 tokens** of permanent schema (down from 6 tools / ~500 tok):
 
 ```
-list_skills        (5 params)    ~100 tok
-list_categories    (1 param)     ~60
-search_skills      (4 params)    ~90
-get_skill          (3 params)    ~80
-list_sections      (2 params)    ~60
-get_skill_scripts  (2 params)    ~60
+list_skills        (8 params)    ~130 tok   # + format, group_by_prefix, include_categories
+search_skills      (5 params)    ~80        # + format
+get_skill          (4 params)    ~60        # + mode (outline|scripts|full)
 ```
 
-Below the MCP auto-deferred threshold — schemas stay eagerly loaded. If future growth pushes beyond 7 tools, consider splitting into a second MCP server or moving rarely-used tools to a premium server.
+Merged tools:
+- `list_categories` → `list_skills(include_categories=True, limit=0)`
+- `list_sections`   → `get_skill(id, mode='outline')`
+- `get_skill_scripts` → `get_skill(id, mode='scripts')`
+
+## Format flag + prefix grouping
+
+`list_skills(format='md', group_by_prefix=True)` renders as markdown and groups
+ids by their first `-` segment, stripping the repeated prefix:
+
+| Request | Size | Δ vs flat JSON |
+|---------|------|----------------|
+| `list_skills(limit=50)` JSON flat | 5.9 KB | baseline |
+| `list_skills(limit=50, format='md')` | 1.8 KB | **−70 %** |
+| Full catalog (1,271) JSON | 151 KB | — |
+| Full catalog `format='md', group_by_prefix=True` | 40 KB | **−73 %** |
+
+## Outline mode
+
+`get_skill(id, mode='outline')` returns H2 titles only — ~200 B vs ~5 KB full
+content. Use to triage sections before fetching with `section=<title>`.
 
 ## Further reductions (not currently implemented)
 
-- Markdown instead of JSON for list tool output (−30 % whitespace)
 - Content-type-specific shorten (drop frontmatter redundancy in `get_skill`)
-- Deferred schema loading via `tools/list` second-pass
 - Server-side cache of `list_skills` payload per category
+- Deferred schema loading via `tools/list` second-pass (only if tool count > 7 again)
 
 PRs welcome.

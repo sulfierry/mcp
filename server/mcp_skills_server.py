@@ -28,8 +28,6 @@ SKILLS_OVERLAY = ROOT_DIR / "skills_index.json"
 
 # ── Initialize Registry ──────────────────────────────────────────────
 
-# SKILLS_CATEGORY_FILTER: comma-separated categories to expose. Empty = all.
-# Match against overlay index (skills_index.json) category field.
 _cat_env = os.environ.get("SKILLS_CATEGORY_FILTER", "").strip()
 _cat_filter = [c for c in _cat_env.split(",") if c.strip()] if _cat_env else None
 
@@ -45,7 +43,6 @@ if _cat_filter:
 else:
     print(f"🧬 Skills Registry loaded: {skill_count} skills discovered", file=sys.stderr)
 
-# Agent registry — filter only if AGENTS_CATEGORY_FILTER is set; otherwise expose all.
 _agent_cat_env = os.environ.get("AGENTS_CATEGORY_FILTER", "").strip()
 _agent_cat_filter = [c for c in _agent_cat_env.split(",") if c.strip()] if _agent_cat_env else None
 
@@ -65,13 +62,21 @@ def _registries_for(kind: str) -> list[SkillRegistry]:
         return [agent_registry]
     return [registry, agent_registry]
 
+
+def _format_output(payload: dict, format: str) -> str:
+    """Render payload as markdown or JSON based on format flag."""
+    if format == "md":
+        return SkillRegistry.to_markdown(payload)
+    return json.dumps(payload, indent=2)
+
+
 # ── Create MCP Server ────────────────────────────────────────────────
 
 mcp = FastMCP("Skills MCP Server")
 
 
 # ══════════════════════════════════════════════════════════════════════
-#  TOOLS — callable functions for the AI agent
+#  TOOLS — 3 consolidated tools for minimal schema footprint
 # ══════════════════════════════════════════════════════════════════════
 
 @mcp.tool()
@@ -81,18 +86,21 @@ def list_skills(
     category: str = "",
     kind: str = "",
     compact: bool = True,
+    format: str = "json",
+    group_by_prefix: bool = False,
+    include_categories: bool = False,
 ) -> str:
-    """List skills and agents with pagination (registry holds 1000+ entries).
+    """List skills/agents with pagination, grouping, and category counts.
 
     Args:
-        limit: Max entries per page (default 50, 0 for all — large).
+        limit: Max entries (0 = all). Default 50.
         offset: Pagination offset.
-        category: Filter by exact category (use list_categories to discover).
-        kind: Filter by "skill" or "agent". Empty = both.
-        compact: If True (default), omits description.
-
-    Returns JSON with {total, offset, limit, count, has_more, skills}.
-    Each entry has a `kind` field. Prefer search_skills for targeted discovery.
+        category: Filter by exact category.
+        kind: "skill", "agent", or "" (both).
+        compact: Omit description (default True).
+        format: "json" or "md" (markdown is ~30% smaller).
+        group_by_prefix: Group compact ids by first `-` segment (saves bytes).
+        include_categories: Append category counts to output (replaces list_categories).
     """
     merged: list[dict] = []
     total = 0
@@ -107,26 +115,32 @@ def list_skills(
     if limit <= 0:
         limit = total
     page = merged[offset: offset + limit]
-    return json.dumps({
+
+    skills_out: list | dict = page
+    if group_by_prefix and compact:
+        skills_out = SkillRegistry.group_by_prefix(page)
+
+    payload: dict = {
         "total": total,
         "offset": offset,
         "limit": limit,
         "count": len(page),
         "has_more": offset + len(page) < total,
-        "skills": page,
-    }, indent=2)
+        "skills": skills_out,
+    }
 
+    if include_categories:
+        from collections import Counter
+        c: Counter[str] = Counter()
+        for reg in _registries_for(kind):
+            for cat in reg.list_categories():
+                c[cat["category"]] += cat["count"]
+        payload["categories"] = [
+            {"category": k, "count": v}
+            for k, v in sorted(c.items(), key=lambda x: -x[1])
+        ]
 
-@mcp.tool()
-def list_categories(kind: str = "") -> str:
-    """Return counts per category across skills and/or agents."""
-    from collections import Counter
-    c: Counter[str] = Counter()
-    for reg in _registries_for(kind):
-        for cat in reg.list_categories():
-            c[cat["category"]] += cat["count"]
-    cats = [{"category": k, "count": v} for k, v in sorted(c.items(), key=lambda x: -x[1])]
-    return json.dumps({"total_categories": len(cats), "categories": cats}, indent=2)
+    return _format_output(payload, format)
 
 
 @mcp.tool()
@@ -135,14 +149,16 @@ def search_skills(
     limit: int = 20,
     kind: str = "",
     compact: bool = False,
+    format: str = "json",
 ) -> str:
-    """Search skills and agents by keyword.
+    """Search skills/agents by keyword (name, description, tags, category).
 
     Args:
-        query: Search terms (e.g., 'molecular docking', 'python backend').
+        query: Search terms (e.g., 'molecular docking', 'llm inference').
         limit: Max results (default 20).
-        kind: "" (both), "skill", or "agent".
+        kind: "skill", "agent", or "" (both).
         compact: Omit description if True.
+        format: "json" or "md".
     """
     scored: list[dict] = []
     for reg in _registries_for(kind):
@@ -153,52 +169,49 @@ def search_skills(
     scored = scored[:limit]
     if not scored:
         return json.dumps({"message": f"No matches for '{query}'.", "count": 0})
-    return json.dumps({"query": query, "count": len(scored), "results": scored}, indent=2)
+    payload = {"query": query, "count": len(scored), "results": scored}
+    return _format_output({"skills": scored, **payload}, format) if format == "md" else json.dumps(payload, indent=2)
 
 
 @mcp.tool()
-def get_skill(skill_id: str, section: str = "", kind: str = "") -> str:
-    """Get SKILL.md content. Optional section filter returns one H2 block.
+def get_skill(
+    skill_id: str,
+    section: str = "",
+    kind: str = "",
+    mode: str = "full",
+) -> str:
+    """Get skill/agent content in various modes.
 
     Args:
-        skill_id: Directory name, e.g. 'molecular-docking'.
-        section: Substring of H2 title (case-insensitive). Empty = full file.
-        kind: "" tries skills first then agents; "skill" or "agent" forces one.
+        skill_id: Directory name (e.g. 'molecular-docking').
+        section: Substring of an H2 title (case-insensitive). Empty = full file.
+        kind: "skill", "agent", or "" (auto-detect).
+        mode: "full" (default: full SKILL.md content),
+              "outline" (H2 section titles only — cheap TOC),
+              "scripts" (return scripts/ subdirectory contents).
     """
     for reg in _registries_for(kind):
+        if mode == "outline":
+            titles = reg.list_sections(skill_id)
+            if titles is not None:
+                return json.dumps({"skill_id": skill_id, "kind": reg.kind, "sections": titles})
+            continue
+        if mode == "scripts":
+            scripts = reg.get_scripts(skill_id)
+            if scripts is not None:
+                return json.dumps({"skill_id": skill_id, "kind": reg.kind, "scripts": scripts}, indent=2)
+            continue
         entry = reg.get_skill(skill_id, section=section)
         if entry:
             entry["kind"] = reg.kind
             return json.dumps(entry, indent=2)
+
+    if mode == "scripts":
+        return json.dumps({"message": f"No scripts found for '{skill_id}'."})
     return json.dumps({
         "error": f"'{skill_id}' not found in {kind or 'skills or agents'}.",
         "suggestion": "Use search_skills(query) to find a valid id.",
     })
-
-
-@mcp.tool()
-def list_sections(skill_id: str, kind: str = "") -> str:
-    """List H2 section titles for a skill or agent (cheap TOC — no body)."""
-    for reg in _registries_for(kind):
-        titles = reg.list_sections(skill_id)
-        if titles is not None:
-            return json.dumps({"skill_id": skill_id, "kind": reg.kind, "sections": titles})
-    return json.dumps({"error": f"'{skill_id}' not found."})
-
-
-@mcp.tool()
-def get_skill_scripts(skill_id: str, kind: str = "") -> str:
-    """Get helper scripts from scripts/ subdirectory of a skill or agent.
-
-    Args:
-        skill_id: The identifier (directory name).
-        kind: "" tries skills then agents; "skill" or "agent" forces one.
-    """
-    for reg in _registries_for(kind):
-        scripts = reg.get_scripts(skill_id)
-        if scripts is not None:
-            return json.dumps({"skill_id": skill_id, "kind": reg.kind, "scripts": scripts}, indent=2)
-    return json.dumps({"message": f"No scripts found for '{skill_id}'."})
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -207,11 +220,7 @@ def get_skill_scripts(skill_id: str, kind: str = "") -> str:
 
 @mcp.resource("skills://catalog")
 def skills_catalog() -> str:
-    """Compact catalog: id + name + category only (no descriptions).
-
-    Full SKILL.md content is available via get_skill(). Kept lean to avoid
-    flooding the context window on resource auto-load.
-    """
+    """Compact catalog: id + name + category only (no descriptions)."""
     catalog = [
         {"id": s.id, "name": s.name, "category": s.category}
         for s in sorted(registry._skills.values(), key=lambda s: s.id)
@@ -242,14 +251,8 @@ def main():
         "--transport", choices=["stdio", "sse"], default="stdio",
         help="Transport mode: 'stdio' for pipe-based (default), 'sse' for HTTP"
     )
-    parser.add_argument(
-        "--port", type=int, default=8765,
-        help="Port for SSE transport (default: 8765)"
-    )
-    parser.add_argument(
-        "--host", default="localhost",
-        help="Host for SSE transport (default: localhost)"
-    )
+    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--host", default="localhost")
     args = parser.parse_args()
 
     print(f"🚀 Starting MCP Skills Server ({args.transport} mode)", file=sys.stderr)
@@ -260,8 +263,6 @@ def main():
         print(f"   🌐 HTTP: http://{args.host}:{args.port}", file=sys.stderr)
         mcp.run(transport="sse", host=args.host, port=args.port)
     else:
-        # show_banner=False is critical: FastMCP's Rich banner pollutes stdout,
-        # breaking JSON-RPC communication in stdio transport mode.
         mcp.run(transport="stdio", show_banner=False)
 
 
