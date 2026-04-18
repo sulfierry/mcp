@@ -29,3 +29,4 @@ Thumbs.db
 
 # Generated catalog (can be regenerated)
 # skills_index.json
+*.bak
