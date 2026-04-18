@@ -43,12 +43,15 @@ if _cat_filter:
 else:
     print(f"🧬 Skills Registry loaded: {skill_count} skills discovered", file=sys.stderr)
 
+_skip_agents = os.environ.get("SKILLS_SKIP_AGENTS", "").strip() in ("1", "true", "yes")
 _agent_cat_env = os.environ.get("AGENTS_CATEGORY_FILTER", "").strip()
 _agent_cat_filter = [c for c in _agent_cat_env.split(",") if c.strip()] if _agent_cat_env else None
 
 agent_registry = SkillRegistry(str(AGENTS_DIR), kind="agent", category_filter=_agent_cat_filter)
 agent_count = 0
-if AGENTS_DIR.exists():
+if _skip_agents:
+    print("🤖 Agent registry skipped (SKILLS_SKIP_AGENTS=1)", file=sys.stderr)
+elif AGENTS_DIR.exists():
     agent_count = agent_registry.scan()
     print(f"🤖 Agent Registry loaded: {agent_count} agents discovered", file=sys.stderr)
 
@@ -59,15 +62,15 @@ def _registries_for(kind: str) -> list[SkillRegistry]:
     if k == "skill":
         return [registry]
     if k == "agent":
-        return [agent_registry]
-    return [registry, agent_registry]
+        return [] if _skip_agents else [agent_registry]
+    return [registry] if _skip_agents else [registry, agent_registry]
 
 
-def _format_output(payload: dict, format: str) -> str:
-    """Render payload as markdown or JSON based on format flag."""
+def _format_output(payload: dict, format: str, pretty: bool = False) -> str:
+    """Render payload as markdown or JSON. Minified by default; pretty=True indents."""
     if format == "md":
         return SkillRegistry.to_markdown(payload)
-    return json.dumps(payload, indent=2)
+    return json.dumps(payload, indent=2 if pretty else None, separators=(",", ":") if not pretty else None)
 
 
 # ── Create MCP Server ────────────────────────────────────────────────
@@ -89,6 +92,7 @@ def list_skills(
     format: str = "json",
     group_by_prefix: bool = False,
     include_categories: bool = False,
+    pretty: bool = False,
 ) -> str:
     """List skills/agents with pagination, grouping, and category counts.
 
@@ -96,22 +100,25 @@ def list_skills(
         limit: Max entries (0 = all). Default 50.
         offset: Pagination offset.
         category: Filter by exact category.
-        kind: "skill", "agent", or "" (both).
+        kind: "skill", "agent", or "" (both). When set, `kind` field is omitted per item.
         compact: Omit description (default True).
-        format: "json" or "md" (markdown is ~30% smaller).
+        format: "json" or "md" (markdown is ~70% smaller).
         group_by_prefix: Group compact ids by first `-` segment (saves bytes).
-        include_categories: Append category counts to output (replaces list_categories).
+        include_categories: Append category counts (replaces list_categories).
+        pretty: Indent JSON (default False → minified).
     """
     merged: list[dict] = []
     total = 0
+    emit_kind = not kind  # drop redundant kind field when caller filtered
     for reg in _registries_for(kind):
         res = reg.list_skills(limit=0, offset=0, category=category, compact=compact)
-        for item in res["skills"]:
-            item["kind"] = reg.kind
+        if emit_kind:
+            for item in res["skills"]:
+                item["kind"] = reg.kind
         merged.extend(res["skills"])
         total += res["total"]
 
-    merged.sort(key=lambda x: x["name"].lower())
+    merged.sort(key=lambda x: (x.get("name") or x["id"]).lower())
     if limit <= 0:
         limit = total
     page = merged[offset: offset + limit]
@@ -140,7 +147,7 @@ def list_skills(
             for k, v in sorted(c.items(), key=lambda x: -x[1])
         ]
 
-    return _format_output(payload, format)
+    return _format_output(payload, format, pretty=pretty)
 
 
 @mcp.tool()
@@ -150,27 +157,33 @@ def search_skills(
     kind: str = "",
     compact: bool = False,
     format: str = "json",
+    pretty: bool = False,
 ) -> str:
     """Search skills/agents by keyword (name, description, tags, category).
 
     Args:
         query: Search terms (e.g., 'molecular docking', 'llm inference').
         limit: Max results (default 20).
-        kind: "skill", "agent", or "" (both).
+        kind: "skill", "agent", or "" (both). When set, `kind` field omitted per item.
         compact: Omit description if True.
         format: "json" or "md".
+        pretty: Indent JSON (default False).
     """
+    emit_kind = not kind
     scored: list[dict] = []
     for reg in _registries_for(kind):
         for r in reg.search_skills(query, limit=limit, compact=compact):
-            r["kind"] = reg.kind
+            if emit_kind:
+                r["kind"] = reg.kind
             scored.append(r)
     scored.sort(key=lambda x: x.get("score", 0), reverse=True)
     scored = scored[:limit]
     if not scored:
-        return json.dumps({"message": f"No matches for '{query}'.", "count": 0})
+        return _format_output({"message": f"No matches for '{query}'.", "count": 0}, format, pretty)
     payload = {"query": query, "count": len(scored), "results": scored}
-    return _format_output({"skills": scored, **payload}, format) if format == "md" else json.dumps(payload, indent=2)
+    if format == "md":
+        return SkillRegistry.to_markdown({"skills": scored, **payload})
+    return _format_output(payload, "json", pretty=pretty)
 
 
 @mcp.tool()
@@ -220,12 +233,28 @@ def get_skill(
 
 @mcp.resource("skills://catalog")
 def skills_catalog() -> str:
-    """Compact catalog: id + name + category only (no descriptions)."""
+    """Compact catalog: id + name (if non-derived) + category only."""
     catalog = [
-        {"id": s.id, "name": s.name, "category": s.category}
+        SkillRegistry._compact_item(s)
         for s in sorted(registry._skills.values(), key=lambda s: s.id)
     ]
-    return json.dumps({"count": len(catalog), "catalog": catalog})
+    return json.dumps({"count": len(catalog), "catalog": catalog}, separators=(",", ":"))
+
+
+@mcp.resource("skills://categories")
+def skills_categories() -> str:
+    """Category counts (auto-loaded index — no tool call needed)."""
+    from collections import Counter
+    c: Counter[str] = Counter()
+    for cat in registry.list_categories():
+        c[cat["category"]] += cat["count"]
+    if not _skip_agents:
+        for cat in agent_registry.list_categories():
+            c[cat["category"]] += cat["count"]
+    return json.dumps(
+        {k: v for k, v in sorted(c.items(), key=lambda x: -x[1])},
+        separators=(",", ":"),
+    )
 
 
 @mcp.resource("skills://stats")

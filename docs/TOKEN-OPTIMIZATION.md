@@ -87,12 +87,31 @@ Merged tools:
 `list_skills(format='md', group_by_prefix=True)` renders as markdown and groups
 ids by their first `-` segment, stripping the repeated prefix:
 
-| Request | Size | Δ vs flat JSON |
-|---------|------|----------------|
-| `list_skills(limit=50)` JSON flat | 5.9 KB | baseline |
-| `list_skills(limit=50, format='md')` | 1.8 KB | **−70 %** |
-| Full catalog (1,271) JSON | 151 KB | — |
-| Full catalog `format='md', group_by_prefix=True` | 40 KB | **−73 %** |
+| Request | Size | Δ vs pretty JSON |
+|---------|------|-------------------|
+| `list_skills(50)` JSON pretty (old default) | 5.9 KB | baseline |
+| `list_skills(50)` JSON minified (new default) | 3.7 KB | **−38 %** |
+| `list_skills(50, format='md')` | 1.6 KB | **−72 %** |
+| Full catalog (1,271) JSON pretty | 151 KB | — |
+| Full catalog JSON minified | 98 KB | **−35 %** |
+| Full catalog `format='md', group_by_prefix=True` | 37 KB | **−75 %** |
+
+Further reductions layered in this pass:
+- Redundant `name` dropped when derivable from `id` (saves ~40 B per item × N)
+- Empty / `misc` category omitted (1/3 of catalog)
+- `kind` field suppressed when caller filtered by kind
+- JSON minified by default (opt-in `pretty=True`)
+- `skills://categories` resource — counts without tool call
+- `SKILLS_SKIP_AGENTS=1` — scope can skip agent registry entirely
+
+## Budget regression guard
+
+`tests/test_token_budget.py` asserts:
+- `list_skills(50)` minified < 5 KB
+- `list_skills(50, format='md')` < 2 KB
+- Full catalog `md+group` < 50 KB
+- `get_skill(mode='outline')` < 1 KB
+- Redundant-name / misc-category dropping works
 
 ## Outline mode
 

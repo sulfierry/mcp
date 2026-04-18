@@ -186,6 +186,22 @@ class SkillRegistry:
         head = text[:n].rsplit(" ", 1)[0].rstrip(" .,;:—-")
         return head + "…"
 
+    @staticmethod
+    def _name_is_derived(name: str, sid: str) -> bool:
+        """True if `name` is a trivial title-case of `id` (so emission is redundant)."""
+        derived = sid.replace("-", " ").replace("_", " ").lower()
+        return name.strip().lower() == derived
+
+    @classmethod
+    def _compact_item(cls, s: SkillEntry) -> dict:
+        """Emit compact entry dropping redundant `name` and empty/misc `category`."""
+        item: dict = {"id": s.id}
+        if not cls._name_is_derived(s.name, s.id):
+            item["name"] = s.name
+        if s.category and s.category != "misc":
+            item["category"] = s.category
+        return item
+
     def list_skills(
         self,
         limit: int = 50,
@@ -198,6 +214,8 @@ class SkillRegistry:
 
         compact=True omits description entirely. When compact=False,
         descriptions are truncated to `desc_chars` (default 160, 0 = full).
+        Redundant `name` (derivable from id) and empty/`misc` categories are
+        dropped to save bytes.
         """
         entries = sorted(self._skills.values(), key=lambda s: s.name.lower())
         if category:
@@ -210,17 +228,15 @@ class SkillRegistry:
         sliced = entries[offset: offset + limit]
 
         if compact:
-            items = [{"id": s.id, "name": s.name, "category": s.category} for s in sliced]
+            items = [self._compact_item(s) for s in sliced]
         else:
-            items = [
-                {
-                    "id": s.id,
-                    "name": s.name,
-                    "description": self._trim_desc(s.description, desc_chars),
-                    "category": s.category,
-                }
-                for s in sliced
-            ]
+            items = []
+            for s in sliced:
+                item = self._compact_item(s)
+                desc = self._trim_desc(s.description, desc_chars)
+                if desc:
+                    item["description"] = desc
+                items.append(item)
         return {
             "total": total,
             "offset": offset,
@@ -365,21 +381,16 @@ class SkillRegistry:
 
         scored.sort(key=lambda x: x[0], reverse=True)
 
-        if compact:
-            return [
-                {"id": s.id, "name": s.name, "category": s.category, "score": round(sc, 3)}
-                for sc, s in scored[:limit]
-            ]
-        return [
-            {
-                "id": s.id,
-                "name": s.name,
-                "description": self._trim_desc(s.description, desc_chars),
-                "category": s.category,
-                "score": round(sc, 3),
-            }
-            for sc, s in scored[:limit]
-        ]
+        out = []
+        for sc, s in scored[:limit]:
+            item = self._compact_item(s)
+            item["score"] = round(sc, 3)
+            if not compact:
+                desc = self._trim_desc(s.description, desc_chars)
+                if desc:
+                    item["description"] = desc
+            out.append(item)
+        return out
 
     @staticmethod
     def _score_match(entry: SkillEntry, tokens: list[str], full_query: str) -> float:
