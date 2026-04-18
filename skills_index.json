@@ -384,7 +384,7 @@
     "name": "Applied Mathematics",
     "description": "Pure and applied mathematics for engineering and science. Calculus, real/complex analysis, abstract algebra, topology, probability theory, information theory, dynamical systems, and mathematical proof techniques.",
     "path": "applied-mathematics/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -454,7 +454,7 @@
     "name": "arm-cortex-expert",
     "description": ">",
     "path": "arm-cortex-expert/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -1585,7 +1585,7 @@
     "name": "cirq",
     "description": "Google quantum computing framework. Use when targeting Google Quantum AI hardware, designing noise-aware circuits, or running quantum characterization experiments. Best for Google hardware, noise modeling, and low-level circuit design. For IBM hardware use qiskit; for quantum ML with autodiff use pennylane; for physics simulations use qutip.",
     "path": "cirq/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -1993,7 +1993,7 @@
     "name": "code-review-ai-ai-review",
     "description": "You are an expert AI-powered code review specialist combining automated static analysis, intelligent pattern recognition, and modern DevOps practices. Leverage AI tools (GitHub Copilot, Qodo, GPT-5, C",
     "path": "code-review-ai-ai-review/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2003,7 +2003,7 @@
     "name": "code-review-excellence",
     "description": "Master effective code review practices to provide constructive feedback, catch bugs early, and foster knowledge sharing while maintaining team morale. Use when reviewing pull requests, establishing review standards, or mentoring developers.",
     "path": "code-review-excellence/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2013,7 +2013,7 @@
     "name": "code-reviewer",
     "description": "Elite code review expert specializing in modern AI-powered code",
     "path": "code-reviewer/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2133,7 +2133,7 @@
     "name": "Compiler Internals",
     "description": "LLVM and GCC compiler internals. Custom optimization passes, IR manipulation, code generation, ISA-aware optimization, and compiler toolchain development.",
     "path": "compiler-internals/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [
       "llvm",
       "gcc",
@@ -2163,7 +2163,7 @@
     "name": "comprehensive-review-full-review",
     "description": "Use when working with comprehensive review full review",
     "path": "comprehensive-review-full-review/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2263,7 +2263,7 @@
     "name": "consciousness-council",
     "description": "Run a multi-perspective Mind Council deliberation on any question, decision, or creative challenge. Use this skill whenever the user wants diverse viewpoints, needs help making a tough decision, asks for a council/panel/board discussion, wants to explore a problem from multiple angles, requests devil's advocate analysis, or says things like \"what would different experts think about this\", \"help me think through this from all sides\", \"council mode\", \"mind council\", or \"deliberate on this\". Also trigger when the user faces a dilemma, trade-off, or complex choice with no obvious answer.",
     "path": "consciousness-council/SKILL.md",
-    "category": "misc",
+    "category": "claude-tooling",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2433,7 +2433,7 @@
     "name": "cost-optimization",
     "description": "Optimize cloud costs through resource rightsizing, tagging strategies, reserved instances, and spending analysis. Use when reducing cloud expenses, analyzing infrastructure costs, or implementing cost governance policies.",
     "path": "cost-optimization/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -2463,7 +2463,7 @@
     "name": "bio-genome-intervals-coverage-analysis",
     "description": "Calculate read depth and coverage across genomic intervals using bedtools genomecov and coverage. Generate bedGraph files, compute per-base depth, and summarize coverage statistics. Use when assessing sequencing depth, creating coverage tracks, or evaluating target capture efficiency.",
     "path": "coverage-analysis/SKILL.md",
-    "category": "misc",
+    "category": "testing",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -3119,7 +3119,7 @@
     "name": "devops-troubleshooter",
     "description": "Expert DevOps troubleshooter specializing in rapid incident",
     "path": "devops-troubleshooter/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -3595,7 +3595,7 @@
     "name": "Embedded C",
     "description": "Bare-metal and RTOS embedded C programming. Linker scripts, startup code, peripheral drivers, memory-mapped I/O, DMA, interrupt handlers, and power management.",
     "path": "embedded-c/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [
       "embedded",
       "c",
@@ -3886,7 +3886,7 @@
     "name": "event-store-design",
     "description": "Design and implement event stores for event-sourced systems. Use when building event sourcing infrastructure, choosing event store technologies, or implementing event persistence patterns.",
     "path": "event-store-design/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -4046,7 +4046,7 @@
     "name": "filesystem-context",
     "description": "This skill should be used when the user asks to \"offload context to files\", \"implement dynamic context discovery\", \"use filesystem for agent memory\", \"reduce context window bloat\", or mentions file-based context management, tool output persistence, agent scratch pads, or just-in-time context loading.",
     "path": "filesystem-context/SKILL.md",
-    "category": "misc",
+    "category": "claude-tooling",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -4284,7 +4284,7 @@
     "name": "full-stack-orchestration-full-stack-feature",
     "description": "Use when working with full stack orchestration full stack feature",
     "path": "full-stack-orchestration-full-stack-feature/SKILL.md",
-    "category": "misc",
+    "category": "claude-tooling",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -4443,7 +4443,7 @@
     "name": "Genetic Algorithms & Evolutionary Computation",
     "description": "Genetic algorithms, genetic programming, differential evolution, CMA-ES, island models, and evolutionary strategies. Fitness landscape analysis, operator design, and constraint handling for real-world optimization.",
     "path": "genetic-algorithms/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [
       "genetic-algorithm",
       "evolutionary-computation",
@@ -4804,7 +4804,7 @@
     "name": "GPU CUDA Programming",
     "description": "CUDA C/C++ GPU programming. Kernel design, shared memory, warp-level primitives, memory coalescing, occupancy optimization, streams, and profiling with Nsight.",
     "path": "gpu-cuda-programming/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [
       "cuda",
       "gpu",
@@ -5185,7 +5185,7 @@
     "name": "HPC Engineer",
     "description": "High-Performance Computing engineer. MPI, OpenMP, SLURM, parallel algorithms, distributed computing, GPU clusters, profiling at scale, and scientific computing infrastructure.",
     "path": "hpc-engineer/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [
       "hpc",
       "mpi",
@@ -5381,7 +5381,7 @@
     "name": "incident-runbook-templates",
     "description": "Create structured incident response runbooks with step-by-step procedures, escalation paths, and recovery actions. Use when building runbooks, responding to incidents, or establishing incident response procedures.",
     "path": "incident-runbook-templates/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -5451,7 +5451,7 @@
     "name": "bio-genome-intervals-interval-arithmetic",
     "description": "Core interval arithmetic operations including intersect, subtract, merge, complement, map, and groupby using bedtools and pybedtools. Use when finding overlapping regions, removing overlaps, combining adjacent intervals, or transferring annotations between interval files.",
     "path": "interval-arithmetic/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -6410,7 +6410,7 @@
     "name": "memory-safety-patterns",
     "description": "Implement memory-safe programming with RAII, ownership, smart pointers, and resource management across Rust, C++, and C. Use when writing safe systems code, managing resources, or preventing memory bugs.",
     "path": "memory-safety-patterns/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -6420,7 +6420,7 @@
     "name": "memory-systems",
     "description": ">",
     "path": "memory-systems/SKILL.md",
-    "category": "misc",
+    "category": "claude-tooling",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -6779,7 +6779,7 @@
     "name": "bio-systems-biology-model-curation",
     "description": "Validate, gap-fill, and curate genome-scale metabolic models using memote for quality scores and COBRApy for manual curation. Ensure models meet SBML standards and produce biologically meaningful predictions. Use when improving draft models or preparing models for publication.",
     "path": "model-curation/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -6789,7 +6789,7 @@
     "name": "bio-machine-learning-model-validation",
     "description": "Implements nested cross-validation and stratified splits for unbiased model evaluation on biomedical datasets. Prevents data leakage and overfitting in biomarker discovery. Use when validating classifiers or optimizing hyperparameters on omics data.",
     "path": "model-validation/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -7057,7 +7057,7 @@
     "name": "Multi/Many-Objective Optimization",
     "description": "Multi-objective and many-objective evolutionary optimization. NSGA-II, NSGA-III, MOEA/D, reference point methods, Pareto analysis, quality indicators, and decision making for 2-20+ objectives.",
     "path": "multi-objective-optimization/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [
       "multi-objective",
       "many-objective",
@@ -7277,7 +7277,7 @@
     "name": "network-engineer",
     "description": "Expert network engineer specializing in modern cloud networking,",
     "path": "network-engineer/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -7287,7 +7287,7 @@
     "name": "Network Programming in C",
     "description": "Low-level network programming in C. BSD sockets, TCP/UDP, epoll/kqueue event loops, zero-copy I/O, protocol implementation, and high-performance server design.",
     "path": "network-programming-c/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [
       "networking",
       "sockets",
@@ -7468,7 +7468,7 @@
     "name": "Numerical Methods",
     "description": "Numerical computing and scientific computation. ODE/PDE solvers, linear algebra, interpolation, quadrature, root finding, finite differences, spectral methods, and stability analysis using SciPy, NumPy, and JAX.",
     "path": "numerical-methods/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -7618,7 +7618,7 @@
     "name": "on-call-handoff-patterns",
     "description": "Master on-call shift handoffs with context transfer, escalation procedures, and documentation. Use when transitioning on-call responsibilities, documenting shift summaries, or improving on-call processes.",
     "path": "on-call-handoff-patterns/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -8252,7 +8252,7 @@
     "name": "postmortem-writing",
     "description": "Write effective blameless postmortems with root cause analysis, timelines, and action items. Use when conducting incident reviews, writing postmortem documents, or improving incident response processes.",
     "path": "postmortem-writing/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -8734,7 +8734,7 @@
     "name": "pymoo",
     "description": "Multi-objective optimization framework. NSGA-II, NSGA-III, MOEA/D, Pareto fronts, constraint handling, benchmarks (ZDT, DTLZ), for engineering design and optimization problems.",
     "path": "pymoo/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -8837,7 +8837,7 @@
     "name": "python-packaging",
     "description": "Create distributable Python packages with proper project structure, setup.py/pyproject.toml, and publishing to PyPI. Use when packaging Python libraries, creating CLI tools, or distributing Python code.",
     "path": "python-packaging/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -8897,7 +8897,7 @@
     "name": "qa-expert",
     "description": "Use this agent when you need comprehensive quality assurance strategy, test planning across the entire development cycle, or quality metrics analysis to improve overall software quality.",
     "path": "qa-expert/SKILL.md",
-    "category": "misc",
+    "category": "testing",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -8917,7 +8917,7 @@
     "name": "qiskit",
     "description": "IBM quantum computing framework. Use when targeting IBM Quantum hardware, working with Qiskit Runtime for production workloads, or needing IBM optimization tools. Best for IBM hardware execution, quantum error mitigation, and enterprise quantum computing. For Google hardware use cirq; for gradient-based quantum ML use pennylane; for open quantum system simulations use qutip.",
     "path": "qiskit/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -9007,7 +9007,7 @@
     "name": "qutip",
     "description": "Quantum physics simulation library for open quantum systems. Use when studying master equations, Lindblad dynamics, decoherence, quantum optics, or cavity QED. Best for physics research, open system dynamics, and educational simulations. NOT for circuit-based quantum computing—use qiskit, cirq, or pennylane for quantum algorithms and hardware execution.",
     "path": "qutip/SKILL.md",
-    "category": "misc",
+    "category": "ml-framework",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -9147,7 +9147,7 @@
     "name": "receiving-code-review",
     "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
     "path": "receiving-code-review/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -9280,7 +9280,7 @@
     "name": "requesting-code-review",
     "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
     "path": "requesting-code-review/SKILL.md",
-    "category": "misc",
+    "category": "code-review",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -11143,7 +11143,7 @@
     "name": "Systems Engineer",
     "description": "Low-level systems engineer specializing in C/C++, OS internals, kernel-space programming, and hardware-software interface. Orchestrates low-level skills for bare-metal, embedded, networking, and performance-critical systems.",
     "path": "systems-engineer/SKILL.md",
-    "category": "misc",
+    "category": "devops-infra",
     "tags": [
       "systems",
       "c",
@@ -11407,7 +11407,7 @@
     "name": "test-automator",
     "description": "Master AI-powered test automation with modern frameworks,",
     "path": "test-automator/SKILL.md",
-    "category": "misc",
+    "category": "testing",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -11917,7 +11917,7 @@
     "name": "using-superpowers",
     "description": "Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions",
     "path": "using-superpowers/SKILL.md",
-    "category": "misc",
+    "category": "claude-tooling",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -11937,7 +11937,7 @@
     "name": "uv-package-manager",
     "description": "Master the uv package manager for fast Python dependency management, virtual environments, and modern Python project workflows. Use when setting up Python projects, managing dependencies, or optimizing Python development workflows with uv.",
     "path": "uv-package-manager/SKILL.md",
-    "category": "misc",
+    "category": "langs",
     "tags": [],
     "source": "custom",
     "kind": "skill"
@@ -12194,7 +12194,7 @@
     "name": "web3-testing",
     "description": "Test smart contracts comprehensively using Hardhat and Foundry with unit tests, integration tests, and mainnet forking. Use when testing Solidity contracts, setting up blockchain test suites, or validating DeFi protocols.",
     "path": "web3-testing/SKILL.md",
-    "category": "misc",
+    "category": "testing",
     "tags": [],
     "source": "custom",
     "kind": "skill"
