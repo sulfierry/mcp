@@ -1026,6 +1026,24 @@
     "kind": "skill"
   },
   {
+    "id": "binding-energy-fes",
+    "name": "binding-energy-fes",
+    "description": "Binding energy calculations and free-energy landscapes (FES). Endpoint methods (MM/GBSA, MM/PBSA, LIE), enhanced sampling for PMF (metadynamics, umbrella sampling, REMD, ABMD, adaptive biasing force), FES reconstruction (WHAM, BAR, MBAR), collective variables (RMSD, distance, torsion, path-CV, CVAE-learned CVs), PLUMED. Triggers on binding energy, MM/GBSA, MM/PBSA, metadynamics, free energy landscape, PMF, umbrella sampling, FES, WHAM, PLUMED, REMD.",
+    "path": "binding-energy-fes/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[binding-energy",
+      "fes",
+      "metadynamics",
+      "umbrella-sampling",
+      "mmgbsa",
+      "pmf",
+      "plumed]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "binding-site-annotation",
     "name": "bio-clip-seq-binding-site-annotation",
     "description": "Annotate CLIP-seq binding sites to genomic features including 3'UTR, 5'UTR, CDS, introns, and ncRNAs. Use when characterizing where an RBP binds in transcripts.",
