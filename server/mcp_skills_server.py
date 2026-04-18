@@ -73,6 +73,26 @@ def _format_output(payload: dict, format: str, pretty: bool = False) -> str:
     return json.dumps(payload, indent=2 if pretty else None, separators=(",", ":") if not pretty else None)
 
 
+# ── Session-scoped output cache ──────────────────────────────────────
+# Skills/agents are scanned once at startup, never mutated. Cache full
+# serialized responses per param set — eliminates re-serialization cost
+# when clients paginate or re-query with identical args.
+_LIST_CACHE: dict[tuple, str] = {}
+_SEARCH_CACHE: dict[tuple, str] = {}
+_GET_CACHE: dict[tuple, str] = {}
+_CACHE_MAX = 256
+
+def _cache_get(store: dict, key: tuple) -> str | None:
+    return store.get(key)
+
+def _cache_put(store: dict, key: tuple, val: str) -> str:
+    if len(store) >= _CACHE_MAX:
+        # Simple FIFO eviction — pop oldest
+        store.pop(next(iter(store)))
+    store[key] = val
+    return val
+
+
 # ── Create MCP Server ────────────────────────────────────────────────
 
 mcp = FastMCP("Skills MCP Server")
@@ -107,6 +127,11 @@ def list_skills(
         include_categories: Append category counts (replaces list_categories).
         pretty: Indent JSON (default False → minified).
     """
+    ckey = ("list", limit, offset, category, kind, compact, format, group_by_prefix, include_categories, pretty)
+    cached = _cache_get(_LIST_CACHE, ckey)
+    if cached is not None:
+        return cached
+
     merged: list[dict] = []
     total = 0
     emit_kind = not kind  # drop redundant kind field when caller filtered
@@ -147,7 +172,7 @@ def list_skills(
             for k, v in sorted(c.items(), key=lambda x: -x[1])
         ]
 
-    return _format_output(payload, format, pretty=pretty)
+    return _cache_put(_LIST_CACHE, ckey, _format_output(payload, format, pretty=pretty))
 
 
 @mcp.tool()
@@ -169,6 +194,11 @@ def search_skills(
         format: "json" or "md".
         pretty: Indent JSON (default False).
     """
+    ckey = ("search", query, limit, kind, compact, format, pretty)
+    cached = _cache_get(_SEARCH_CACHE, ckey)
+    if cached is not None:
+        return cached
+
     emit_kind = not kind
     scored: list[dict] = []
     for reg in _registries_for(kind):
@@ -179,11 +209,14 @@ def search_skills(
     scored.sort(key=lambda x: x.get("score", 0), reverse=True)
     scored = scored[:limit]
     if not scored:
-        return _format_output({"message": f"No matches for '{query}'.", "count": 0}, format, pretty)
+        out = _format_output({"message": f"No matches for '{query}'.", "count": 0}, format, pretty)
+        return _cache_put(_SEARCH_CACHE, ckey, out)
     payload = {"query": query, "count": len(scored), "results": scored}
     if format == "md":
-        return SkillRegistry.to_markdown({"skills": scored, **payload})
-    return _format_output(payload, "json", pretty=pretty)
+        out = SkillRegistry.to_markdown({"skills": scored, **payload})
+    else:
+        out = _format_output(payload, "json", pretty=pretty)
+    return _cache_put(_SEARCH_CACHE, ckey, out)
 
 
 @mcp.tool()
@@ -192,6 +225,8 @@ def get_skill(
     section: str = "",
     kind: str = "",
     mode: str = "full",
+    verbose: bool = False,
+    keep_frontmatter: bool = False,
 ) -> str:
     """Get skill/agent content in various modes.
 
@@ -199,32 +234,53 @@ def get_skill(
         skill_id: Directory name (e.g. 'molecular-docking').
         section: Substring of an H2 title (case-insensitive). Empty = full file.
         kind: "skill", "agent", or "" (auto-detect).
-        mode: "full" (default: full SKILL.md content),
+        mode: "full" (default: stripped SKILL.md content),
               "outline" (H2 section titles only — cheap TOC),
               "scripts" (return scripts/ subdirectory contents).
+        verbose: Include path/tags/source fields (default False).
+        keep_frontmatter: Keep YAML block inside content (default False, already in fields).
     """
+    ckey = ("get", skill_id, section, kind, mode, verbose, keep_frontmatter)
+    cached = _cache_get(_GET_CACHE, ckey)
+    if cached is not None:
+        return cached
+
+    pretty_separators = (",", ":")
     for reg in _registries_for(kind):
         if mode == "outline":
             titles = reg.list_sections(skill_id)
             if titles is not None:
-                return json.dumps({"skill_id": skill_id, "kind": reg.kind, "sections": titles})
+                out = json.dumps(
+                    {"skill_id": skill_id, "kind": reg.kind, "sections": titles},
+                    separators=pretty_separators,
+                )
+                return _cache_put(_GET_CACHE, ckey, out)
             continue
         if mode == "scripts":
             scripts = reg.get_scripts(skill_id)
             if scripts is not None:
-                return json.dumps({"skill_id": skill_id, "kind": reg.kind, "scripts": scripts}, indent=2)
+                out = json.dumps(
+                    {"skill_id": skill_id, "kind": reg.kind, "scripts": scripts},
+                    separators=pretty_separators,
+                )
+                return _cache_put(_GET_CACHE, ckey, out)
             continue
-        entry = reg.get_skill(skill_id, section=section)
+        entry = reg.get_skill(
+            skill_id, section=section,
+            verbose=verbose, keep_frontmatter=keep_frontmatter,
+        )
         if entry:
-            entry["kind"] = reg.kind
-            return json.dumps(entry, indent=2)
+            if verbose:
+                entry["kind"] = reg.kind
+            out = json.dumps(entry, separators=pretty_separators)
+            return _cache_put(_GET_CACHE, ckey, out)
 
     if mode == "scripts":
-        return json.dumps({"message": f"No scripts found for '{skill_id}'."})
+        return json.dumps({"message": f"No scripts found for '{skill_id}'."}, separators=pretty_separators)
     return json.dumps({
         "error": f"'{skill_id}' not found in {kind or 'skills or agents'}.",
         "suggestion": "Use search_skills(query) to find a valid id.",
-    })
+    }, separators=pretty_separators)
 
 
 # ══════════════════════════════════════════════════════════════════════

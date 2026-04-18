@@ -103,6 +103,9 @@ Further reductions layered in this pass:
 - JSON minified by default (opt-in `pretty=True`)
 - `skills://categories` resource — counts without tool call
 - `SKILLS_SKIP_AGENTS=1` — scope can skip agent registry entirely
+- `get_skill` strips frontmatter + collapses blank-line runs by default (~15 % per call)
+- `get_skill` drops `path`/`tags`/`source` fields unless `verbose=True`
+- Session LRU cache (FIFO, 256 entries) on `list_skills`/`search_skills`/`get_skill` — eliminates re-serialization on pagination or repeated queries
 
 ## Budget regression guard
 

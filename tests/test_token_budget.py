@@ -54,6 +54,26 @@ def test_outline_under_1kb():
     assert len(payload) < 1_000, f"outline {len(payload)} B > 1 KB budget"
 
 
+def test_get_skill_strips_frontmatter_by_default():
+    r = _registry()
+    entry = r.get_skill("llm-inference-servers")
+    assert not entry["content"].startswith("---"), "frontmatter not stripped"
+    assert "\n\n\n" not in entry["content"], "blank-line runs not collapsed"
+    # Verbose path/tags fields dropped by default
+    assert "path" not in entry, "path should be hidden when verbose=False"
+    assert "tags" not in entry, "tags should be hidden when verbose=False"
+
+
+def test_get_skill_saves_at_least_10pct_over_verbose():
+    r = _registry()
+    verbose = r.get_skill("llm-inference-servers", verbose=True, keep_frontmatter=True)
+    compact = r.get_skill("llm-inference-servers")
+    v = json.dumps(verbose, indent=2)
+    c = json.dumps(compact, separators=(",", ":"))
+    ratio = 1 - len(c) / len(v)
+    assert ratio >= 0.10, f"only {ratio*100:.1f}% savings on get_skill (target 10%)"
+
+
 def test_redundant_name_dropped():
     r = _registry()
     # Find a skill whose name equals title-cased id — should omit `name`

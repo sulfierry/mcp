@@ -311,12 +311,29 @@ class SkillRegistry:
         c = Counter(s.category or "uncategorized" for s in self._skills.values())
         return [{"category": k, "count": v} for k, v in sorted(c.items(), key=lambda x: -x[1])]
 
-    def get_skill(self, skill_id: str, section: str = "") -> Optional[dict]:
+    _FM_RE = re.compile(r"^---\s*\n.*?\n---\s*\n", re.DOTALL)
+    _BLANK_RUN = re.compile(r"\n{3,}")
+
+    @classmethod
+    def _strip_content(cls, md: str, keep_frontmatter: bool = False) -> str:
+        """Drop frontmatter block + collapse blank-line runs."""
+        if not keep_frontmatter:
+            md = cls._FM_RE.sub("", md, count=1)
+        return cls._BLANK_RUN.sub("\n\n", md).strip()
+
+    def get_skill(
+        self,
+        skill_id: str,
+        section: str = "",
+        verbose: bool = False,
+        keep_frontmatter: bool = False,
+    ) -> Optional[dict]:
         """Get info + content for a skill.
 
-        If `section` is provided, returns only the H2 section whose title
-        contains that substring (case-insensitive). Everything before the
-        first H2 is returned whenever section is empty.
+        By default: strips frontmatter (redundant with entry fields),
+        collapses blank-line runs, drops `path`/`tags`/`source` metadata.
+        `verbose=True` restores all fields. `keep_frontmatter=True` keeps the
+        YAML block inside content.
         """
         entry = self._skills.get(skill_id)
         if not entry:
@@ -330,8 +347,17 @@ class SkillRegistry:
 
         if section:
             content = self._extract_section(content, section)
+        else:
+            content = self._strip_content(content, keep_frontmatter=keep_frontmatter)
 
-        result = asdict(entry)
+        if verbose:
+            result = asdict(entry)
+        else:
+            result = {"id": entry.id}
+            if not self._name_is_derived(entry.name, entry.id):
+                result["name"] = entry.name
+            if entry.category and entry.category != "misc":
+                result["category"] = entry.category
         result["content"] = content
         if section:
             result["section"] = section
