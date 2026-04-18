@@ -25,6 +25,7 @@ class SkillEntry:
     category: str = ""              # optional category tag
     tags: list[str] = field(default_factory=list)
     source: str = ""                # origin repo or "custom"
+    kind: str = "skill"             # "skill" or "agent" — namespace marker
 
 
 class SkillRegistry:
@@ -37,8 +38,15 @@ class SkillRegistry:
         results = registry.search("molecular docking")
     """
 
-    def __init__(self, skills_dir: str):
+    def __init__(
+        self,
+        skills_dir: str,
+        overlay_index: Optional[str] = None,
+        kind: str = "skill",
+    ):
         self.skills_dir = Path(skills_dir)
+        self.overlay_index = Path(overlay_index) if overlay_index else None
+        self.kind = kind
         self._skills: dict[str, SkillEntry] = {}
 
     # ── Scanning ──────────────────────────────────────────────────────
@@ -54,7 +62,26 @@ class SkillRegistry:
             if entry:
                 self._skills[entry.id] = entry
 
+        self._apply_overlay()
         return len(self._skills)
+
+    def _apply_overlay(self) -> None:
+        """Apply category/tag overrides from overlay_index JSON if present."""
+        if not self.overlay_index or not self.overlay_index.is_file():
+            return
+        try:
+            data = json.loads(self.overlay_index.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            return
+        by_id = {item.get("id"): item for item in data if isinstance(item, dict)}
+        for sid, entry in self._skills.items():
+            ov = by_id.get(sid)
+            if not ov:
+                continue
+            if ov.get("category"):
+                entry.category = ov["category"]
+            if ov.get("tags"):
+                entry.tags = ov["tags"] if isinstance(ov["tags"], list) else entry.tags
 
     def _parse_skill_md(self, path: Path) -> Optional[SkillEntry]:
         """Parse a SKILL.md file and extract frontmatter metadata."""
@@ -92,6 +119,7 @@ class SkillRegistry:
             category=category,
             tags=tags,
             source=fm.get("source", "custom"),
+            kind=self.kind,
         )
 
     @staticmethod
@@ -128,15 +156,76 @@ class SkillRegistry:
 
     # ── Queries ───────────────────────────────────────────────────────
 
-    def list_skills(self) -> list[dict]:
-        """Return all skills as a list of dicts (id, name, description)."""
-        return [
-            {"id": s.id, "name": s.name, "description": s.description, "category": s.category}
-            for s in sorted(self._skills.values(), key=lambda s: s.name.lower())
-        ]
+    MAX_DESC_CHARS = 160
 
-    def get_skill(self, skill_id: str) -> Optional[dict]:
-        """Get full info + content for a skill by ID."""
+    @classmethod
+    def _trim_desc(cls, text: str, max_chars: int | None = None) -> str:
+        if not text:
+            return ""
+        n = max_chars if max_chars is not None else cls.MAX_DESC_CHARS
+        if n <= 0 or len(text) <= n:
+            return text
+        # cut on last word boundary before n
+        head = text[:n].rsplit(" ", 1)[0].rstrip(" .,;:—-")
+        return head + "…"
+
+    def list_skills(
+        self,
+        limit: int = 50,
+        offset: int = 0,
+        category: str = "",
+        compact: bool = True,
+        desc_chars: int = MAX_DESC_CHARS,
+    ) -> dict:
+        """Return skills with pagination + optional category filter.
+
+        compact=True omits description entirely. When compact=False,
+        descriptions are truncated to `desc_chars` (default 160, 0 = full).
+        """
+        entries = sorted(self._skills.values(), key=lambda s: s.name.lower())
+        if category:
+            cat = category.lower()
+            entries = [s for s in entries if s.category.lower() == cat]
+        total = len(entries)
+
+        if limit <= 0:
+            limit = total
+        sliced = entries[offset: offset + limit]
+
+        if compact:
+            items = [{"id": s.id, "name": s.name, "category": s.category} for s in sliced]
+        else:
+            items = [
+                {
+                    "id": s.id,
+                    "name": s.name,
+                    "description": self._trim_desc(s.description, desc_chars),
+                    "category": s.category,
+                }
+                for s in sliced
+            ]
+        return {
+            "total": total,
+            "offset": offset,
+            "limit": limit,
+            "count": len(items),
+            "has_more": offset + len(items) < total,
+            "skills": items,
+        }
+
+    def list_categories(self) -> list[dict]:
+        """Return counts per category for compact overview."""
+        from collections import Counter
+        c = Counter(s.category or "uncategorized" for s in self._skills.values())
+        return [{"category": k, "count": v} for k, v in sorted(c.items(), key=lambda x: -x[1])]
+
+    def get_skill(self, skill_id: str, section: str = "") -> Optional[dict]:
+        """Get info + content for a skill.
+
+        If `section` is provided, returns only the H2 section whose title
+        contains that substring (case-insensitive). Everything before the
+        first H2 is returned whenever section is empty.
+        """
         entry = self._skills.get(skill_id)
         if not entry:
             return None
@@ -147,11 +236,47 @@ class SkillRegistry:
         except OSError:
             content = "[Error reading SKILL.md]"
 
+        if section:
+            content = self._extract_section(content, section)
+
         result = asdict(entry)
         result["content"] = content
+        if section:
+            result["section"] = section
         return result
 
-    def search_skills(self, query: str) -> list[dict]:
+    @staticmethod
+    def _extract_section(md: str, needle: str) -> str:
+        """Return the H2 section whose title contains `needle` (case-insensitive)."""
+        needle = needle.lower()
+        parts = re.split(r"(?m)^## +", md)
+        # parts[0] is pre-H2 preamble; skip it
+        for chunk in parts[1:]:
+            title_line = chunk.split("\n", 1)[0]
+            if needle in title_line.lower():
+                return "## " + chunk.rstrip()
+        # fallback: list available sections
+        titles = [c.split("\n", 1)[0] for c in parts[1:]]
+        return f"[Section '{needle}' not found. Available: {titles}]"
+
+    def list_sections(self, skill_id: str) -> Optional[list[str]]:
+        """Return H2 section titles for a skill (cheap TOC without full content)."""
+        entry = self._skills.get(skill_id)
+        if not entry:
+            return None
+        try:
+            md = (self.skills_dir / entry.path).read_text(encoding="utf-8")
+        except OSError:
+            return []
+        return re.findall(r"(?m)^## +(.+?)$", md)
+
+    def search_skills(
+        self,
+        query: str,
+        limit: int = 20,
+        compact: bool = False,
+        desc_chars: int = MAX_DESC_CHARS,
+    ) -> list[dict]:
         """Search skills by keyword matching on name, description, tags, and category."""
         query_lower = query.lower()
         tokens = query_lower.split()
@@ -164,10 +289,20 @@ class SkillRegistry:
 
         scored.sort(key=lambda x: x[0], reverse=True)
 
+        if compact:
+            return [
+                {"id": s.id, "name": s.name, "category": s.category, "score": round(sc, 3)}
+                for sc, s in scored[:limit]
+            ]
         return [
-            {"id": s.id, "name": s.name, "description": s.description,
-             "category": s.category, "score": round(sc, 3)}
-            for sc, s in scored[:20]
+            {
+                "id": s.id,
+                "name": s.name,
+                "description": self._trim_desc(s.description, desc_chars),
+                "category": s.category,
+                "score": round(sc, 3),
+            }
+            for sc, s in scored[:limit]
         ]
 
     @staticmethod

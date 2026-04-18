@@ -73,6 +73,9 @@ if $LIST_ONLY; then
     echo -e "  ${GREEN}•${NC} tech-leads-club/agent-skills ⭐2K (packages/skills-catalog/skills/)"
     echo -e "  ${GREEN}•${NC} guanyang/antigravity-skills (skills/)"
     echo -e "  ${GREEN}•${NC} rmyndharis/antigravity-skills (skills/)"
+    echo -e ""
+    echo -e "  ${BLUE}── Knowledge Graph / Codebase ──${NC}"
+    echo -e "  ${GREEN}•${NC} safishamsi/graphify (graphify/skill.md, single-file)"
     exit 0
 fi
 
@@ -261,6 +264,48 @@ sync_voltagent
 clone_and_sync "tech-leads-club/agent-skills" "https://github.com/tech-leads-club/agent-skills.git" "packages/skills-catalog/skills" ""
 clone_and_sync "guanyang/antigravity-skills" "https://github.com/guanyang/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
 clone_and_sync "rmyndharis/antigravity-skills" "https://github.com/rmyndharis/antigravity-skills.git" "skills" "$CURATED_GUANYANG"
+
+# sync_graphify — Special case: single-file skill living inside a Python package.
+# Upstream layout: graphify/skill.md (not a top-level SKILL.md, no per-skill dir).
+# Pulled via raw.githubusercontent.com, no git clone of the 58k Python package.
+sync_graphify() {
+    local name="safishamsi/graphify"
+    local branch="v4"
+    local url="https://raw.githubusercontent.com/$name/$branch/graphify/skill.md"
+    local dest="$SKILLS_DIR/graphify"
+
+    echo -e "${BLUE}📦 Fetching $name (single-file sync)...${NC}"
+
+    if [[ -d "$dest" ]] && [[ -f "$dest/SKILL.md" ]] && ! $FORCE; then
+        # Compare remote vs local — update only if changed
+        local tmp
+        tmp="$(mktemp)"
+        if curl -fsSL "$url" -o "$tmp" 2>/dev/null; then
+            if ! diff -q "$tmp" "$dest/SKILL.md" >/dev/null 2>&1; then
+                mv "$tmp" "$dest/SKILL.md"
+                sync_count=$((sync_count + 1))
+                echo -e "  ${GREEN}✓${NC} graphify (updated from $branch)"
+            else
+                skip_count=$((skip_count + 1))
+                rm -f "$tmp"
+            fi
+        else
+            rm -f "$tmp"
+            echo -e "  ${YELLOW}⚠ Failed to fetch graphify skill.md${NC}"
+        fi
+        return 0
+    fi
+
+    mkdir -p "$dest"
+    if curl -fsSL "$url" -o "$dest/SKILL.md" 2>/dev/null; then
+        sync_count=$((sync_count + 1))
+        echo -e "  ${GREEN}✓${NC} graphify (fetched from $branch)"
+    else
+        echo -e "  ${YELLOW}⚠ Failed to fetch graphify skill.md${NC}"
+    fi
+    echo ""
+}
+sync_graphify
 
 echo -e "${GREEN}✅ Sync complete: $sync_count skills synced, $skip_count skipped (already exist)${NC}"
 
