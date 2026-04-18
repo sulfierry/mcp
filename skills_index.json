@@ -14,7 +14,7 @@
     "name": "academic-epistemology",
     "description": "Philosophy of science for PhD-level epistemic rigor. Popper (falsificationism), Kuhn (paradigms), Lakatos (research programmes), Feyerabend, Bayesian epistemology, inference to best explanation (IBE), underdetermination, theory-ladenness, scientific realism vs instrumentalism, causation vs correlation, demarcation problem. Triggers on falsifiable, paradigm, research programme, philosophy of science, epistemology, scientific reasoning, demarcation.",
     "path": "academic-epistemology/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[epistemology",
       "popper",
@@ -521,7 +521,7 @@
     "name": "argument-mapping",
     "description": "Close-reading and argument analysis at PhD level. Toulmin model, argument diagrams, steel-manning, counterargument generation, fallacy detection, Rapoport rules, dialectical analysis. For literature critique, paper review, thesis defense prep, discussion-section writing. Triggers on argument analysis, critical reading, steel-manning, counterargument, dialectic, close reading, argument structure.",
     "path": "argument-mapping/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[argument",
       "critical-thinking",
@@ -1481,7 +1481,7 @@
     "name": "causal-inference",
     "description": "Pearl-style causal inference for PhD-grade scientific rigor. DAGs, do-calculus, backdoor/frontdoor criteria, counterfactuals, identification, confounders, colliders, mediation. Triggers when user discusses causal claims, confounding, treatment effects, instrumental variables, natural experiments, RCT analysis, observational study adjustments, or mediation analysis.",
     "path": "causal-inference/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[causal-inference",
       "dag",
@@ -2605,6 +2605,23 @@
     "path": "counts-ingest/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "cover-letter-elite",
+    "name": "cover-letter-elite",
+    "description": "Cover letter + presubmission inquiry craft for top-tier venues (Nature, Science, Cell, NEJM, Lancet, PNAS, eLife). 300-word elite letter structure, editor-targeting, novelty claim, suggested/opposed reviewers, presubmission inquiry protocol. Triggers on cover letter, presubmission inquiry, Nature submission, Science submission, Cell submission, editor pitch.",
+    "path": "cover-letter-elite/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "[cover-letter",
+      "presubmission",
+      "nature",
+      "science",
+      "editor",
+      "elite]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -4178,6 +4195,23 @@
     "path": "expression-to-pathways/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "extended-data-craft",
+    "name": "extended-data-craft",
+    "description": "Extended Data figures and Supplementary Information for Nature/Science/Cell submissions. ED-figure anatomy (standalone caption, high-content density), SI structure (methods in depth, source data, extended analyses), reporting summary (Nature), cross-referencing discipline, figure-supplement vs extended-data distinction. Triggers on Extended Data, Supplementary, SI, ED figure, source data, reporting summary.",
+    "path": "extended-data-craft/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "[extended-data",
+      "supplementary",
+      "nature",
+      "cell",
+      "figures",
+      "phd]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -5891,7 +5925,7 @@
     "name": "journal-selection",
     "description": "Evidence-based journal/venue selection for PhD-level submission. Impact factor nuances, CiteScore, SJR, Eigenfactor, h5-index, Scopus/WoS indexing, predatory publisher detection (Beall, Cabell's, Think Check Submit), journal fit analysis, scope matching, turnaround times, OA economics, transfer networks. Triggers on journal selection, venue selection, impact factor, predatory journal, where to publish, scope matching, JIF, submission strategy.",
     "path": "journal-selection/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[journal",
       "publishing",
@@ -7619,6 +7653,41 @@
     "kind": "skill"
   },
   {
+    "id": "nature-science-narrative",
+    "name": "nature-science-narrative",
+    "description": "Inverted-pyramid narrative craft for Nature/Science/Cell-tier submissions. One take-home discipline, 150-word abstract, hook-implication-evidence ordering, broad-interest framing. Triggers on Nature, Science, Cell, top-tier, abstract writing, headline paper, one take-home, broad interest, storytelling.",
+    "path": "nature-science-narrative/SKILL.md",
+    "category": "visualization-scientific",
+    "tags": [
+      "[nature",
+      "science",
+      "narrative",
+      "storytelling",
+      "abstract",
+      "top-tier]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "nature-style-guide",
+    "name": "nature-style-guide",
+    "description": "Nature/Science/Cell prose style enforcement. Voice (active 'we show'), tense (present for claims, past for methods), hedge elimination, concrete nouns over abstract nominalizations, parallel structure, British vs US English per journal, in-text citation style (numeric vs author-year). Triggers on Nature style, Science style, Cell style, prose editing, hedge, nominalization, voice, tense.",
+    "path": "nature-style-guide/SKILL.md",
+    "category": "visualization-scientific",
+    "tags": [
+      "[style",
+      "prose",
+      "nature",
+      "science",
+      "cell",
+      "editing",
+      "voice]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "ncrna-annotation",
     "name": "bio-genome-annotation-ncrna-annotation",
     "description": "Identify non-coding RNAs including tRNAs, rRNAs, snoRNAs, and regulatory RNAs using Infernal covariance model searches against Rfam and tRNAscan-SE for tRNA prediction. Use when performing genome-wide ncRNA annotation with assembly input producing GFF output.",
@@ -8044,7 +8113,7 @@
     "name": "open-science-workflow",
     "description": "Open science lifecycle for PhD-grade work. Pre-registration (OSF, AsPredicted, Registered Reports), protocol sharing (protocols.io), preprint servers (arXiv, bioRxiv, medRxiv, SSRN, PsyArXiv, EarthArXiv, ChemRxiv), data sharing (Zenodo, OSF, domain repositories), code DOI, open access routes (gold, green, diamond), licensing (CC-BY, ODbL), ORCID, CRediT taxonomy, ROR, RAiD. Triggers on pre-registration, preprint, registered report, open access, OSF, Zenodo, CRediT, ORCID, FAIR.",
     "path": "open-science-workflow/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[open-science",
       "pre-registration",
@@ -8817,6 +8886,23 @@
     "path": "primer-validation/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "priority-embargo-press",
+    "name": "priority-embargo-press",
+    "description": "Priority establishment, embargo management, and press strategy for high-profile scientific publications. Preprint timing for priority (bioRxiv/arXiv), journal embargo rules, press releases, Nature Podcast / media interviews, conference abstract precedence, scoop avoidance. Triggers on priority, embargo, press release, media training, Nature Podcast, scoop, preprint timing, conference abstract.",
+    "path": "priority-embargo-press/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "[priority",
+      "embargo",
+      "press",
+      "media",
+      "preprint",
+      "scoop]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -9773,7 +9859,7 @@
     "name": "reproducibility-manifest",
     "description": "Computational reproducibility infrastructure for PhD-grade research. Containerized environments (Docker, Apptainer/Singularity), language-specific lockfiles (uv, poetry, renv, conda-lock), workflow orchestration (Nextflow, Snakemake, Make), data/code archiving (Zenodo, OSF, Dryad), persistent identifiers (DOI, ORCID), FAIR principles. Triggers on reproducibility, replicable, code sharing, data sharing, FAIR, containerization for research.",
     "path": "reproducibility-manifest/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[reproducibility",
       "docker",
@@ -9800,7 +9886,7 @@
     "name": "research-ethics-credit",
     "description": "Research ethics, IRB/ethics approval, authorship and CRediT taxonomy, ICMJE authorship criteria, conflicts of interest, dual-use research, AI-assisted writing disclosure, data protection (GDPR, HIPAA), informed consent, Helsinki Declaration, IACUC for animals, ARRIVE 2.0, retraction ethics, PubPeer. Triggers on research ethics, IRB, authorship, CRediT, conflicts of interest, AI disclosure, retraction, informed consent, Helsinki, IACUC, dual-use.",
     "path": "research-ethics-credit/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[ethics",
       "irb",
@@ -9830,6 +9916,22 @@
     "path": "research-lookup/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "response-to-reviewers",
+    "name": "response-to-reviewers",
+    "description": "Point-by-point response to peer-review reports at top-tier venues. Concession + pushback strategy, new experiments commitment, revision letter template, color-coding responses, tracking changes. Triggers on response to reviewers, revision letter, rebuttal, point-by-point, address reviewer concerns, R1/R2, major revision.",
+    "path": "response-to-reviewers/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "[revision",
+      "reviewers",
+      "rebuttal",
+      "response",
+      "peer-review]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -10936,22 +11038,6 @@
     "kind": "skill"
   },
   {
-    "id": "skills",
-    "name": "pxdesign",
-    "description": ">",
-    "path": "SKILL.md",
-    "category": "misc",
-    "tags": [
-      "[pxdesign",
-      "binder-design",
-      "de-novo",
-      "protein-design",
-      "cli]"
-    ],
-    "source": "custom",
-    "kind": "skill"
-  },
-  {
     "id": "slack-gif-creator",
     "name": "slack-gif-creator",
     "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"",
@@ -11701,7 +11787,7 @@
     "name": "systematic-review-prisma",
     "description": "PRISMA 2020-compliant systematic review protocol. Registration (PROSPERO), search strategy, PICO, inclusion/exclusion, dual screening, risk of bias (ROB2/ROBINS-I), data extraction, GRADE certainty, PRISMA flow diagram, synthesis (narrative, meta-analysis, GRADE summary). Triggers on systematic review, scoping review, meta-analysis, PRISMA, PROSPERO, Cochrane review, umbrella review, realist synthesis.",
     "path": "systematic-review-prisma/SKILL.md",
-    "category": "misc",
+    "category": "scientific-writing",
     "tags": [
       "[prisma",
       "systematic-review",
@@ -12281,6 +12367,23 @@
     "path": "tree-visualization/SKILL.md",
     "category": "phylogenetics",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "triage-desk-reject-response",
+    "name": "triage-desk-reject-response",
+    "description": "Handling desk rejections and triage decisions at top-tier venues. Fast pivot strategy, appeal mechanics (rare successes), tier-cascade planning, reformulation for lateral fit, learning from editorial feedback. Triggers on desk reject, triage, editorial decline, editor rejection, without peer review, fast reject.",
+    "path": "triage-desk-reject-response/SKILL.md",
+    "category": "scientific-writing",
+    "tags": [
+      "[desk-reject",
+      "triage",
+      "appeal",
+      "pivot",
+      "strategy",
+      "top-tier]"
+    ],
     "source": "custom",
     "kind": "skill"
   },

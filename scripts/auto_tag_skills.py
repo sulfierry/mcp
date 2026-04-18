@@ -51,7 +51,7 @@ RULES: list[tuple[str, list[str]]] = [
     ("workflow-engine",    ["nextflow", "snakemake", "wdl", "cwl", "airflow"]),
     ("pipeline-bio",       ["-pipeline"]),
     ("notebook-writing",   ["jupyter-", "quarto", "rmarkdown", "obsidian", "markdown-"]),
-    ("scientific-writing", ["academic-paper", "thesis", "manuscript", "latex-", "peer-review", "citation", "research-grant", "grant-proposal", "scientific-paper", "scientific-manuscript", "paperzilla", "paper-lookup", "pubmed-sum", "literature-review"]),
+    ("scientific-writing", ["academic-paper", "thesis", "manuscript", "latex-", "peer-review", "citation", "research-grant", "grant-proposal", "scientific-paper", "scientific-manuscript", "paperzilla", "paper-lookup", "pubmed-sum", "literature-review", "causal-inference", "systematic-review-prisma", "reproducibility-manifest", "thesis-structure", "argument-mapping", "open-science-workflow", "academic-epistemology", "journal-selection", "research-ethics-credit", "nature-science-narrative", "cover-letter-elite", "extended-data-craft", "response-to-reviewers", "triage-desk-reject-response", "priority-embargo-press", "nature-style-guide"]),
     ("research-methods",   ["hypothes", "hypogenic", "deep-research", "socratic", "brainstorm", "scientific-method", "peer-review-method"]),
     ("frontend",           ["react-", "nextjs", "vue", "svelte", "angular", "tailwind", "ui-", "ux-", "frontend", "web-design", "mobile-develop", "ios-", "react-native", "flutter", "godot", "unity"]),
     ("backend-api",        ["fastapi", "django", "flask", "nodejs", "graphql-arch", "api-design", "api-document"]),
