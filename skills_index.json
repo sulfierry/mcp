@@ -1302,6 +1302,22 @@
     "kind": "skill"
   },
   {
+    "id": "bun-deno-runtimes",
+    "name": "bun-deno-runtimes",
+    "description": "Modern JavaScript/TypeScript runtimes: Bun (Zig, fast), Deno (Rust, secure-by-default). Replace Node for scripts, servers, bundling, package management, test running. Triggers on Bun, Deno, modern JS runtime, Node alternative, TypeScript execution, JavaScript runtime.",
+    "path": "bun-deno-runtimes/SKILL.md",
+    "category": "langs",
+    "tags": [
+      "[bun",
+      "deno",
+      "javascript",
+      "typescript",
+      "runtime]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "busco-status-interpretation",
     "name": "busco-status-interpretation",
     "description": "Guide to correctly interpreting BUSCO (Benchmarking Universal Single-Copy Orthologs) completeness statuses. Covers why Duplicated BUSCOs count as complete, how to parse BUSCO output files, how to compute and compare completeness across proteomes and genomes, and common counting mistakes. Relevant when running genome or proteome quality assessments with BUSCO, comparing assemblies, or reporting completeness statistics. See also: prokka-genome-annotation for annotation workflows that feed into BUSCO assessment.",
@@ -3561,6 +3577,25 @@
     "path": "distributed-debugging-debug-trace/SKILL.md",
     "category": "debug-error",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "distributed-systems-frontier",
+    "name": "distributed-systems-frontier",
+    "description": "Distributed systems primitives: consensus (Raft, Paxos, EPaxos, Multi-Paxos), CRDT (G-Counter, OR-Set, RGA, Yjs, Automerge), vector clocks, HLC, CALM theorem, saga, eventual consistency, causal consistency, Jepsen testing. Triggers on Raft, Paxos, consensus, CRDT, Yjs, Automerge, vector clock, HLC, distributed consistency, Jepsen.",
+    "path": "distributed-systems-frontier/SKILL.md",
+    "category": "architecture",
+    "tags": [
+      "[raft",
+      "paxos",
+      "crdt",
+      "consensus",
+      "distributed",
+      "yjs",
+      "automerge",
+      "jepsen]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -5994,6 +6029,24 @@
     "kind": "skill"
   },
   {
+    "id": "jax-ecosystem",
+    "name": "jax-ecosystem",
+    "description": "JAX functional numerical computing: jit/grad/vmap/pmap, Flax (nn), Equinox (PyTree modules), Optax (optimizers), Orbax (checkpointing), chex (testing), TFDS (data), Haiku. XLA compilation, sharding (pjit / jax.Array), TPU/GPU. Triggers on JAX, Flax, Optax, Equinox, pjit, pmap, XLA, JAX autograd, TPU training.",
+    "path": "jax-ecosystem/SKILL.md",
+    "category": "ml-framework",
+    "tags": [
+      "[jax",
+      "flax",
+      "optax",
+      "equinox",
+      "xla",
+      "tpu",
+      "functional-ml]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "joint-calling",
     "name": "bio-variant-calling-joint-calling",
     "description": "Joint genotype calling across multiple samples using GATK CombineGVCFs and GenotypeGVCFs. Essential for cohort studies, population genetics, and leveraging VQSR. Use when performing joint genotyping across multiple samples.",
@@ -6509,6 +6562,42 @@
     "kind": "skill"
   },
   {
+    "id": "llm-inference-servers",
+    "name": "llm-inference-servers",
+    "description": "Production LLM inference: vLLM, SGLang, TensorRT-LLM, Text Generation Inference (TGI), llama.cpp, Ollama, MLX. PagedAttention, continuous batching, speculative decoding, prefix caching, KV-cache management, tensor/pipeline parallelism. Triggers on vLLM, SGLang, TGI, TensorRT-LLM, llama.cpp, inference server, continuous batching, PagedAttention, speculative decoding, KV cache.",
+    "path": "llm-inference-servers/SKILL.md",
+    "category": "llm-rag",
+    "tags": [
+      "[vllm",
+      "sglang",
+      "tgi",
+      "tensorrt-llm",
+      "inference",
+      "llama-cpp",
+      "ollama]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "llm-quantization",
+    "name": "llm-quantization",
+    "description": "LLM quantization formats and tools: GGUF (llama.cpp), AWQ (Activation-aware), GPTQ, EXL2, BitsAndBytes (NF4/FP4), AQLM, HQQ, SmoothQuant. Conversion pipelines (llama.cpp convert, autoawq, auto-gptq). Accuracy-vs-size trade-offs, calibration data, INT4/INT8/FP8. Triggers on GGUF, AWQ, GPTQ, EXL2, quantization, llm compression, NF4, bitsandbytes, AQLM.",
+    "path": "llm-quantization/SKILL.md",
+    "category": "llm-rag",
+    "tags": [
+      "[gguf",
+      "awq",
+      "gptq",
+      "quantization",
+      "llm-compression",
+      "bitsandbytes",
+      "nf4]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "local-blast",
     "name": "bio-local-blast",
     "description": "Run local BLAST searches using BLAST+ command-line tools. Use when running fast unlimited searches, building custom databases, performing large-scale analysis, or when NCBI servers are slow or unavailable.",
@@ -6585,6 +6674,25 @@
     "path": "loop-calling/SKILL.md",
     "category": "misc",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "lora-peft-finetuning",
+    "name": "lora-peft-finetuning",
+    "description": "Parameter-efficient fine-tuning: LoRA, QLoRA, DoRA, IA³, Prefix Tuning, Prompt Tuning, Adapters. PEFT library (HuggingFace), Unsloth (2x speed), axolotl YAML configs, Flash Attention 2/3, RLHF/DPO/ORPO/KTO preference tuning, merging adapters, multi-adapter serving. Triggers on LoRA, QLoRA, PEFT, DoRA, fine-tune LLM, adapter, Unsloth, axolotl, DPO, ORPO, RLHF, preference tuning.",
+    "path": "lora-peft-finetuning/SKILL.md",
+    "category": "llm-rag",
+    "tags": [
+      "[lora",
+      "qlora",
+      "peft",
+      "dpo",
+      "rlhf",
+      "fine-tuning",
+      "unsloth",
+      "axolotl]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -7311,6 +7419,42 @@
       "umol",
       "virtual-screening",
       "ai-docking]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "modern-data-stack",
+    "name": "modern-data-stack",
+    "description": "Modern OLAP/analytics data stack: DuckDB (embedded OLAP), Apache Arrow (columnar format), Apache Iceberg / Delta Lake / Apache Hudi (table formats), ClickHouse, Polars, dbt, Parquet. Zero-copy interop, lakehouse patterns. Triggers on DuckDB, Arrow, Iceberg, Delta Lake, Hudi, ClickHouse, Parquet, lakehouse, columnar analytics.",
+    "path": "modern-data-stack/SKILL.md",
+    "category": "databases",
+    "tags": [
+      "[duckdb",
+      "arrow",
+      "iceberg",
+      "delta-lake",
+      "clickhouse",
+      "parquet",
+      "lakehouse]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "modern-frontend-frameworks",
+    "name": "modern-frontend-frameworks",
+    "description": "Modern frontend beyond React: Astro (content-first, islands), SvelteKit 5 (runes), SolidJS (fine-grained reactivity), Qwik (resumability, zero-hydration), htmx (HTML-over-the-wire), React Server Components (RSC). Triggers on Astro, Svelte, SvelteKit, runes, SolidJS, Qwik, resumability, htmx, server components, RSC.",
+    "path": "modern-frontend-frameworks/SKILL.md",
+    "category": "frontend",
+    "tags": [
+      "[astro",
+      "svelte",
+      "sveltekit",
+      "solidjs",
+      "qwik",
+      "htmx",
+      "rsc]"
     ],
     "source": "custom",
     "kind": "skill"
@@ -11896,6 +12040,24 @@
     "kind": "skill"
   },
   {
+    "id": "supply-chain-security",
+    "name": "supply-chain-security",
+    "description": "Software supply-chain security: SBOM generation (Syft, CycloneDX, SPDX), signed artifacts (Sigstore/cosign), SLSA levels, SPIFFE/SPIRE workload identity, in-toto attestations, dependency confusion mitigation, trusted publishing. Triggers on SBOM, Sigstore, cosign, SLSA, SPIFFE, SPIRE, in-toto, supply chain, software bill of materials.",
+    "path": "supply-chain-security/SKILL.md",
+    "category": "security",
+    "tags": [
+      "[sbom",
+      "sigstore",
+      "cosign",
+      "slsa",
+      "spiffe",
+      "supply-chain",
+      "security]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "survival-analysis",
     "name": "bio-machine-learning-survival-analysis",
     "description": "Analyzes time-to-event data using Kaplan-Meier curves, log-rank tests, and Cox proportional hazards regression with lifelines. Builds survival models from clinical and omics features. Use when predicting patient survival or modeling time-to-event outcomes.",
@@ -13254,6 +13416,21 @@
     "path": "zarr-python/SKILL.md",
     "category": "databases",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "zig-systems",
+    "name": "zig-systems",
+    "description": "Zig systems language: comptime, allocators, build system (zig build), cross-compilation, C/C++ interop, error handling, no hidden control flow. Replacement for C in systems code. Bun/Ghostty/TigerBeetle/tree-sitter wrappers use Zig. Triggers on Zig, ziglang, comptime, zig build, systems programming, C alternative.",
+    "path": "zig-systems/SKILL.md",
+    "category": "langs",
+    "tags": [
+      "[zig",
+      "systems",
+      "cross-compile",
+      "c-interop]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
