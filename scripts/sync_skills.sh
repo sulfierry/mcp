@@ -667,7 +667,32 @@ MCPEOF
     fi
 fi
 
-# 7. Qwen CLI — inject into settings.json, preserving existing keys
+# 7a. GitHub Copilot CLI — user-level ~/.copilot/mcp-config.json
+COPILOT_CFG="$HOME/.copilot/mcp-config.json"
+mkdir -p "$HOME/.copilot"
+if [[ -f "$COPILOT_CFG" ]] && grep -q 'skills-server' "$COPILOT_CFG" 2>/dev/null; then
+    echo -e "  ${GREEN}✓${NC} GitHub Copilot CLI — MCP already configured"
+else
+    python3 -c "
+import json
+p = '$COPILOT_CFG'
+try:
+    with open(p) as f: data = json.load(f)
+except Exception: data = {}
+data.setdefault('mcpServers', {})
+data['mcpServers']['skills-server'] = {
+    'type': 'stdio',
+    'command': '$MCP_CMD',
+    'args': ['$MCP_ARG'],
+    'env': {'PYTHONPATH': '$MCP_ENV_PP'}
+}
+with open(p, 'w') as f: json.dump(data, f, indent=2)
+" 2>/dev/null && \
+        echo -e "  ${GREEN}✓${NC} GitHub Copilot CLI — MCP server injected (~/.copilot/mcp-config.json)" || \
+        echo -e "  ${YELLOW}⚠${NC} GitHub Copilot CLI — could not inject (edit manually: $COPILOT_CFG)"
+fi
+
+# 7b. Qwen CLI — inject into settings.json, preserving existing keys
 QWEN_HOME="${QWEN_HOME:-$HOME/.qwen}"
 mkdir -p "$QWEN_HOME"
 

@@ -43,10 +43,16 @@ class SkillRegistry:
         skills_dir: str,
         overlay_index: Optional[str] = None,
         kind: str = "skill",
+        category_filter: Optional[list[str]] = None,
     ):
         self.skills_dir = Path(skills_dir)
         self.overlay_index = Path(overlay_index) if overlay_index else None
         self.kind = kind
+        # Lowercase set for fast membership tests; empty/None = no filter
+        self.category_filter: Optional[set[str]] = (
+            {c.strip().lower() for c in category_filter if c.strip()}
+            if category_filter else None
+        )
         self._skills: dict[str, SkillEntry] = {}
 
     # ── Scanning ──────────────────────────────────────────────────────
@@ -63,7 +69,18 @@ class SkillRegistry:
                 self._skills[entry.id] = entry
 
         self._apply_overlay()
+        self._apply_category_filter()
         return len(self._skills)
+
+    def _apply_category_filter(self) -> None:
+        """Drop entries whose category is not in the filter (applied after overlay)."""
+        if not self.category_filter:
+            return
+        keep = {
+            sid: entry for sid, entry in self._skills.items()
+            if (entry.category or "").lower() in self.category_filter
+        }
+        self._skills = keep
 
     def _apply_overlay(self) -> None:
         """Apply category/tag overrides from overlay_index JSON if present."""

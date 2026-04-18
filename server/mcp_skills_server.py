@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -27,11 +28,28 @@ SKILLS_OVERLAY = ROOT_DIR / "skills_index.json"
 
 # ── Initialize Registry ──────────────────────────────────────────────
 
-registry = SkillRegistry(str(SKILLS_DIR), overlay_index=str(SKILLS_OVERLAY), kind="skill")
-skill_count = registry.scan()
-print(f"🧬 Skills Registry loaded: {skill_count} skills discovered", file=sys.stderr)
+# SKILLS_CATEGORY_FILTER: comma-separated categories to expose. Empty = all.
+# Match against overlay index (skills_index.json) category field.
+_cat_env = os.environ.get("SKILLS_CATEGORY_FILTER", "").strip()
+_cat_filter = [c for c in _cat_env.split(",") if c.strip()] if _cat_env else None
 
-agent_registry = SkillRegistry(str(AGENTS_DIR), kind="agent")
+registry = SkillRegistry(
+    str(SKILLS_DIR),
+    overlay_index=str(SKILLS_OVERLAY),
+    kind="skill",
+    category_filter=_cat_filter,
+)
+skill_count = registry.scan()
+if _cat_filter:
+    print(f"🧬 Skills Registry loaded: {skill_count} skills (filter: {_cat_filter})", file=sys.stderr)
+else:
+    print(f"🧬 Skills Registry loaded: {skill_count} skills discovered", file=sys.stderr)
+
+# Agent registry — filter only if AGENTS_CATEGORY_FILTER is set; otherwise expose all.
+_agent_cat_env = os.environ.get("AGENTS_CATEGORY_FILTER", "").strip()
+_agent_cat_filter = [c for c in _agent_cat_env.split(",") if c.strip()] if _agent_cat_env else None
+
+agent_registry = SkillRegistry(str(AGENTS_DIR), kind="agent", category_filter=_agent_cat_filter)
 agent_count = 0
 if AGENTS_DIR.exists():
     agent_count = agent_registry.scan()
