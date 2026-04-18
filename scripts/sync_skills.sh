@@ -570,10 +570,15 @@ with open(config_file, 'w') as f:
 # 1. Google Antigravity (Gemini) — uses mcp_config.json, NOT settings.json
 inject_mcp_antigravity
 
-# 2. Claude Code CLI — uses `claude mcp add` (can't inject, explain how)
-if command -v claude &>/dev/null; then
-    if claude mcp list 2>/dev/null | grep -q 'skills-server'; then
-        echo -e "  ${GREEN}✓${NC} Claude Code CLI — MCP already registered"
+# 2. Claude Code CLI — user-scope registration (opt-out via SKIP_CLAUDE_USER_SCOPE=1).
+# If SKIP_CLAUDE_USER_SCOPE=1, leave user config alone (user relies on
+# project-scope .mcp.json files in their working directories — see
+# ~/work/dev-scope and ~/work/molecular-scope).
+if [[ "${SKIP_CLAUDE_USER_SCOPE:-0}" == "1" ]]; then
+    echo -e "  ${BLUE}ℹ${NC} Claude Code CLI — user-scope add SKIPPED (SKIP_CLAUDE_USER_SCOPE=1)"
+elif command -v claude &>/dev/null; then
+    if claude mcp list --scope user 2>/dev/null | grep -q 'skills-server'; then
+        echo -e "  ${GREEN}✓${NC} Claude Code CLI — MCP already registered (user scope)"
     else
         claude mcp add --scope user skills-server "$MCP_CMD" "$MCP_ARG" 2>/dev/null && \
             echo -e "  ${GREEN}✓${NC} Claude Code CLI — MCP server registered via CLI" || \
@@ -668,9 +673,12 @@ MCPEOF
 fi
 
 # 7a. GitHub Copilot CLI — user-level ~/.copilot/mcp-config.json
+# Same opt-out env var as Claude Code CLI.
 COPILOT_CFG="$HOME/.copilot/mcp-config.json"
 mkdir -p "$HOME/.copilot"
-if [[ -f "$COPILOT_CFG" ]] && grep -q 'skills-server' "$COPILOT_CFG" 2>/dev/null; then
+if [[ "${SKIP_CLAUDE_USER_SCOPE:-0}" == "1" ]]; then
+    echo -e "  ${BLUE}ℹ${NC} GitHub Copilot CLI — user-scope add SKIPPED (SKIP_CLAUDE_USER_SCOPE=1)"
+elif [[ -f "$COPILOT_CFG" ]] && grep -q 'skills-server' "$COPILOT_CFG" 2>/dev/null; then
     echo -e "  ${GREEN}✓${NC} GitHub Copilot CLI — MCP already configured"
 else
     python3 -c "
