@@ -1,12 +1,12 @@
 # Skills MCP
 
-Local **Model Context Protocol** server exposing **1,260+ curated skills** and **9 agent personas** to AI coding assistants.
+Local **Model Context Protocol** server exposing **1,270+ curated skills** and **9 agent personas** to AI coding assistants.
 
 Default support: **Claude Code**, **GitHub Copilot CLI**, **OpenAI Codex CLI** (plus VS Code, Cursor, Claude Desktop, Antigravity, Qwen).
 
 ## Highlights
 
-- **1,260+ skills**, **9 agents**, **56 categories** (auto-tagged)
+- **1,270+ skills**, **9 agents**, **56 categories** (auto-tagged)
 - **Token-efficient**: default `list_skills()` payload ≈ 4 KB (baseline was 483 KB, -99 %)
 - **Project scopes**: filter skills per working dir (`code` / `mol` / `sci`) — activate with `scope <name>`
 - **Namespace-merged API**: 6 tools handle both skills and agents via `kind` filter
@@ -99,7 +99,7 @@ mcp/
 │   ├── mcp_skills_server.py      # FastMCP entry point
 │   ├── skill_registry.py         # scan / filter / overlay
 │   └── external_mcps/            # vendored domain-specific MCP servers (pdb, uniprot, ...)
-├── skills/                        # 1,260+ skill dirs (SKILL.md each)
+├── skills/                        # 1,270+ skill dirs (SKILL.md each)
 ├── agents/                        # 9 agent personas
 ├── scripts/
 │   ├── sync_skills.sh            # pull from source repos, configure IDEs
