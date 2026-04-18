@@ -76,6 +76,9 @@ if $LIST_ONLY; then
     echo -e ""
     echo -e "  ${BLUE}── Knowledge Graph / Codebase ──${NC}"
     echo -e "  ${GREEN}•${NC} safishamsi/graphify (graphify/skill.md, single-file)"
+    echo -e ""
+    echo -e "  ${BLUE}── Protein Design / Antibody ──${NC}"
+    echo -e "  ${GREEN}•${NC} 001TMF/blatant-why (skills + curated agents + MCP servers to server/external_mcps/)"
     exit 0
 fi
 
@@ -268,6 +271,81 @@ clone_and_sync "rmyndharis/antigravity-skills" "https://github.com/rmyndharis/an
 # sync_graphify — Special case: single-file skill living inside a Python package.
 # Upstream layout: graphify/skill.md (not a top-level SKILL.md, no per-skill dir).
 # Pulled via raw.githubusercontent.com, no git clone of the 58k Python package.
+# sync_blatant_why — Protein design skills/agents/MCP servers from 001TMF/blatant-why.
+# Repo scaffolds a full antibody/nanobody design stack. We pull:
+#   - templates/.claude/skills/*      → skills/        (16 skills, all BY-* + boltzgen/protenix/pxdesign)
+#   - templates/.claude/agents/*.md   → agents/<id>/SKILL.md  (curated subset)
+#   - templates/.claude/mcp_servers/{pdb,uniprot,sabdab,tamarind,adaptyv,research,knowledge,_shared}
+#     → server/external_mcps/blatant_why/
+# MCP servers are copied but NOT auto-registered — each one needs an API key and
+# manual `claude mcp add`. See server/external_mcps/blatant_why/README.md.
+sync_blatant_why() {
+    local name="001TMF/blatant-why"
+    local url="https://github.com/001TMF/blatant-why.git"
+    local repo_dir="$TMP_DIR/001TMF_blatant-why"
+    local src="$repo_dir/templates/.claude"
+    local curated_agents="by-design by-screening by-research by-epitope by-humanization"
+    local curated_mcps="pdb uniprot sabdab tamarind adaptyv research knowledge _shared"
+
+    echo -e "${BLUE}📦 Cloning $name (protein design stack)...${NC}"
+
+    if [[ -d "$repo_dir" ]]; then
+        (cd "$repo_dir" && git pull --quiet 2>/dev/null) || true
+    else
+        git clone --depth 1 --quiet "$url" "$repo_dir" 2>/dev/null || {
+            echo -e "  ${YELLOW}⚠ Failed to clone $name (skipping)${NC}"
+            return 0
+        }
+    fi
+
+    [[ ! -d "$src" ]] && { echo -e "  ${YELLOW}⚠ templates/.claude not found${NC}"; return 0; }
+
+    # Skills
+    for skill_dir in "$src/skills"/*/; do
+        [[ ! -d "$skill_dir" ]] && continue
+        local skill_name
+        skill_name="$(basename "$skill_dir")"
+        sync_skill "$skill_dir" "$skill_name" || true
+    done
+
+    # Curated agents → agents/<id>/SKILL.md
+    local agents_dst="$PROJECT_DIR/agents"
+    mkdir -p "$agents_dst"
+    for a in $curated_agents; do
+        local src_md="$src/agents/$a.md"
+        local dst_dir="$agents_dst/$a"
+        if [[ -f "$src_md" ]]; then
+            if [[ -d "$dst_dir" ]] && ! $FORCE; then
+                skip_count=$((skip_count + 1))
+            else
+                mkdir -p "$dst_dir"
+                cp "$src_md" "$dst_dir/SKILL.md"
+                sync_count=$((sync_count + 1))
+                echo -e "  ${GREEN}✓${NC} agent: $a (blatant-why)"
+            fi
+        fi
+    done
+
+    # Curated MCP servers → server/external_mcps/blatant_why/<mcp>/
+    local mcp_dst="$PROJECT_DIR/server/external_mcps/blatant_why"
+    mkdir -p "$mcp_dst"
+    for m in $curated_mcps; do
+        local src_m="$src/mcp_servers/$m"
+        if [[ -d "$src_m" ]]; then
+            if [[ -d "$mcp_dst/$m" ]] && ! $FORCE; then
+                :
+            else
+                rm -rf "$mcp_dst/$m"
+                cp -R "$src_m" "$mcp_dst/$m"
+                echo -e "  ${GREEN}✓${NC} mcp: $m (blatant-why)"
+            fi
+        fi
+    done
+
+    echo ""
+}
+sync_blatant_why
+
 sync_graphify() {
     local name="safishamsi/graphify"
     local branch="v4"
