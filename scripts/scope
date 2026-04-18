@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+# scope — activate an MCP project scope in the current working directory.
+#
+# Copies .mcp.json from ~/work/<name>-scope/ to ./ so Claude Code and
+# Copilot CLI pick up the filtered skills-server (plus any domain MCPs)
+# when launched here. Use `scope none` to deactivate.
+#
+# Usage:
+#   scope                    # show status + list available scopes
+#   scope list               # list only
+#   scope <name>             # activate (copy)
+#   scope -s|--symlink <name># activate via symlink (tracks upstream edits)
+#   scope none|off           # remove local .mcp.json
+#
+set -euo pipefail
+
+SCOPES_ROOT="${SCOPE_ROOT:-$HOME/work}"
+MARKER='"# managed-by-scope"'  # not used — kept for future tagging
+MCP_FILE=".mcp.json"
+
+# ANSI (suppress when not a tty)
+if [[ -t 1 ]]; then
+    G=$'\033[0;32m'; Y=$'\033[1;33m'; R=$'\033[0;31m'; B=$'\033[0;34m'; D=$'\033[2m'; N=$'\033[0m'
+else
+    G=''; Y=''; R=''; B=''; D=''; N=''
+fi
+
+list_scopes() {
+    local found=0
+    for d in "$SCOPES_ROOT"/*-scope; do
+        [[ -f "$d/$MCP_FILE" ]] || continue
+        local name="${d##*/}"; name="${name%-scope}"
+        local n_servers
+        n_servers=$(python3 -c "import json; print(len(json.load(open('$d/$MCP_FILE')).get('mcpServers',{})))" 2>/dev/null || echo "?")
+        local desc=""
+        [[ -f "$d/README.md" ]] && desc=$(grep -m1 '^# ' "$d/README.md" 2>/dev/null | sed 's/^# //')
+        printf "  %s%-15s%s %s%d servers%s  %s%s%s\n" "$B" "$name" "$N" "$D" "$n_servers" "$N" "$D" "$desc" "$N"
+        found=$((found + 1))
+    done
+    if [[ $found -eq 0 ]]; then
+        echo "  ${Y}(no scopes found in $SCOPES_ROOT/*-scope)${N}"
+    fi
+    return 0
+}
+
+status() {
+    if [[ -L "$MCP_FILE" ]]; then
+        local tgt; tgt=$(readlink "$MCP_FILE")
+        local name="${tgt%/*}"; name="${name##*/}"; name="${name%-scope}"
+        echo "${G}active (symlink)${N}: $name  ${D}→ $tgt${N}"
+    elif [[ -f "$MCP_FILE" ]]; then
+        # Try to match against available scopes by content
+        local match=""
+        for d in "$SCOPES_ROOT"/*-scope; do
+            if [[ -f "$d/$MCP_FILE" ]] && cmp -s "$d/$MCP_FILE" "$MCP_FILE"; then
+                match="${d##*/}"; match="${match%-scope}"; break
+            fi
+        done
+        if [[ -n "$match" ]]; then
+            echo "${G}active (copy)${N}: $match"
+        else
+            echo "${Y}local .mcp.json present${N} (not from any known scope)"
+        fi
+    else
+        echo "${D}no active scope${N}"
+    fi
+}
+
+usage() {
+    cat <<EOF
+scope — activate an MCP project scope in current directory
+
+Commands:
+  scope                       show status + available scopes
+  scope list                  list available scopes
+  scope <name>                copy <name>-scope/.mcp.json to ./
+  scope -s|--symlink <name>   symlink instead of copy
+  scope none | off            remove local .mcp.json
+
+Scopes root: $SCOPES_ROOT (override with \$SCOPE_ROOT)
+EOF
+}
+
+deactivate() {
+    if [[ -L "$MCP_FILE" ]]; then
+        rm "$MCP_FILE"; echo "${G}✓${N} removed symlink"
+    elif [[ -f "$MCP_FILE" ]]; then
+        mv "$MCP_FILE" "$MCP_FILE.bak.$(date +%s)"
+        echo "${G}✓${N} local $MCP_FILE moved to backup"
+    else
+        echo "${D}no .mcp.json to remove${N}"
+    fi
+}
+
+activate() {
+    local name="$1" symlink="$2"
+    local src="$SCOPES_ROOT/${name}-scope/$MCP_FILE"
+    [[ -f "$src" ]] || { echo "${R}error:${N} no scope '$name' at $src" >&2; exit 1; }
+
+    if [[ -e "$MCP_FILE" || -L "$MCP_FILE" ]]; then
+        mv "$MCP_FILE" "$MCP_FILE.bak.$(date +%s)" 2>/dev/null || rm -f "$MCP_FILE"
+    fi
+
+    if [[ "$symlink" == "1" ]]; then
+        ln -s "$src" "$MCP_FILE"
+        echo "${G}✓${N} symlinked $MCP_FILE → $src"
+    else
+        cp "$src" "$MCP_FILE"
+        echo "${G}✓${N} copied ${name}-scope/.mcp.json to $(pwd)/$MCP_FILE"
+    fi
+    echo "${D}Launch Claude Code or Copilot CLI here to pick it up.${N}"
+}
+
+# Parse args
+case "${1:-}" in
+    ""|status)
+        echo "${B}current:${N} $(status)"
+        echo
+        echo "${B}available scopes:${N}"
+        list_scopes
+        ;;
+    list|ls)
+        list_scopes
+        ;;
+    none|off|remove|rm)
+        deactivate
+        ;;
+    -h|--help|help)
+        usage
+        ;;
+    -s|--symlink)
+        [[ -z "${2:-}" ]] && { usage; exit 1; }
+        activate "$2" 1
+        ;;
+    *)
+        activate "$1" 0
+        ;;
+esac
