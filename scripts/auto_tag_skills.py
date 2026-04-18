@@ -78,10 +78,33 @@ RULES: list[tuple[str, list[str]]] = [
 
 DEFAULT_CAT = "misc"
 
+_WORD_BOUNDARY = re.compile(r"[a-z0-9]+")
+
+def _has_token(blob_tokens: set[str], key: str) -> bool:
+    """Match key against blob_tokens using word boundaries.
+
+    Blob tokens are produced by splitting on non-alphanumeric characters, so
+    every token is already a self-contained word. Keys are normalized the
+    same way and must match as exact tokens. Trailing `-`/`_` in a key is
+    just a stylistic hint from the rule table and is stripped.
+    """
+    # Normalize key: drop trailing separators, split into parts
+    clean = key.rstrip("-_ ")
+    parts = [p for p in re.split(r"[-_ ]+", clean) if p]
+    if not parts:
+        return False
+    # All parts must appear as exact tokens
+    return all(p in blob_tokens for p in parts)
+
+
 def classify(s: dict) -> str:
-    blob = f"{s.get('id','')} {s.get('name','')} {s.get('description','')} {s.get('path','')}".lower()
+    # Classify on id+name+path only. Descriptions are prose and produce
+    # spurious matches (e.g. a biology skill mentioning "testing methods"
+    # would land in `testing`). id/name/path are terser and domain-scoped.
+    blob = f"{s.get('id','')} {s.get('name','')} {s.get('path','')}".lower()
+    tokens = set(_WORD_BOUNDARY.findall(blob))
     for cat, keys in RULES:
-        if any(k in blob for k in keys):
+        if any(_has_token(tokens, k) for k in keys):
             return cat
     return DEFAULT_CAT
 
