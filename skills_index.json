@@ -10,6 +10,23 @@
     "kind": "skill"
   },
   {
+    "id": "academic-epistemology",
+    "name": "academic-epistemology",
+    "description": "Philosophy of science for PhD-level epistemic rigor. Popper (falsificationism), Kuhn (paradigms), Lakatos (research programmes), Feyerabend, Bayesian epistemology, inference to best explanation (IBE), underdetermination, theory-ladenness, scientific realism vs instrumentalism, causation vs correlation, demarcation problem. Triggers on falsifiable, paradigm, research programme, philosophy of science, epistemology, scientific reasoning, demarcation.",
+    "path": "academic-epistemology/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[epistemology",
+      "popper",
+      "kuhn",
+      "lakatos",
+      "bayesian",
+      "philosophy-of-science]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "academic-paper",
     "name": "academic-paper",
     "description": "Academic paper writing skill with 12-agent pipeline. v2.4: LaTeX output formatting hardening — mandatory apa7 class, text justification fix, table column width formula, bilingual abstract centering, standardized font stack, PDF must compile from LaTeX. Supports IMRaD, literature review, theoretical, case study, policy brief, and conference paper structures. APA 7.0 (default), Chicago, MLA, IEEE, Vancouver citation formats. Bilingual abstracts (zh-TW + EN). Multi-format output (LaTeX, DOCX, PDF, Markdown). Triggers on: write paper, academic paper, paper outline, write abstract, revise paper, check citations, convert to LaTeX, guide my paper, parse reviews, revision roadmap, 寫論文, 學術論文, 論文大綱, 寫摘要, 修改論文, 檢查引用, 引導我寫論文, 帶我規劃論文, 逐章規劃, 論文架構, 審查意見, 修訂路線圖.",
@@ -496,6 +513,22 @@
     "path": "archs4-database/SKILL.md",
     "category": "bio-database",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "argument-mapping",
+    "name": "argument-mapping",
+    "description": "Close-reading and argument analysis at PhD level. Toulmin model, argument diagrams, steel-manning, counterargument generation, fallacy detection, Rapoport rules, dialectical analysis. For literature critique, paper review, thesis defense prep, discussion-section writing. Triggers on argument analysis, critical reading, steel-manning, counterargument, dialectic, close reading, argument structure.",
+    "path": "argument-mapping/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[argument",
+      "critical-thinking",
+      "toulmin",
+      "steel-manning",
+      "phd]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -1440,6 +1473,23 @@
     "path": "causal-genomics-pipeline/SKILL.md",
     "category": "pipeline-bio",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "causal-inference",
+    "name": "causal-inference",
+    "description": "Pearl-style causal inference for PhD-grade scientific rigor. DAGs, do-calculus, backdoor/frontdoor criteria, counterfactuals, identification, confounders, colliders, mediation. Triggers when user discusses causal claims, confounding, treatment effects, instrumental variables, natural experiments, RCT analysis, observational study adjustments, or mediation analysis.",
+    "path": "causal-inference/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[causal-inference",
+      "dag",
+      "pearl",
+      "econometrics",
+      "statistics",
+      "phd]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -5837,6 +5887,22 @@
     "kind": "skill"
   },
   {
+    "id": "journal-selection",
+    "name": "journal-selection",
+    "description": "Evidence-based journal/venue selection for PhD-level submission. Impact factor nuances, CiteScore, SJR, Eigenfactor, h5-index, Scopus/WoS indexing, predatory publisher detection (Beall, Cabell's, Think Check Submit), journal fit analysis, scope matching, turnaround times, OA economics, transfer networks. Triggers on journal selection, venue selection, impact factor, predatory journal, where to publish, scope matching, JIF, submission strategy.",
+    "path": "journal-selection/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[journal",
+      "publishing",
+      "impact-factor",
+      "predatory",
+      "phd]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "json-canvas",
     "name": "json-canvas",
     "description": "Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or when the user mentions Canvas files in Obsidian.",
@@ -7974,6 +8040,23 @@
     "kind": "skill"
   },
   {
+    "id": "open-science-workflow",
+    "name": "open-science-workflow",
+    "description": "Open science lifecycle for PhD-grade work. Pre-registration (OSF, AsPredicted, Registered Reports), protocol sharing (protocols.io), preprint servers (arXiv, bioRxiv, medRxiv, SSRN, PsyArXiv, EarthArXiv, ChemRxiv), data sharing (Zenodo, OSF, domain repositories), code DOI, open access routes (gold, green, diamond), licensing (CC-BY, ODbL), ORCID, CRediT taxonomy, ROR, RAiD. Triggers on pre-registration, preprint, registered report, open access, OSF, Zenodo, CRediT, ORCID, FAIR.",
+    "path": "open-science-workflow/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[open-science",
+      "pre-registration",
+      "preprint",
+      "osf",
+      "zenodo",
+      "credit]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "openalex-database",
     "name": "openalex-database",
     "description": "Query OpenAlex REST API for scholarly literature — 250M+ works, authors, institutions, journals, and concepts. Search by title/abstract keywords, author, DOI, ORCID, or OpenAlex ID. Filter by year, open access status, citation count, or field. Retrieve citations, references, and author disambiguation. Free, no authentication required. For PubMed biomedical search use pubmed-database; for bioRxiv preprints use biorxiv-database.",
@@ -9686,12 +9769,47 @@
     "kind": "skill"
   },
   {
+    "id": "reproducibility-manifest",
+    "name": "reproducibility-manifest",
+    "description": "Computational reproducibility infrastructure for PhD-grade research. Containerized environments (Docker, Apptainer/Singularity), language-specific lockfiles (uv, poetry, renv, conda-lock), workflow orchestration (Nextflow, Snakemake, Make), data/code archiving (Zenodo, OSF, Dryad), persistent identifiers (DOI, ORCID), FAIR principles. Triggers on reproducibility, replicable, code sharing, data sharing, FAIR, containerization for research.",
+    "path": "reproducibility-manifest/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[reproducibility",
+      "docker",
+      "fair",
+      "zenodo",
+      "phd",
+      "open-science]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "requesting-code-review",
     "name": "requesting-code-review",
     "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
     "path": "requesting-code-review/SKILL.md",
     "category": "code-review",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "research-ethics-credit",
+    "name": "research-ethics-credit",
+    "description": "Research ethics, IRB/ethics approval, authorship and CRediT taxonomy, ICMJE authorship criteria, conflicts of interest, dual-use research, AI-assisted writing disclosure, data protection (GDPR, HIPAA), informed consent, Helsinki Declaration, IACUC for animals, ARRIVE 2.0, retraction ethics, PubPeer. Triggers on research ethics, IRB, authorship, CRediT, conflicts of interest, AI disclosure, retraction, informed consent, Helsinki, IACUC, dual-use.",
+    "path": "research-ethics-credit/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[ethics",
+      "irb",
+      "authorship",
+      "credit",
+      "icmje",
+      "integrity",
+      "phd]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
@@ -11579,6 +11697,23 @@
     "kind": "skill"
   },
   {
+    "id": "systematic-review-prisma",
+    "name": "systematic-review-prisma",
+    "description": "PRISMA 2020-compliant systematic review protocol. Registration (PROSPERO), search strategy, PICO, inclusion/exclusion, dual screening, risk of bias (ROB2/ROBINS-I), data extraction, GRADE certainty, PRISMA flow diagram, synthesis (narrative, meta-analysis, GRADE summary). Triggers on systematic review, scoping review, meta-analysis, PRISMA, PROSPERO, Cochrane review, umbrella review, realist synthesis.",
+    "path": "systematic-review-prisma/SKILL.md",
+    "category": "misc",
+    "tags": [
+      "[prisma",
+      "systematic-review",
+      "meta-analysis",
+      "cochrane",
+      "grade",
+      "phd]"
+    ],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
     "id": "systems-engineer",
     "name": "Systems Engineer",
     "description": "Low-level systems engineer specializing in C/C++, OS internals, kernel-space programming, and hardware-software interface. Orchestrates low-level skills for bare-metal, embedded, networking, and performance-critical systems.",
@@ -11889,6 +12024,23 @@
     "path": "theme-factory/SKILL.md",
     "category": "design-diagrams",
     "tags": [],
+    "source": "custom",
+    "kind": "skill"
+  },
+  {
+    "id": "thesis-structure",
+    "name": "thesis-structure",
+    "description": "PhD dissertation structure and defense preparation at MIT/Harvard/Cambridge standard. Chapter scaffolding (monograph vs paper-by-paper), narrative arc, thesis committee navigation, defense Q&A simulation, viva/comprehensive/qualifying exams, thesis-by-publication, epilogue-of-contributions patterns. Triggers on thesis, dissertation, PhD defense, viva, comprehensive exam, qualifying exam, thesis chapters, thesis-by-publication.",
+    "path": "thesis-structure/SKILL.md",
+    "category": "structural-biology",
+    "tags": [
+      "[thesis",
+      "dissertation",
+      "phd",
+      "viva",
+      "defense",
+      "monograph]"
+    ],
     "source": "custom",
     "kind": "skill"
   },
