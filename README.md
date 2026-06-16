@@ -1,6 +1,6 @@
 # Skills MCP
 
-Local **Model Context Protocol** server exposing **1,270+ curated skills** and **9 agent personas** to AI coding assistants.
+Local **Model Context Protocol** server exposing **1,270+ curated skills** and **18 agent personas** to AI coding assistants.
 
 Default support: **Claude Code**, **GitHub Copilot CLI**, **OpenAI Codex CLI** (plus VS Code, Cursor, Claude Desktop, Antigravity, Qwen).
 
@@ -130,7 +130,8 @@ mcp/
 │   ├── skill_registry.py         # scan / filter / overlay
 │   └── external_mcps/            # vendored domain-specific MCP servers (pdb, uniprot, ...)
 ├── skills/                        # 1,270+ skill dirs (SKILL.md each)
-├── agents/                        # 9 agent personas
+├── agents/                        # 18 agent personas
+├── commands/                      # slash commands (gmmsb-*)
 ├── scripts/
 │   ├── sync_skills.sh            # pull from source repos, configure IDEs
 │   ├── auto_tag_skills.py        # category classifier (overlay)

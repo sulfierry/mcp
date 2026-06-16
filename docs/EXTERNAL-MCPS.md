@@ -85,3 +85,26 @@ Each vendored server carries upstream license (blatant-why: MIT). Root `server/e
 2. Drop `server.py` (PEP 723 header or pyproject) + `README.md`
 3. Document env vars + registration in README
 4. Optionally add sync function in `scripts/sync_skills.sh` for reproducibility
+
+## Referenced (not vendored)
+
+Some skills/agents drive an external MCP server that lives in its own package
+rather than under `server/external_mcps/`. They are documented here but not
+shipped in this repo — the user installs and registers them separately.
+
+| Server | Package | Drives | Skills / agents |
+|--------|---------|--------|-----------------|
+| `gmmsb` | `gmmsb-mcp` ([gmmsb-agent-toolkit](https://github.com/gmmsb-lncc/gmmsb-agent-toolkit)) | Run molecular-modelling tools (DockThor, DockTDeep, AlphaFold, Boltz-2, …) on the lab's remote GPU/CPU fleet over SSH + Docker | `gmmsb-toolkit` skill, `job-runner` agent, `commands/gmmsb-*` |
+
+### gmmsb registration
+
+```bash
+pipx install gmmsb-mcp        # or: uv tool install gmmsb-mcp
+claude mcp add --scope user gmmsb gmmsb-mcp
+gmmsb init-agent              # SSH key + machine wire-up (run by the user)
+```
+
+Tools exposed: `list_tools_registered`, `describe_tool`, `tool_input_template`,
+`list_machines`, `rank_machines_for_tool`, `submit_job`, `job_status`,
+`fetch_job`, `cleanup_remote_job`. The `gmmsb-toolkit` skill and `job-runner`
+agent are inert without this server registered.

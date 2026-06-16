@@ -13,8 +13,14 @@ Agents are specialist personas that combine multiple skills with an expert syste
 | `devops-engineer` | Docker/K8s/Terraform/GitHub Actions/Prometheus/Grafana/GitOps |
 | `docking-specialist` | Molecular docking campaigns (prep, libraries, sites, protocols, interpretation) |
 | `fullstack-developer` | React/Next + FastAPI + PostgreSQL + Docker, TDD + CI/CD |
+| `job-runner` | Babysits a single long-running GMMSB remote job to completion (needs the external `gmmsb` MCP) |
 | `python-architect` | Async, type-safe, SOLID, FastAPI/Django/SQLAlchemy, Python 3.12+ |
+| `report-compiler` | Compiles research findings into APA 7.0 reports; initial draft + revision passes |
+| `research-architect` | Methodology blueprint designer (paradigm, method, data strategy, validity criteria) |
+| `synthesis` | Cross-source integration, contradiction resolution, gap analysis |
 | `ui-ux-designer` | Design systems, WCAG 2.2, Figma→code, micro-animations |
+
+`research-architect`, `synthesis`, and `report-compiler` are standalone research personas (scoping → analysis → drafting); they can be chained by hand or driven by `academic-pipeline`/`deep-research`.
 
 Plus imported curated agents under `agents/by-*`: `by-design`, `by-screening`, `by-research`, `by-epitope`, `by-humanization` (protein-design personas from blatant-why).
 
